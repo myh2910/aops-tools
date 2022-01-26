@@ -8,7 +8,8 @@ def show_topic_info(
 	silent=False,
 	write_files=False,
 	outdir="community",
-	thanker_to_find=None
+	thanker_to_find=None,
+	delim_cnt = 80
 ):
 	topic_dict = extract_topic_info(topic_code)
 	topic_url = topic_dict["url"]
@@ -37,7 +38,7 @@ def show_topic_info(
 
 	if thanker_to_find:
 		if verbose or not silent:
-			print("-" * 100)
+			print("-" * delim_cnt)
 		print(f"Posts liked by {thanker_to_find}:")
 		thanker_found = False
 
@@ -64,7 +65,7 @@ Date: {post_date}"""
 			post_info += f"\nThankers: {', '.join(post_thankers)}"
 
 		if verbose:
-			print("-" * 100)
+			print("-" * delim_cnt)
 			print(post_info)
 
 		if write_files:

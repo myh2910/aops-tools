@@ -14,7 +14,7 @@ Then, install ChromeDriver as follows.
 
 ### Windows
 
-In <https://chromedriver.chromium.org/downloads>, download the appropriate version.
+Download the appropriate version from <https://chromedriver.chromium.org/downloads>.
 
 ### Arch Linux
 
@@ -41,7 +41,7 @@ Subject: IMC circle
 Tags: geometry, incenter, circumcircle
 Source: Peru EGMO TST 2020 #3
 Post count: 5
-----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Posts liked by myh2910:
 Post #3 (https://artofproblemsolving.com/community/c6h2484456p20889737)
 ```
