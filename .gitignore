@@ -1,0 +1,6 @@
+*.exe
+*.py
+*/
+!aops_tools/
+!aops_tools/*
+**__pycache__/

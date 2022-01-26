@@ -1,0 +1,47 @@
+# aops-tools
+
+A code written to extract data from
+[AoPS](https://artofproblemsolving.com/community/) topics using
+[selenium](https://pypi.org/project/selenium/).
+
+## Installing
+
+First, install the packages below with `pip`.
+
+* `pip install selenium selenium_stealth bs4`
+
+Then, install ChromeDriver as follows.
+
+### Windows
+
+In <https://chromedriver.chromium.org/downloads>, download the appropriate version.
+
+### Arch Linux
+
+```sh
+cd ~
+git clone https://aur.archlinux.org/chromedriver.git
+cd ~/chromedriver
+makepkg -scCi
+```
+
+## Example
+
+```py
+from aops_tools import show_topic_info
+
+show_topic_info("c6h2484456", thanker_to_find="myh2910")
+```
+
+### Output
+
+```
+Topic url: https://artofproblemsolving.com/community/c6h2484456
+Subject: IMC circle
+Tags: geometry, incenter, circumcircle
+Source: Peru EGMO TST 2020 #3
+Post count: 5
+----------------------------------------------------------------------------------------------------
+Posts liked by myh2910:
+Post #3 (https://artofproblemsolving.com/community/c6h2484456p20889737)
+```
