@@ -8,7 +8,7 @@ A code written to extract data from
 
 First, install the packages below with `pip`.
 
-* `pip install selenium selenium_stealth`
+* `pip install selenium selenium_stealth bs4`
 
 Then, install ChromeDriver as follows.
 
@@ -27,7 +27,7 @@ makepkg -scCi
 
 ## Example
 
-```py
+```python
 from aops_tools import show_topic_info
 
 show_topic_info("c6h2484456", to_stalk="myh2910")
@@ -36,21 +36,57 @@ show_topic_info("c6h2484456", to_stalk="myh2910")
 ### Output
 
 ```
-===============================================================================================
+######################################### TOPIC INFO ##########################################
 Link: https://artofproblemsolving.com/community/c6h2484456
 Subject: IMC circle
 Tags: geometry, incenter, circumcircle
 Source: Peru EGMO TST 2020 #3
 Post count: 5
------------------------------------------------------------------------------------------------
+========================================== POST INFO ==========================================
 Post #2: https://artofproblemsolving.com/community/c6h2484456p20888123 (posted by myh2910)
 Posted by: myh2910 (https://artofproblemsolving.com/community/user/406693)
 Date posted: Mar 11, 2021, 10:47 PM
 Edit info: This post has been edited 2 times. Last edited by myh2910, Mar 12, 2021, 12:06 AM
 Liked by: Ya_pank, Leqso, Aimingformygoal
------------------------------------------------------------------------------------------------
+------------------------------------------- CONTENT -------------------------------------------
+[asy]
+size(6cm); pointpen=black;
+pair O=origin, A=dir(126.65), B=dir(-155.75), C=dir(-24.25), I=incenter(A, B, C), M=midpoint(B
+--C), N=midpoint(A--C), MA=midpoint(arc(O, C, B)), MB=midpoint(arc(O, A, C)), OA=midpoint(MB--
+N), W=midpoint(arc(OA, MB, N));
+
+D(A--B--C--cycle, red);
+D(MA--MB, dotted);
+D(A--I--N, orange);
+D(unitcircle, deepblue);
+D(arc(OA, N, MB)--arc(OA, MB, N)--cycle, cyan+blue);
+
+markscalefactor=0.01;
+D(rightanglemark(N, I, A), black);
+
+D("A", A, A);
+D("B", B, B);
+D("C", C, C);
+D("I", I, dir(-60));
+D("M", M, S);
+D("N", N, dir(60));
+D("M_A", MA, MA);
+D("M_B", MB, MB);
+label("$\omega_A$", W, 2*W);
+[/asy]
+Let $\omega_A$ be the $A$-mixtilinear incircle of $\triangle ABC$, $T_A$ its tangency point
+with $\odot(ABC)$ and $M_A$ the midpoint of the arc $\overarc{BAC}$.
+
+It's well-known that $T_A, I, M_A$ are collinear. Then, $$\begin{aligned}AI\perp IN&\iff
+N\text{ is the tangency point of }\omega_A\text{ with }AC\\&\iff T_A=M_B\\&\iff M_A, I,
+M_B\text{ are collinear.}\end{aligned}$$Therefore, $$\begin{aligned}AI\perp IN&\iff BI\perp
+IM\\&\iff\angle CMI=\angle CIA\\&\iff AI\text{ is tangent to }\odot(IMC)\text{.
+}\blacksquare\end{aligned}$$
+========================================== POST INFO ==========================================
 Post #3: https://artofproblemsolving.com/community/c6h2484456p20889737 (liked by myh2910)
 Posted by: A.L.E.X (https://artofproblemsolving.com/community/user/528252)
 Date posted: Mar 12, 2021, 4:36 AM
 Liked by: myh2910, Leqso
+------------------------------------------- CONTENT -------------------------------------------
+Useful one:https://artofproblemsolving.com/community/q1h410953p2306676
 ```

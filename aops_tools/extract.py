@@ -83,7 +83,8 @@ def extract_topic_info(topic_code):
 		post_url = cmty_post_direct_modal.find_element(By.TAG_NAME, "input").get_attribute("value")
 		driver.find_element(By.CLASS_NAME, "aops-close-x").click()
 
-		# Get post username, user profile, date and edit info
+		# Get post html, username, user profile, date and edit info
+		post_html = cmty_post.find_element(By.CLASS_NAME, "cmty-post-html").get_attribute("innerHTML")[11:]
 		cmty_post_username = cmty_post.find_element(By.CLASS_NAME, "cmty-post-username")
 		post_user_profile = cmty_post_username.find_element(By.TAG_NAME, "a").get_attribute("href")
 		post_date = cmty_post.find_element(By.CLASS_NAME, "cmty-post-date").text
@@ -119,7 +120,8 @@ def extract_topic_info(topic_code):
 			"date": post_date,
 			"edit-info": post_edit_info,
 			"thank-count": post_thank_count,
-			"thankers": cmty_thankers
+			"thankers": cmty_thankers,
+			"html": post_html
 		})
 
 	# Quit driver and return dictionary
