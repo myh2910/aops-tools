@@ -9,7 +9,7 @@ def show_topic_info(
 	write_files=False,
 	outdir="community",
 	thanker_to_find=None,
-	delim_cnt = 80
+	delim_cnt=80
 ):
 	topic_dict = extract_topic_info(topic_code)
 	topic_url = topic_dict["url"]
