@@ -35,8 +35,7 @@ from aops_tools import show_topic_info
 show_topic_info("c6h1671291", "mijail")
 ```
 
-<details>
-<summary>Output</summary>
+<details><summary><b>Output</b></summary><br>
 
 ```
 ######################################### TOPIC INFO ##########################################
@@ -80,8 +79,7 @@ from aops_tools import show_topic_info
 show_topic_info("c6h2484456", verbose=True)
 ```
 
-<details>
-<summary>Output</summary>
+<details><summary><b>Output</b></summary><br>
 
 ```
 ######################################### TOPIC INFO ##########################################
