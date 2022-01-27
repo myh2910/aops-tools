@@ -1,3 +1,4 @@
+from .constants import AOPS_DOMAIN
 from .extract import extract_topic_info
 from bs4 import BeautifulSoup
 import os
@@ -84,7 +85,7 @@ def show_topic_info(
 				post_info += [f"Liked by: {', '.join(post_thankers)}"]
 
 			post_info += [centered_text("CONTENT", textwidth, "-")]
-			soup = BeautifulSoup(post_html, "lxml")
+			soup = BeautifulSoup(post_html, "html.parser")
 			for html_img in soup.find_all("img"):
 				html_img.string = html_img["alt"]
 				html_img.unwrap()
@@ -97,18 +98,21 @@ def show_topic_info(
 		# Write html content
 		if write_files:
 			soup = BeautifulSoup(
-"""<!DOCTYPE html>
-<html lang="en">
+"""<html lang="en">
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="../../aops_tools/aops.css">
 </head>
-</html>""", "lxml")
-			temp = BeautifulSoup(post_html, "lxml")
+<body></body>
+</html>""", "html.parser")
+			temp = BeautifulSoup(post_html, "html.parser")
 			for html_img in temp.find_all("img"):
-				if html_img["src"].startswith("//"):
-					html_img["src"] = "https:" + html_img["src"]
-			soup.find("head").insert_after(temp.find("body"))
+				img_src = html_img["src"]
+				if img_src.startswith("//"):
+					html_img["src"] = "https:" + img_src
+				elif img_src.startswith("/"):
+					html_img["src"] = AOPS_DOMAIN + img_src
+			soup.find("body").append(temp)
 
 			with open(os.path.join(topic_dir, f"{post_number}.html"), "w", encoding="utf8") as html_file:
 				html_file.write(str(soup))

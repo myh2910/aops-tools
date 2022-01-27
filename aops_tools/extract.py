@@ -1,9 +1,10 @@
-import time
+from .constants import AOPS_DOMAIN
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium_stealth import stealth
+import time
 
 def get_hidden_thankers(i, all_hidden=False):
 	# If all users are hidden
@@ -37,8 +38,7 @@ def extract_topic_info(topic_code):
 	)
 
 	# Go to AoPS topic
-	aops_url = "https://artofproblemsolving.com/community"
-	topic_url = aops_url + "/" + topic_code
+	topic_url = AOPS_DOMAIN + "/community/" + topic_code
 	driver.get(topic_url)
 
 	# Scroll down
@@ -84,7 +84,9 @@ def extract_topic_info(topic_code):
 		driver.find_element(By.CLASS_NAME, "aops-close-x").click()
 
 		# Get post html, username, user profile, date and edit info
-		post_html = cmty_post.find_element(By.CLASS_NAME, "cmty-post-html").get_attribute("innerHTML")[11:]
+		post_html = cmty_post.find_element(By.CLASS_NAME, "cmty-post-html").get_attribute("innerHTML")
+		if post_html.startswith("<div></div>"):
+			post_html = post_html[11:]
 		cmty_post_username = cmty_post.find_element(By.CLASS_NAME, "cmty-post-username")
 		post_user_profile = cmty_post_username.find_element(By.TAG_NAME, "a").get_attribute("href")
 		post_date = cmty_post.find_element(By.CLASS_NAME, "cmty-post-date").text
