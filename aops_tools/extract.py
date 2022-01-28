@@ -71,11 +71,11 @@ def extract_topic_info(topic_code):
 		"subject": topic_subject,
 		"tags": topic_tags,
 		"source": topic_source,
-		"posts": []
+		"posts": {}
 	}
 
 	# Extract post properties
-	for cmty_post in driver.find_elements(By.CLASS_NAME, "cmty-post"):
+	for post_idx, cmty_post in enumerate(driver.find_elements(By.CLASS_NAME, "cmty-post")):
 		# Get post number and url
 		cmty_post_number = cmty_post.find_element(By.CLASS_NAME, "cmty-post-number")
 		cmty_post_number.click()
@@ -114,8 +114,8 @@ def extract_topic_info(topic_code):
 			post_thank_count = 0
 			cmty_thankers = []
 
-		aops_dict["posts"].append({
-			"number": cmty_post_number.text[1:],
+		aops_dict["posts"][cmty_post_number.text[1:]] = {
+			"index": post_idx,
 			"url": post_url,
 			"username": cmty_post_username.text,
 			"user-profile": post_user_profile,
@@ -124,7 +124,7 @@ def extract_topic_info(topic_code):
 			"thank-count": post_thank_count,
 			"thankers": cmty_thankers,
 			"html": post_html
-		})
+		}
 
 	# Quit driver and return dictionary
 	driver.quit()

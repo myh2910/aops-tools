@@ -1,16 +1,23 @@
 /* CSS from https://artofproblemsolving.com/assets/dist/v2148/css/ */
-
 /* main-head.css */
-/* 243-249 */
+/* 243-267 */
 button,
 html,
 input,
 select,
 textarea {
-  color: #333;
+	color: #333;
 }
 
-/* 262-267 */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
 audio,
 canvas,
 img,
@@ -21,6 +28,11 @@ video {
 /* 442-452 */
 body {
 	font-family: Roboto, sans-serif;
+}
+
+/* 480-482 */
+ul {
+	list-style-type: square;
 }
 
 /* 521-539 */
@@ -45,6 +57,12 @@ a:hover {
 .faux-link:focus,
 a:focus {
 	outline: 0;
+}
+
+/* 2685-2688 */
+img.latex {
+	vertical-align: 0;
+	-moz-transform: rotate(0);
 }
 
 /* 3039-3048 */
