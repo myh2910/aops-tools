@@ -1,7 +1,8 @@
-import colorama
 import json
 import os
 import textwrap
+from timeit import default_timer
+import colorama
 from bs4 import BeautifulSoup
 from .get import get_topic_data
 from .utils import *
@@ -56,6 +57,12 @@ def show_topic_data(
 	utc_offset=-5,
 	time_format="%b %-d, %Y, %-I:%M %p"
 ):
+	# Initialize timer
+	elapsed_time = -default_timer()
+
+	# Initialize colorama (for Windows)
+	colorama.init()
+
 	# Convert `to_stalk` to set
 	if to_stalk:
 		if type(to_stalk) == str:
@@ -83,7 +90,6 @@ def show_topic_data(
 	) = topic_data.values()
 
 	if verbose or not silent:
-		colorama.init()
 		# Print topic information
 		print_centered("TOPIC INFO", textwidth, "#", BLUE)
 		topic_info = {
@@ -127,7 +133,7 @@ def show_topic_data(
 			or post_number in to_find
 		):
 			# Print post information
-			print_centered("POST INFO", textwidth, "=", GREEN)
+			print_centered("POST INFO", textwidth, "=", CYAN)
 			post_info = {
 				f"Post #{post_number}": post_url,
 				"Posted by": f"{username} ({user_profile(poster_id)})",
@@ -139,7 +145,7 @@ def show_topic_data(
 			for key, value in post_info.items():
 				print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), YELLOW)
 
-			print_centered("CONTENT", textwidth, "-", CYAN)
+			print_centered("CONTENT", textwidth, "-", GREEN)
 			for prop in post_canonical.split("\n"):
 				print(textwrap.fill(prop, textwidth))
 
@@ -171,3 +177,7 @@ f"""<!DOCTYPE html>
 			# Write html content
 			with open(os.path.join(topic_path, f"{post_number}.html"), "w", encoding="utf8") as html_file:
 				html_file.write(str(soup))
+
+	# End timer
+	elapsed_time += default_timer()
+	print_wrapped(textwrap.fill(f"Elapsed time: {elapsed_time:.2f} seconds", textwidth), len("Elapsed time"), RED)

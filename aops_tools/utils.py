@@ -9,10 +9,11 @@ def user_profile(poster_id):
 
 # Print colored text
 BLUE = Fore.BLUE
-MAGENTA = Fore.MAGENTA
-GREEN = Fore.GREEN
-YELLOW = Fore.LIGHTYELLOW_EX
+MAGENTA = Fore.LIGHTMAGENTA_EX
 CYAN = Fore.CYAN
+YELLOW = Fore.LIGHTYELLOW_EX
+GREEN = Fore.LIGHTGREEN_EX
+RED = Fore.LIGHTRED_EX
 
 def print_centered(text, textwidth, delim, color):
 	diff = textwidth - len(text) - 2
