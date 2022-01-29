@@ -1,2 +1,2 @@
-from .extract import extract_topic_info
-from .show import show_topic_info
+from .get import get_topic_data
+from .show import show_topic_data

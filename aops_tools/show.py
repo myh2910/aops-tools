@@ -1,133 +1,148 @@
-from .constants import *
-from .extract import extract_topic_info
+from .utils import *
+from .get import get_topic_data
 from bs4 import BeautifulSoup
 import os
 import json
+import colorama
 import textwrap
 
-def centered_text(text, textwidth, delim):
-	diff = textwidth - len(text) - 2
-	return delim * (diff // 2) + f" {text} " + delim * ((diff + 1) // 2)
+def hidden_thankers(num_hidden, all_hidden=False):
+	# If all users are hidden
+	if all_hidden:
+		if num_hidden == 1:
+			return "1 user"
+		return f"{num_hidden} users"
+	# If one user is hidden
+	if num_hidden == 1:
+		return "and 1 other user"
+	# If more than one user is hidden
+	return f"and {num_hidden} other users"
 
-def show_topic_info(
+def liked_by(to_stalk, thankers, num_thanks):
+	# If `thankers` is not null
+	if thankers:
+		# Split `thankers` by comma
+		visible = thankers.split(", ")
+		num_visible = len(visible)
+		# Get the last string of `visible`
+		hidden = visible[-1]
+		# If there is only one string in `visible`
+		if num_visible == 1:
+			# Return false if the last message is hidden
+			if hidden == hidden_thankers(num_thanks, True):
+				return False
+			# If there is only one user that is not hidden,
+			# check if that user is contained in `to_stalk`
+			if num_thanks > 1:
+				return hidden[:-len(hidden_thankers(num_thanks - 1)) - 1] in to_stalk
+		# Delete the last message if it's hidden
+		elif hidden == hidden_thankers(num_thanks - num_visible + 1):
+			del visible[-1]
+		# Check if `visible` and `to_stalk` share a common user
+		return set(visible) & to_stalk
+	# Return false if `thankers` is null
+	return False
+
+def show_topic_data(
 	topic_code,
-	to_stalk={},
-	to_find=[],
+	to_stalk=None,
+	to_find=None,
 	verbose=False,
 	silent=False,
 	write_files=False,
 	outdir="community",
-	json_indent=2,
-	delim_num=3,
-	textwidth=95
+	num_indent=2,
+	textwidth=95,
+	utc_offset=-5,
+	time_format="%b %-d, %Y, %-I:%M %p"
 ):
-	# Convert str to set and list
-	if type(to_stalk) == str:
-		to_stalk = {to_stalk}
-	if type(to_find) == str:
-		to_find = [to_find]
+	# Convert `to_stalk` to set
+	if to_stalk:
+		if type(to_stalk) == str:
+			to_stalk = {to_stalk}
+	else:
+		to_stalk = set()
+	# Convert `to_find` to list
+	if to_find:
+		if type(to_find) == str:
+			to_find = [to_find]
+	else:
+		to_find = list()
 
-	# Extract topic properties
-	topic_dict = extract_topic_info(topic_code)
+	# Get topic data
+	topic_data = get_topic_data(topic_code)
 	(
-		topic_url,
-		topic_subject,
-		topic_tags,
-		topic_source,
-		topic_posts
-	) = topic_dict.values()
+		category_id,
+		num_posts,
+		posts_data,
+		source,
+		tags,
+		topic_id,
+		topic_title,
+		topic_url
+	) = topic_data.values()
 
-	# Print topic properties
 	if verbose or not silent:
-		topic_info = [
-			centered_text("TOPIC INFO", textwidth, "#"),
-			f"Link: {topic_url}",
-			f"Subject: {topic_subject}"
-		]
-		if topic_tags:
-			topic_info.append(f"Tags: {', '.join(topic_tags)}")
-		if topic_source:
-			topic_info.append(f"Source: {topic_source}")
-		if topic_posts:
-			topic_info.append(f"Post count: {len(topic_posts)}")
+		colorama.init()
+		# Print topic information
+		print_centered("TOPIC INFO", textwidth, "#", BLUE)
+		topic_info = {
+			"Link": topic_url,
+			"Title": topic_title
+			}
+		if tags:
+			topic_info["Tags"] = ', '.join(tag["tag_text"] for tag in tags)
+		if source:
+			topic_info["Source"] = source
+		topic_info["Post count"] = num_posts
+		for key, value in topic_info.items():
+			print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), MAGENTA)
 
-		for prop in topic_info:
-			print(textwrap.fill(prop, textwidth))
-
-	# Write json file
 	if write_files:
-		topic_dir = os.path.join(outdir, topic_code)
-		if not os.path.exists(topic_dir):
-			os.makedirs(topic_dir)
+		topic_path = os.path.join(outdir, f"c{category_id}", f"h{topic_id}")
+		if not os.path.exists(topic_path):
+			os.makedirs(topic_path)
 
-		with open(os.path.join(topic_dir, "info.json"), "w", encoding="utf8") as json_file:
-			json.dump(topic_dict, json_file, indent=json_indent)
+		# Write json file
+		with open(os.path.join(topic_path, "topic_data.json"), "w", encoding="utf8") as json_file:
+			json.dump(topic_data, json_file, ensure_ascii=False, indent=num_indent)
 
-	for post_number in topic_posts.keys():
-		# Extract post properties
-		(
-			_,
-			post_url,
-			post_username,
-			post_user_profile,
-			post_date,
-			post_edit_info,
-			post_thank_count,
-			post_thankers,
-			post_html
-		) = topic_posts[post_number].values()
+	for post_data in posts_data:
+		# Get post data
+		post_canonical = post_data["post_canonical"]
+		post_number = post_data["post_number"]
+		post_rendered = post_data["post_rendered"]
+		post_time = post_data["post_time"]
+		post_url = post_data["post_url"]
+		poster_id = post_data["poster_id"]
+		thankers = post_data["thankers"]
+		thanks_received = post_data["thanks_received"]
+		username = post_data["username"]
 
-		# Print post properties
-		if (
-			verbose
-			# Post posted by user
-			or post_username in to_stalk
-			# Post liked by user(s)
-			or set(post_thankers) & to_stalk
-			# Post found by number
+		post_datetime = to_datetime(post_time, utc_offset, time_format)
+
+		if (verbose
+			or username in to_stalk
+			or liked_by(to_stalk, thankers, thanks_received)
 			or post_number in to_find
 		):
-			post_info = [
-				centered_text("POST INFO", textwidth, "="),
-				f"Post #{post_number}: {post_url}",
-				f"Posted by: {post_username} ({post_user_profile})",
-				f"Posted at: {post_date}"
-			]
-			if post_edit_info:
-				post_info.append(f"Edit info: {post_edit_info}")
-			if post_thankers:
-				post_info.append(f"Liked by: {', '.join(post_thankers)}")
-			post_info.append(centered_text("CONTENT", textwidth, "-"))
+			# Print post information
+			print_centered("POST INFO", textwidth, "=", GREEN)
+			post_info = {
+				f"Post #{post_number}": post_url,
+				"Posted by": f"{username} ({user_profile(poster_id)})",
+				"Posted at": post_datetime
+			}
+			if thankers:
+				post_info["Like count"] = thanks_received
+				post_info["Liked by"] = thankers
+			for key, value in post_info.items():
+				print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), YELLOW)
 
-			# Modify post html
-			soup = BeautifulSoup(post_html, "html.parser")
-
-			for html_img in soup.find_all("img"):
-				html_img.string = html_img["alt"]
-				# TODO: display equations
-				# if "latexcenter" in html_img["class"]:
-				#   html_img.string = "\n" + html_img.string + "\n"
-				html_img.unwrap()
-
-			for html_quote in soup.find_all("div", attrs={"class": "bbcode_quote"}):
-				html_quote.contents = html_quote.contents[1:-1]
-				quote_body = html_quote.find("div", attrs={"class": "bbcode_quote_body"})
-				quote_body.insert(0, QUOTE_BODY_DELIMS[0] * delim_num + "\n")
-				quote_body.append("\n" + QUOTE_BODY_DELIMS[1] * delim_num)
-				html_quote.unwrap()
-
-			for hide_heading in soup.select(".cmty-hide-heading"):
-				hide_heading.string = HIDE_HEADING_DELIMS[0] + hide_heading.string + HIDE_HEADING_DELIMS[1]
-				hide_content = hide_heading.find_next("div", attrs={"class": "cmty-hide-content"})
-				hide_content.insert(0, "\n" + HIDE_CONTENT_DELIMS[0] * delim_num + "\n")
-				hide_content.append("\n" + HIDE_CONTENT_DELIMS[1] * delim_num)
-
-			post_info.extend(soup.get_text().split("\n"))
-
-			for prop in post_info:
+			print_centered("CONTENT", textwidth, "-", CYAN)
+			for prop in post_canonical.split("\n"):
 				print(textwrap.fill(prop, textwidth))
 
-		# Write html content
 		if write_files:
 			soup = BeautifulSoup(
 f"""<!DOCTYPE html>
@@ -135,22 +150,24 @@ f"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1">
-<title>Post #{post_number} by {post_username} at {post_date}</title>
-<link rel="stylesheet" href="../../aops_tools/assets/aops.css">
+<title>Post #{post_number} by {username} at {post_datetime}</title>
+<link rel="stylesheet" href="../../../aops_tools/assets/aops.css">
 <link rel="icon" href="https://artofproblemsolving.com/online-favicon.ico">
-<script src="../../aops_tools/assets/aops.js"></script>
+<script src="../../../aops_tools/assets/aops.js"></script>
 <script src="https://assets.artofproblemsolving.com/js/jquery.min.js"></script>
 </head>
 <body></body>
 </html>""", "lxml")
-			tmp = BeautifulSoup(post_html, "html.parser")
-			for html_img in tmp.find_all("img"):
-				img_src = html_img["src"]
-				if img_src.startswith("//"):
-					html_img["src"] = "https:" + img_src
-				elif img_src.startswith("/"):
-					html_img["src"] = AOPS_DOMAIN + img_src
+			tmp = BeautifulSoup(post_rendered, "html.parser")
+			for img in tmp.find_all("img"):
+				src = img["src"]
+				# Replace img source links
+				if src.startswith("//"):
+					img["src"] = "https:" + src
+				elif src.startswith("/"):
+					img["src"] = aops_domain + src
 			soup.find("body").append(tmp)
 
-			with open(os.path.join(topic_dir, f"{post_number}.html"), "w", encoding="utf8") as html_file:
+			# Write html content
+			with open(os.path.join(topic_path, f"{post_number}.html"), "w", encoding="utf8") as html_file:
 				html_file.write(str(soup))
