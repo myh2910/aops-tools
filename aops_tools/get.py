@@ -1,6 +1,6 @@
-from .utils import *
 from selenium import webdriver
 from selenium_stealth import stealth
+from .utils import aops_url
 
 def get_topic_data(topic_code):
 	# Add ChromeDriver options
@@ -23,11 +23,11 @@ def get_topic_data(topic_code):
 	)
 
 	# Go to AoPS topic
-	driver.get(aops_community + topic_code)
+	driver.get(f"{aops_url}/community/{topic_code}")
 
 	# Extract data and quit driver
 	with open("aops_tools/assets/script.js", "r", encoding="utf8") as js_file:
-		topic_data = driver.execute_script(js_file.read(), aops_community)
+		topic_data = driver.execute_script(js_file.read())
 	driver.quit()
 
 	# Return data

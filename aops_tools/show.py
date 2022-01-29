@@ -1,10 +1,10 @@
-from .utils import *
-from .get import get_topic_data
-from bs4 import BeautifulSoup
-import os
-import json
 import colorama
+import json
+import os
 import textwrap
+from bs4 import BeautifulSoup
+from .get import get_topic_data
+from .utils import *
 
 def hidden_thankers(num_hidden, all_hidden=False):
 	# If all users are hidden
@@ -159,13 +159,13 @@ f"""<!DOCTYPE html>
 <body></body>
 </html>""", "lxml")
 			tmp = BeautifulSoup(post_rendered, "html.parser")
+			# Replace image source links
 			for img in tmp.find_all("img"):
 				src = img["src"]
-				# Replace img source links
 				if src.startswith("//"):
 					img["src"] = "https:" + src
 				elif src.startswith("/"):
-					img["src"] = aops_domain + src
+					img["src"] = aops_url + src
 			soup.find("body").append(tmp)
 
 			# Write html content

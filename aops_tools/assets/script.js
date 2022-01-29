@@ -28,7 +28,8 @@ const post_keys = [
 
 // Get data from AoPS
 var topic_data = AoPS.bootstrap_data.preload_cmty_data.topic_data;
-const topic_url = "https://artofproblemsolving.com/community/c" + topic_data.category_id + "h" + topic_data.topic_id;
+var topic_url = "https://artofproblemsolving.com/community/";
+topic_url += "c" + topic_data.category_id + "h" + topic_data.topic_id;
 
 // Write posts data
 topic_data.posts_data = topic_data.posts_data.map(function (post_data) {
