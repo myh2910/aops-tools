@@ -73,9 +73,8 @@ def show_topic_data(
 	if find_posts:
 		if type(find_posts) == str:
 			find_posts = {find_posts}
-		find_posts.add(1)
 	else:
-		find_posts = {1}
+		find_posts = set()
 
 	if write_files:
 		export_to_json = True
@@ -124,23 +123,24 @@ def show_topic_data(
 		with open(os.path.join(topic_path, "topic_data.json"), "w", encoding="utf8") as json_file:
 			json.dump(topic_data, json_file, ensure_ascii=False, indent=num_indent)
 
-	for post_idx, post_data in enumerate(posts_data):
+	for idx, attrs in enumerate(posts_data):
 		# Get post data
-		post_canonical = post_data["post_canonical"]
-		post_number = post_data["post_number"]
-		post_rendered = post_data["post_rendered"]
-		post_time = post_data["post_time"]
-		post_url = post_data["post_url"]
-		poster_id = post_data["poster_id"]
-		thankers = post_data["thankers"]
-		thanks_received = post_data["thanks_received"]
-		username = post_data["username"]
+		post_canonical = attrs["post_canonical"]
+		post_number = attrs["post_number"]
+		post_rendered = attrs["post_rendered"]
+		post_time = attrs["post_time"]
+		post_url = attrs["post_url"]
+		poster_id = attrs["poster_id"]
+		thankers = attrs["thankers"]
+		thanks_received = attrs["thanks_received"]
+		username = attrs["username"]
 
 		# Convert post time to utc format
 		post_datetime = to_datetime(post_time, utc_offset, time_format)
 
 		if not silent and (
 			verbose
+			or idx == 0
 			or stalk_success(stalk_users, username, thankers, thanks_received)
 			or post_number in find_posts
 		):
