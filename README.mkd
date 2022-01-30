@@ -91,7 +91,7 @@ non-decresing but also is bounded so its eventually constant. $\blacksquare$
 
 
 ===============================================================================================
-Elapsed time: 5.48 seconds
+Elapsed time: 5.28 seconds
 ```
 </details>
 
@@ -211,6 +211,6 @@ and since $FI=FC$ and triangles $XIF$ and $XCF$ share a side, we conclude that $
 Therefore, $I$ lies on $(CMQ)$ and now $FI^2=FC^2=FM\cdot FQ$ gives us that in fact $AI$ is
 tangent to $(IMC)$.
 ===============================================================================================
-Elapsed time: 5.02 seconds
+Elapsed time: 4.90 seconds
 ```
 </details>

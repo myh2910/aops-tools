@@ -64,7 +64,7 @@ async function scrollDown() {
 	let models = getModels();
 	while (models.length < num_posts) {
 		scrollbar.scrollTo(0, scrollbar.scrollHeight);
-		await sleep(1000);
+		await sleep(100);
 		models = getModels();
 	}
 	return models;
