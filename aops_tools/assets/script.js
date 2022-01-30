@@ -38,17 +38,17 @@ const num_posts = topic_data.num_posts;
 
 // Write posts data
 if (posts_data.length === num_posts) {
-	topic_data.posts_data = posts_data.map(post_data => {
-		let res = {"post_url": topic_url + "p" + post_data.post_id};
-		post_keys.forEach(key => res[key] = post_data[key]);
+	topic_data.posts_data = posts_data.map(attrs => {
+		let res = {"post_url": topic_url + "p" + attrs.post_id};
+		post_keys.forEach(key => res[key] = attrs[key]);
 		return res;
 	});
 } else {
 	const models = await scrollDown();
 	topic_data.posts_data = models.map(model => {
-		let post_data = model.attributes;
-		let res = {"post_url": topic_url + "p" + post_data.post_id};
-		post_keys.forEach(key => res[key] = post_data[key]);
+		let attrs = model.attributes;
+		let res = {"post_url": topic_url + "p" + attrs.post_id};
+		post_keys.forEach(key => res[key] = attrs[key]);
 		return res;
 	});
 }

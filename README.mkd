@@ -27,7 +27,7 @@ makepkg -scCi
 
 ## Examples
 
-### Example 1: `to_stalk`
+### Example 1: `stalk_users`
 
 ```python
 from aops_tools import *

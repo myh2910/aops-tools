@@ -19,10 +19,10 @@ def hidden_thankers(num_hidden, all_hidden=False):
 	# If more than one user is hidden
 	return f"and {num_hidden} other users"
 
-def stalk_success(to_stalk, username, thankers, num_thanks):
-	if not to_stalk:
+def stalk_success(stalk_users, username, thankers, num_thanks):
+	if not stalk_users:
 		return False
-	if username in to_stalk:
+	if username in stalk_users:
 		return True
 	if not thankers:
 		return False
@@ -35,21 +35,23 @@ def stalk_success(to_stalk, username, thankers, num_thanks):
 		if hidden == hidden_thankers(num_thanks, True):
 			return False
 		# If there is only one user that is not hidden,
-		# check if that user is contained in `to_stalk`
+		# check if that user is contained in `stalk_users`
 		if num_thanks > 1:
-			return hidden[:-len(hidden_thankers(num_thanks - 1)) - 1] in to_stalk
+			return hidden[:-len(hidden_thankers(num_thanks - 1)) - 1] in stalk_users
 	# Delete the last message if it's hidden
 	elif hidden == hidden_thankers(num_thanks - num_visible + 1):
 		del visible[-1]
-	return to_stalk & set(visible)
+	return stalk_users & set(visible)
 
 def show_topic_data(
 	topic_code,
-	to_stalk=None,
-	to_find=None,
+	stalk_users=None,
+	find_posts=None,
 	verbose=False,
 	silent=False,
 	write_files=False,
+	export_to_json=False,
+	export_to_html=False,
 	outdir="community",
 	num_indent=2,
 	textwidth=95,
@@ -61,19 +63,23 @@ def show_topic_data(
 	elapsed_time = -default_timer()
 	colorama.init()
 
-	# Convert `to_stalk` and 'to_find` to set
-	if to_stalk:
-		if type(to_stalk) == str:
-			to_stalk = {to_stalk}
+	# Initial settings
+	if stalk_users:
+		if type(stalk_users) == str:
+			stalk_users = {stalk_users}
 	else:
-		to_stalk = set()
+		stalk_users = set()
 
-	if to_find:
-		if type(to_find) == str:
-			to_find = {to_find}
-		to_find.add(1)
+	if find_posts:
+		if type(find_posts) == str:
+			find_posts = {find_posts}
+		find_posts.add(1)
 	else:
-		to_find = {1}
+		find_posts = {1}
+
+	if write_files:
+		export_to_json = True
+		export_to_html = True
 
 	# Get topic data
 	topic_data = get_topic_data(topic_code)
@@ -107,12 +113,14 @@ def show_topic_data(
 	for key, value in topic_info.items():
 		print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), Fore.LIGHTBLUE_EX)
 
-	if write_files:
+	# Create folder
+	if export_to_html or export_to_json:
 		topic_path = os.path.join(outdir, f"c{category_id}", f"h{topic_id}")
 		if not os.path.exists(topic_path):
 			os.makedirs(topic_path)
 
-		# Write json file
+	# Export to JSON
+	if export_to_json:
 		with open(os.path.join(topic_path, "topic_data.json"), "w", encoding="utf8") as json_file:
 			json.dump(topic_data, json_file, ensure_ascii=False, indent=num_indent)
 
@@ -133,8 +141,8 @@ def show_topic_data(
 
 		if not silent and (
 			verbose
-			or stalk_success(to_stalk, username, thankers, thanks_received)
-			or post_number in to_find
+			or stalk_success(stalk_users, username, thankers, thanks_received)
+			or post_number in find_posts
 		):
 			# Print post information
 			print_centered("POST INFO", textwidth, delim, Fore.MAGENTA)
@@ -153,7 +161,7 @@ def show_topic_data(
 			for prop in post_canonical.split("\n"):
 				print(textwrap.fill(prop, textwidth))
 
-		if write_files:
+		if export_to_html:
 			soup = BeautifulSoup(
 f"""<!DOCTYPE html>
 <html class="svg">
@@ -178,7 +186,7 @@ f"""<!DOCTYPE html>
 					img["src"] = aops_url + src
 			soup.find("body").append(tmp)
 
-			# Write html content
+			# Export to HTML
 			with open(os.path.join(topic_path, f"{post_number}.html"), "w", encoding="utf8") as html_file:
 				html_file.write(str(soup))
 
