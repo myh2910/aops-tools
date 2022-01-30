@@ -8,16 +8,12 @@ def user_profile(poster_id):
 	return f"{aops_url}/community/user/{poster_id}"
 
 # Print colored text
-BLUE = Fore.BLUE
-MAGENTA = Fore.LIGHTMAGENTA_EX
-CYAN = Fore.CYAN
-YELLOW = Fore.LIGHTYELLOW_EX
-GREEN = Fore.LIGHTGREEN_EX
-RED = Fore.LIGHTRED_EX
-
 def print_centered(text, textwidth, delim, color):
-	diff = textwidth - len(text) - 2
-	print(color + delim * (diff // 2), text, delim * ((diff + 1) // 2) + Fore.RESET)
+	if text:
+		diff = textwidth - len(text) - 2
+		print(color + delim * (diff // 2), text, delim * ((diff + 1) // 2) + Fore.RESET)
+	else:
+		print(color + delim * textwidth + Fore.RESET)
 
 def print_wrapped(text, width, color):
 	print(color + text[:width + 1] + Fore.RESET + text[width + 1:])

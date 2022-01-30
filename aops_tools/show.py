@@ -19,30 +19,29 @@ def hidden_thankers(num_hidden, all_hidden=False):
 	# If more than one user is hidden
 	return f"and {num_hidden} other users"
 
-def liked_by(to_stalk, thankers, num_thanks):
-	# If `thankers` is not null
-	if thankers:
-		# Split `thankers` by comma
-		visible = thankers.split(", ")
-		num_visible = len(visible)
-		# Get the last string of `visible`
-		hidden = visible[-1]
-		# If there is only one string in `visible`
-		if num_visible == 1:
-			# Return false if the last message is hidden
-			if hidden == hidden_thankers(num_thanks, True):
-				return False
-			# If there is only one user that is not hidden,
-			# check if that user is contained in `to_stalk`
-			if num_thanks > 1:
-				return hidden[:-len(hidden_thankers(num_thanks - 1)) - 1] in to_stalk
-		# Delete the last message if it's hidden
-		elif hidden == hidden_thankers(num_thanks - num_visible + 1):
-			del visible[-1]
-		# Check if `visible` and `to_stalk` share a common user
-		return set(visible) & to_stalk
-	# Return false if `thankers` is null
-	return False
+def stalk_success(to_stalk, username, thankers, num_thanks):
+	if not to_stalk:
+		return False
+	if username in to_stalk:
+		return True
+	if not thankers:
+		return False
+	visible = thankers.split(", ")
+	num_visible = len(visible)
+	hidden = visible[-1]
+	# If there is only one string in `visible`
+	if num_visible == 1:
+		# Return false if the last message is hidden
+		if hidden == hidden_thankers(num_thanks, True):
+			return False
+		# If there is only one user that is not hidden,
+		# check if that user is contained in `to_stalk`
+		if num_thanks > 1:
+			return hidden[:-len(hidden_thankers(num_thanks - 1)) - 1] in to_stalk
+	# Delete the last message if it's hidden
+	elif hidden == hidden_thankers(num_thanks - num_visible + 1):
+		del visible[-1]
+	return to_stalk & set(visible)
 
 def show_topic_data(
 	topic_code,
@@ -54,33 +53,36 @@ def show_topic_data(
 	outdir="community",
 	num_indent=2,
 	textwidth=95,
+	delim="=",
 	utc_offset=-5,
 	time_format="%b %-d, %Y, %-I:%M %p"
 ):
-	# Initialize timer
+	# Initialize timer and colorama
 	elapsed_time = -default_timer()
-
-	# Initialize colorama (for Windows)
 	colorama.init()
 
-	# Convert `to_stalk` to set
+	# Convert `to_stalk` and 'to_find` to set
 	if to_stalk:
 		if type(to_stalk) == str:
 			to_stalk = {to_stalk}
 	else:
 		to_stalk = set()
-	# Convert `to_find` to list
+
 	if to_find:
 		if type(to_find) == str:
-			to_find = [to_find]
+			to_find = {to_find}
+		to_find.add(1)
 	else:
-		to_find = list()
+		to_find = {1}
 
 	# Get topic data
 	topic_data = get_topic_data(topic_code)
 	(
 		category_id,
+		category_name,
+		_, # num_deleted
 		num_posts,
+		num_views,
 		posts_data,
 		source,
 		tags,
@@ -89,20 +91,21 @@ def show_topic_data(
 		topic_url
 	) = topic_data.values()
 
-	if verbose or not silent:
-		# Print topic information
-		print_centered("TOPIC INFO", textwidth, "#", BLUE)
-		topic_info = {
-			"Link": topic_url,
-			"Title": topic_title
-			}
-		if tags:
-			topic_info["Tags"] = ', '.join(tag["tag_text"] for tag in tags)
-		if source:
-			topic_info["Source"] = source
-		topic_info["Post count"] = num_posts
-		for key, value in topic_info.items():
-			print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), MAGENTA)
+	# Print topic information
+	print_centered("TOPIC INFO", textwidth, delim, Fore.BLUE)
+	topic_info = {
+		"Link": topic_url,
+		"Category": category_name,
+		"Title": topic_title,
+	}
+	if tags:
+		topic_info["Tags"] = ', '.join(tag["tag_text"] for tag in tags)
+	if source:
+		topic_info["Source"] = source
+	topic_info["Post count"] = num_posts
+	topic_info["View count"] = num_views
+	for key, value in topic_info.items():
+		print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), Fore.LIGHTBLUE_EX)
 
 	if write_files:
 		topic_path = os.path.join(outdir, f"c{category_id}", f"h{topic_id}")
@@ -113,7 +116,7 @@ def show_topic_data(
 		with open(os.path.join(topic_path, "topic_data.json"), "w", encoding="utf8") as json_file:
 			json.dump(topic_data, json_file, ensure_ascii=False, indent=num_indent)
 
-	for post_data in posts_data:
+	for post_idx, post_data in enumerate(posts_data):
 		# Get post data
 		post_canonical = post_data["post_canonical"]
 		post_number = post_data["post_number"]
@@ -125,15 +128,16 @@ def show_topic_data(
 		thanks_received = post_data["thanks_received"]
 		username = post_data["username"]
 
+		# Convert post time to utc format
 		post_datetime = to_datetime(post_time, utc_offset, time_format)
 
-		if (verbose
-			or username in to_stalk
-			or liked_by(to_stalk, thankers, thanks_received)
+		if not silent and (
+			verbose
+			or stalk_success(to_stalk, username, thankers, thanks_received)
 			or post_number in to_find
 		):
 			# Print post information
-			print_centered("POST INFO", textwidth, "=", CYAN)
+			print_centered("POST INFO", textwidth, delim, Fore.MAGENTA)
 			post_info = {
 				f"Post #{post_number}": post_url,
 				"Posted by": f"{username} ({user_profile(poster_id)})",
@@ -143,9 +147,9 @@ def show_topic_data(
 				post_info["Like count"] = thanks_received
 				post_info["Liked by"] = thankers
 			for key, value in post_info.items():
-				print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), YELLOW)
+				print_wrapped(textwrap.fill(f"{key}: {value}", textwidth), len(key), Fore.LIGHTMAGENTA_EX)
 
-			print_centered("CONTENT", textwidth, "-", GREEN)
+			print_centered("CONTENT", textwidth, delim, Fore.GREEN)
 			for prop in post_canonical.split("\n"):
 				print(textwrap.fill(prop, textwidth))
 
@@ -180,4 +184,5 @@ f"""<!DOCTYPE html>
 
 	# End timer
 	elapsed_time += default_timer()
-	print_wrapped(textwrap.fill(f"Elapsed time: {elapsed_time:.2f} seconds", textwidth), len("Elapsed time"), RED)
+	print_centered(None, textwidth, delim, Fore.CYAN)
+	print_wrapped(textwrap.fill(f"Elapsed time: {elapsed_time:.2f} seconds", textwidth), len("Elapsed time"), Fore.LIGHTCYAN_EX)
