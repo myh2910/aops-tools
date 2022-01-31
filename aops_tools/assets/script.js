@@ -71,7 +71,7 @@ async function scrollDown() {
 }
 
 // Get scrollbar
-// https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists/47776379/
+// https://stackoverflow.com/questions/16149431/make-function-wait-until-element-exists
 async function scrollBar(selector) {
 	while (document.querySelector(selector) === null) {
 		await new Promise(resolve => requestAnimationFrame(resolve));
