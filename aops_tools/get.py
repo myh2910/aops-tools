@@ -27,21 +27,21 @@ def get_chromedriver(code):
 	driver.get(f"{aops_url}/community/{code}")
 	return driver
 
-def get_topic_data(code):
+def get_topic_data(code, js_script="topic-data.js"):
 	begin_time = default_timer()
 
 	driver = get_chromedriver(code)
-	with open(f"aops_tools/assets/topic-data.js", "r", encoding="utf8") as js_file:
+	with open(f"aops_tools/assets/{js_script}", "r", encoding="utf8") as js_file:
 		data = driver.execute_script(js_file.read())
 
 	driver.quit()
 	return data, begin_time
 
-def get_category_data(code, textwidth, search_method=None):
+def get_category_data(code, textwidth, search_method=None, js_script="category-data.js"):
 	begin_time = default_timer()
 
 	driver = get_chromedriver(code)
-	with open(f"aops_tools/assets/category-data.js", "r", encoding="utf8") as js_file:
+	with open(f"aops_tools/assets/{js_script}", "r", encoding="utf8") as js_file:
 		data = driver.execute_script(js_file.read())
 
 	while data["category_type"] == "folder":
@@ -49,9 +49,9 @@ def get_category_data(code, textwidth, search_method=None):
 		if search_method:
 			if text := search_method[0].strip():
 				for item_data in data["items"]:
-					if (text in item_data["item_text"] or text in item_data["item_subtitle"]):
+					if text in item_data["item_text"] or text in item_data["item_subtitle"]:
 						driver.get(f"{aops_url}/community/c{item_data['item_id']}")
-						with open(f"aops_tools/assets/category-data.js", "r", encoding="utf8") as js_file:
+						with open(f"aops_tools/assets/{js_script}", "r", encoding="utf8") as js_file:
 							data = driver.execute_script(js_file.read())
 						search_success = True
 						break
@@ -80,7 +80,7 @@ def get_category_data(code, textwidth, search_method=None):
 			idx = 0
 
 		driver.get(f"{aops_url}/community/c{items[idx]['item_id']}")
-		with open(f"aops_tools/assets/category-data.js", "r", encoding="utf8") as js_file:
+		with open(f"aops_tools/assets/{js_script}", "r", encoding="utf8") as js_file:
 			data = driver.execute_script(js_file.read())
 		print()
 
