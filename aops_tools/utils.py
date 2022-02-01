@@ -41,15 +41,19 @@ def print_dict_list(dict_lst, titles, keys, textwidth):
 	print(f" {t0.ljust(l0)}  {t1.ljust(l1)}  {t2}")
 	print(f" {'--'.ljust(l0)}  {'--'.ljust(l1)}  --")
 	for idx, dct in enumerate(dict_lst):
-		s1, s2 = f" {str(idx).ljust(l0)}  {dct[k1].ljust(l1)}  ", dct[k2]
-		if len(s2) > e2:
-			print(s1, end="")
-			for idx, p2 in enumerate(textwrap.fill(s2, e2).split("\n")):
-				if idx > 0:
-					print(" " * e1, end="")
-				print(p2)
+		s2 = dct[k2]
+		if s2:
+			s1 = f" {str(idx).ljust(l0)}  {dct[k1].ljust(l1)}  "
+			if len(s2) > e2:
+				print(s1, end="")
+				for idx, p2 in enumerate(textwrap.fill(s2, e2).split("\n")):
+					if idx > 0:
+						print(" " * e1, end="")
+					print(p2)
+			else:
+				print(s1 + s2)
 		else:
-			print(s1 + s2)
+			print(f" {str(idx).ljust(l0)}  {dct[k1]}")
 
 def to_datetime(time, utc_offset, time_format):
 	if utc_offset == 0:
