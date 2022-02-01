@@ -6,8 +6,9 @@ def show_topic_data(
 	code,
 	stalk_users=None,
 	find_posts=None,
-	verbose=False,
 	silent=False,
+	brave=False,
+	verbose=False,
 	write_files=False,
 	write_json=False,
 	write_html=False,
@@ -23,15 +24,15 @@ def show_topic_data(
 	colorama.init()
 
 	# Print topic information
-	print_centered("Topic info", textwidth, delim, Fore.BLUE)
+	print_centered("Topic", textwidth, delim, Fore.BLUE)
 	topic_info = {
 		"Link": data["topic_url"],
 		"Category": data["category_name"],
-		"Title": data["topic_title"]
+		"Title": data["topic_title"].strip()
 	}
-	if tags := data["tags"]:
+	if brave and (tags := data["tags"]):
 		topic_info["Tags"] = ", ".join(tag["tag_text"] for tag in tags)
-	if source := data["source"]:
+	if source := data["source"].strip():
 		topic_info["Source"] = source
 	topic_info["Post count"] = data["num_posts"]
 	topic_info["View count"] = data["num_views"]
@@ -59,9 +60,9 @@ def show_topic_data(
 			or (find_posts and post_number in find_posts)
 		):
 			# Print post information
-			print_centered("Post info", textwidth, delim, Fore.MAGENTA)
+			print_centered("Post", textwidth, delim, Fore.MAGENTA)
 			post_info = {
-				f"Post #{post_number}": post_data["post_url"],
+				"Number": f"{post_number} ({post_data['post_url']})",
 				"Posted by": f"{username} ({aops_url}/community/user/{post_data['poster_id']})",
 				"Posted at": post_datetime
 			}
@@ -85,9 +86,9 @@ def show_category_data(
 	code,
 	search_method=None,
 	find_text=None,
+	silent=False,
 	brave=False,
 	verbose=False,
-	silent=False,
 	write_files=False,
 	write_json=False,
 	write_html=False,
@@ -101,9 +102,9 @@ def show_category_data(
 	colorama.init()
 
 	# Print category information
-	print_centered("Category info", textwidth, delim, Fore.BLUE)
+	print_centered("Category", textwidth, delim, Fore.BLUE)
 	category_info = {"Link": data["category_url"], "Name": data["category_name"]}
-	if short_description := data["short_description"]:
+	if short_description := data["short_description"].strip():
 		category_info["Description"] = short_description
 	for item in category_info.items():
 		print_wrapped(*item, textwidth, Fore.LIGHTBLUE_EX)
@@ -115,7 +116,6 @@ def show_category_data(
 	)
 
 	if (category_type := data["category_type"]) == "view_posts":
-		post_cnt = 1
 		for idx, item_data in enumerate(data["items"]):
 			item_text, item_type, post_data = item_data.values()
 			post_canonical = post_data["post_canonical"].strip()
@@ -125,14 +125,14 @@ def show_category_data(
 				find_text in item_text or find_text in post_canonical
 			))):
 				# Print item information
-				print_centered("Item info", textwidth, delim, Fore.MAGENTA)
-				post_info = {"Item type": item_type}
-				if item_text:
-					post_info["Item text"] = item_text
-				post_info["Post type"] = post_type
+				print_centered("Item", textwidth, delim, Fore.MAGENTA)
+				post_info = dict()
 				if post_type == "forum":
-					post_info[f"Post #{idx}"] = post_data["post_url"]
-					post_cnt += 1
+					post_info["Index"] = f"{idx} ({post_data['post_url']})"
+				post_info["Type"] = item_type
+				if item_text := item_text.strip():
+					post_info["Text"] = item_text
+				post_info["Post type"] = post_type
 				for item in post_info.items():
 					print_wrapped(*item, textwidth, Fore.LIGHTMAGENTA_EX)
 
@@ -147,8 +147,8 @@ def show_category_data(
 
 	elif category_type == "folder":
 		for idx, item_data in enumerate(data["items"]):
-			item_subtitle = item_data["item_subtitle"]
-			item_text = item_data["item_text"]
+			item_subtitle = item_data["item_subtitle"].strip()
+			item_text = item_data["item_text"].strip()
 
 			if not silent and (verbose or (find_text and (
 				find_text in item_text or find_text in item_subtitle
@@ -156,7 +156,7 @@ def show_category_data(
 				# Print item information
 				print_centered("Item info", textwidth, delim, Fore.MAGENTA)
 				item_info = {
-					f"Item #{idx}": item_data["item_url"],
+					f"Index": f"{idx} ({item_data['item_url']})",
 					"Type": item_data["item_type"]
 				}
 				if item_text:
