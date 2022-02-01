@@ -1,31 +1,16 @@
 # aops-tools
 
-This is a script I wrote to extract data from the [Art of Problem
+This is a script that extracts data from the [Art of Problem
 Solving](https://artofproblemsolving.com/community/) website with [Python
 Selenium](https://pypi.org/project/selenium/), which can be exported to JSON
 or HTML format. It first executes a JavaScript script and then displays the
-result in the terminal. It requires Python with version >= 3.8.
+result in the terminal.
 
-## Installing
+## Requirements
 
-First, install the packages below with `pip`.
-
-* `pip install bs4 colorama selenium selenium_stealth`
-
-Then, install ChromeDriver as follows.
-
-### Windows
-
-Download the appropriate version from <https://chromedriver.chromium.org/downloads>.
-
-### Arch Linux
-
-```sh
-cd ~
-git clone https://aur.archlinux.org/chromedriver.git
-cd ~/chromedriver
-makepkg -scCi
-```
+* Python with version >= 3.8
+* Python packages `bs4`, `colorama`, `selenium`, `selenium_stealth`
+* ChromeDriver
 
 ## Examples
 
