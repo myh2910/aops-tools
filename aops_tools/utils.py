@@ -25,9 +25,9 @@ def print_post(content, textwidth, delim):
 	for line in content.split("\n"):
 		print(textwrap.fill(line, textwidth))
 
-def print_elapsed_time(elapsed_time, textwidth, delim):
+def print_elapsed_time(begin_time, textwidth, delim):
 	print_centered(None, textwidth, delim, Fore.CYAN)
-	print_wrapped("Elapsed time", f"{elapsed_time:.2f} seconds", textwidth, Fore.LIGHTCYAN_EX)
+	print_wrapped("Elapsed time", f"{default_timer() - begin_time:.2f} seconds", textwidth, Fore.LIGHTCYAN_EX)
 
 def print_dict_list(dict_lst, titles, keys, textwidth):
 	t0, t1, t2 = titles
@@ -40,9 +40,9 @@ def print_dict_list(dict_lst, titles, keys, textwidth):
 
 	print(f" {t0.ljust(l0)}  {t1.ljust(l1)}  {t2}")
 	print(f" {'--'.ljust(l0)}  {'--'.ljust(l1)}  --")
+
 	for idx, dct in enumerate(dict_lst):
-		s2 = dct[k2]
-		if s2:
+		if s2 := dct[k2]:
 			s1 = f" {str(idx).ljust(l0)}  {dct[k1].ljust(l1)}  "
 			if len(s2) > e2:
 				print(s1, end="")

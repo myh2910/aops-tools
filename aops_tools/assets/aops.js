@@ -4,11 +4,11 @@ AoPS = {
 		// community_utils.js
 		Utils: {
 			// 1473-1477
-			clickHide: function (head) {
+			clickHide: head => {
 				head.next().toggle();
 				head.toggleClass("cmty-hide-open");
 				return false;
 			}
 		}
 	}
-}
+};

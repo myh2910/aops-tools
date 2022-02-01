@@ -28,18 +28,17 @@ def get_chromedriver(code):
 	return driver
 
 def get_topic_data(code):
-	elapsed_time = -default_timer()
+	begin_time = default_timer()
 
 	driver = get_chromedriver(code)
 	with open(f"aops_tools/assets/topic-data.js", "r", encoding="utf8") as js_file:
 		data = driver.execute_script(js_file.read())
-	driver.quit()
 
-	elapsed_time += default_timer()
-	return data, elapsed_time
+	driver.quit()
+	return data, begin_time
 
 def get_category_data(code, textwidth, search_method=None):
-	elapsed_time = -default_timer()
+	begin_time = default_timer()
 
 	driver = get_chromedriver(code)
 	with open(f"aops_tools/assets/category-data.js", "r", encoding="utf8") as js_file:
@@ -48,7 +47,7 @@ def get_category_data(code, textwidth, search_method=None):
 	while data["category_type"] == "folder":
 		search_success = False
 		if search_method:
-			if (text := search_method[0].strip()):
+			if text := search_method[0].strip():
 				for item_data in data["items"]:
 					if (text in item_data["item_text"] or text in item_data["item_subtitle"]):
 						driver.get(f"{aops_url}/community/c{item_data['item_id']}")
@@ -61,9 +60,9 @@ def get_category_data(code, textwidth, search_method=None):
 		if search_success:
 			continue
 
-		elapsed_time += default_timer()
+		begin_time -= default_timer()
 		go_deeper = input(":: This is a folder. Do you want to explore? [y/N] ")
-		elapsed_time -= default_timer()
+		begin_time += default_timer()
 
 		if go_deeper not in ["y", "Y"]:
 			break
@@ -71,9 +70,9 @@ def get_category_data(code, textwidth, search_method=None):
 		print_dict_list(items := data["items"],
 			("Index", "Text", "Description"), ("item_text", "item_subtitle"), textwidth)
 
-		elapsed_time += default_timer()
+		begin_time -= default_timer()
 		idx = input(":: Select item index [default: 0] ")
-		elapsed_time -= default_timer()
+		begin_time += default_timer()
 
 		if idx:
 			idx = int(idx)
@@ -86,6 +85,4 @@ def get_category_data(code, textwidth, search_method=None):
 		print()
 
 	driver.quit()
-
-	elapsed_time += default_timer()
-	return data, elapsed_time
+	return data, begin_time

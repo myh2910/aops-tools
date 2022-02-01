@@ -25,16 +25,13 @@ const category_url = "https://artofproblemsolving.com/community/c";
 const focus = await scrollDown();
 
 // Write and return data
-var data = {"category_url": category_url + focus.category_id};
+var data = {category_url: category_url + focus.category_id};
 category_keys.forEach(key => data[key] = focus[key]);
 
 if (!focus.is_forum) {
 	data.items = focus.items.map(item_data => {
-		let res = {
-			"item_text": item_data.item_text,
-			"item_type": item_data.item_type
-		};
-		if (item_data.item_type == "post") {
+		let res = {item_text: item_data.item_text, item_type: item_data.item_type};
+		if (item_data.item_type.startsWith("post")) {
 			let post_data = item_data.post_data;
 			res.post_data = {};
 			post_keys.forEach(key => res.post_data[key] = post_data[key]);

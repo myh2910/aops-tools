@@ -35,13 +35,12 @@ const topic_url = "https://artofproblemsolving.com/community/"
 
 // Write and return data
 var data = {
-	"posts_data": focus.posts.models.map(model => {
-		let post_data = model.attributes;
-		let res = {"post_url": topic_url + "p" + post_data.post_id};
-		post_keys.forEach(key => res[key] = post_data[key]);
+	posts_data: focus.posts.models.map(model => {
+		let res = {post_url: topic_url + "p" + model.attributes.post_id};
+		post_keys.forEach(key => res[key] = model.attributes[key]);
 		return res;
 	}),
-	"topic_url": topic_url
+	topic_url: topic_url
 }
 topic_keys.forEach(key => data[key] = focus[key]);
 return data;
