@@ -11,7 +11,11 @@ aops_url = "https://artofproblemsolving.com"
 def print_centered(text, textwidth, delim, color):
 	if text:
 		diff = textwidth - len(text) - 2
-		print(color + delim * (diff // 2), text, delim * ((diff + 1) // 2) + Fore.RESET)
+		print(
+			color + delim * (diff // 2),
+			text,
+			delim * ((diff + 1) // 2) + Fore.RESET
+		)
 	else:
 		print(color + delim * textwidth + Fore.RESET)
 
@@ -27,7 +31,12 @@ def print_post(content, textwidth, delim):
 
 def print_elapsed_time(begin_time, textwidth, delim):
 	print_centered(None, textwidth, delim, Fore.CYAN)
-	print_wrapped("Elapsed time", f"{default_timer() - begin_time:.2f} seconds", textwidth, Fore.LIGHTCYAN_EX)
+	print_wrapped(
+		"Elapsed time",
+		f"{default_timer() - begin_time:.2f} seconds",
+		textwidth,
+		Fore.LIGHTCYAN_EX
+	)
 
 def print_dict_list(dict_lst, titles, keys, textwidth):
 	t0, t1, t2 = titles
@@ -108,7 +117,9 @@ def write_json_file(
 			os.makedirs(path)
 
 	if write_json:
-		with open(os.path.join(path, f"{stem}.json"), "w", encoding="utf8") as json_file:
+		with open(
+			os.path.join(path, f"{stem}.json"), "w", encoding="utf8"
+		) as json_file:
 			json.dump(json_data, json_file, ensure_ascii=False, indent=num_indent)
 
 	return write_html, path
@@ -137,5 +148,7 @@ f"""<!DOCTYPE html>
 </html>""", "lxml")
 	soup.find("body").append(tmp)
 
-	with open(os.path.join(path, f"{stem}.html"), "w", encoding="utf8") as html_file:
+	with open(
+		os.path.join(path, f"{stem}.html"), "w", encoding="utf8"
+	) as html_file:
 		html_file.write(str(soup))

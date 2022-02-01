@@ -19,11 +19,9 @@ def show_topic_data(
 	utc_offset,
 	time_format
 ):
-	# Initial settings
 	data, begin_time = get_topic_data(code)
 	colorama.init()
 
-	# Print topic information
 	print_centered("Topic", textwidth, delim, Fore.BLUE)
 	topic_info = {
 		"Link": data["topic_url"],
@@ -39,31 +37,42 @@ def show_topic_data(
 	for item in topic_info.items():
 		print_wrapped(*item, textwidth, Fore.LIGHTBLUE_EX)
 
-	# Create folder and write JSON file
 	write_html, topic_path = write_json_file(
-		data, num_indent, outdir, "topic-data",
-		write_files, write_json, write_html, data["category_id"], data["topic_id"]
+		data,
+		num_indent,
+		outdir,
+		"topic-data",
+		write_files,
+		write_json,
+		write_html,
+		data["category_id"],
+		data["topic_id"]
 	)
 
 	for idx, post_data in enumerate(data["posts_data"]):
-		# Get post data
 		post_number = post_data["post_number"]
 		thankers = post_data["thankers"]
 		thanks_received = post_data["thanks_received"]
 		username = post_data["username"]
 
-		# Convert post time to utc format
-		post_datetime = to_datetime(post_time := post_data["post_time"], utc_offset, time_format)
+		post_datetime = to_datetime(
+			post_time := post_data["post_time"],
+			utc_offset,
+			time_format
+		)
 
-		if not silent and (verbose or idx == 0
+		if not silent and (
+			verbose
+			or idx == 0
 			or stalk_success(stalk_users, username, thankers, thanks_received)
 			or (find_posts and post_number in find_posts)
 		):
-			# Print post information
 			print_centered("Post", textwidth, delim, Fore.MAGENTA)
 			post_info = {
 				"Number": f"{post_number} ({post_data['post_url']})",
-				"Posted by": f"{username} ({aops_url}/community/user/{post_data['poster_id']})",
+				"Posted by": "{} ({}/community/user/{})".format(
+					username, aops_url, post_data['poster_id']
+				),
 				"Posted at": post_datetime
 			}
 			if thankers:
@@ -76,10 +85,13 @@ def show_topic_data(
 				print_post(post_canonical, textwidth, delim)
 
 		if write_html:
-			write_html_file(f"Post #{post_number} by {username} at {post_datetime}",
-				post_data["post_rendered"], topic_path, post_number)
+			write_html_file(
+				f"Post #{post_number} by {username} at {post_datetime}",
+				post_data["post_rendered"],
+				topic_path,
+				post_number
+			)
 
-	# End timer
 	print_elapsed_time(begin_time, textwidth, delim)
 
 def show_category_data(
@@ -97,22 +109,28 @@ def show_category_data(
 	textwidth,
 	delim
 ):
-	# Initial settings
 	data, begin_time = get_category_data(code, textwidth, search_method)
 	colorama.init()
 
-	# Print category information
 	print_centered("Category", textwidth, delim, Fore.BLUE)
-	category_info = {"Link": data["category_url"], "Name": data["category_name"]}
+	category_info = {
+		"Link": data["category_url"],
+		"Name": data["category_name"]
+	}
 	if short_description := data["short_description"].strip():
 		category_info["Description"] = short_description
 	for item in category_info.items():
 		print_wrapped(*item, textwidth, Fore.LIGHTBLUE_EX)
 
-	# Create folder and write JSON file
 	write_html, path = write_json_file(
-		data, num_indent, outdir, "category-data",
-		write_files, write_json, write_html, data["category_id"]
+		data,
+		num_indent,
+		outdir,
+		"category-data",
+		write_files,
+		write_json,
+		write_html,
+		data["category_id"]
 	)
 
 	if (category_type := data["category_type"]) == "view_posts":
@@ -124,7 +142,6 @@ def show_category_data(
 			if not silent and (verbose or (find_text and (
 				find_text in item_text or find_text in post_canonical
 			))):
-				# Print item information
 				print_centered("Item", textwidth, delim, Fore.MAGENTA)
 				post_info = dict()
 				if post_type == "forum":
@@ -153,7 +170,6 @@ def show_category_data(
 			if not silent and (verbose or (find_text and (
 				find_text in item_text or find_text in item_subtitle
 			))):
-				# Print item information
 				print_centered("Item info", textwidth, delim, Fore.MAGENTA)
 				item_info = {
 					"Index": f"{idx} ({item_data['item_url']})",
@@ -166,7 +182,6 @@ def show_category_data(
 				for item in item_info.items():
 					print_wrapped(*item, textwidth, Fore.LIGHTMAGENTA_EX)
 
-	# End timer
 	print_elapsed_time(begin_time, textwidth, delim)
 
 def show_aops_data(

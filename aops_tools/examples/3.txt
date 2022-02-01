@@ -1,0 +1,22 @@
+========================================== Category ===========================================
+Link: https://artofproblemsolving.com/community/c3838
+Name: 2011 IMO
+Description: IMO 2011
+============================================ Item =============================================
+Index: 2 (https://artofproblemsolving.com/community/c6h418796p2363537)
+Type: post
+Text: 2
+Post type: forum
+=========================================== Content ===========================================
+Let $\mathcal{S}$ be a finite set of at least two points in the plane. Assume that no three
+points of $\mathcal S$ are collinear. A [i]windmill[/i] is a process that starts with a line
+$\ell$ going through a single point $P \in \mathcal S$. The line rotates clockwise about the
+[i]pivot[/i] $P$ until the first time that the line meets some other point belonging to
+$\mathcal S$. This point, $Q$, takes over as the new pivot, and the line now rotates clockwise
+about $Q$, until it next meets a point of $\mathcal S$. This process continues indefinitely.
+Show that we can choose a point $P$ in $\mathcal S$ and a line $\ell$ going through $P$ such
+that the resulting windmill uses each point of $\mathcal S$ as a pivot infinitely many times.
+
+[i]Proposed by Geoffrey Smith, United Kingdom[/i]
+===============================================================================================
+Elapsed time: 13.02 seconds
