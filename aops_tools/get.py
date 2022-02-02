@@ -11,7 +11,7 @@ from .utils import AOPS_URL
 def print_dict_list(dict_lst, titles, keys):
 	lens = [max(len(titles[0]), len(str(len(dict_lst) - 1))), len(titles[1])]
 	for dct in dict_lst:
-		lens[1] = max(lens[1], len(str(dct[keys[1]])))
+		lens[1] = max(lens[1], len(str(dct[keys[0]])))
 	spaces = [(space := sum(lens) + 5), CONFIG["textwidth"] - space]
 
 	print(f" {titles[0].ljust(lens[0])}  {titles[1].ljust(lens[1])}  {titles[2]}")
