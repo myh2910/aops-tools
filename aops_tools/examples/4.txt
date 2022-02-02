@@ -1,259 +1,253 @@
-========================================== Category ===========================================
+============================================= Category =============================================
 Link: https://artofproblemsolving.com/community/c1988301
 Name: 2021 All-Russian Olympiad
 Description: All-Russian Olympiad 2021
-============================================ Item =============================================
+=============================================== Item ===============================================
 Type: post
 Post type: view_posts_text
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Grade 9
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 1 (https://artofproblemsolving.com/community/c6h2533904p21550640)
 Type: post
 Text: 1
 Post type: forum
-=========================================== Content ===========================================
-On a circle there're $1000$ marked points, each colored in one of $k$ colors. It's known that
-among any $5$ pairwise intersecting segments, endpoints of which are $10$ distinct marked
-points, there're at least $3$ segments, each of which has its endpoints colored in different
-colors. Determine the smallest possible value of $k$ for which it's possible.
-============================================ Item =============================================
+============================================= Content ==============================================
+On a circle there're $1000$ marked points, each colored in one of $k$ colors. It's known that among
+any $5$ pairwise intersecting segments, endpoints of which are $10$ distinct marked points, there're
+at least $3$ segments, each of which has its endpoints colored in different colors. Determine the
+smallest possible value of $k$ for which it's possible.
+=============================================== Item ===============================================
 Index: 2 (https://artofproblemsolving.com/community/c6h2533910p21550732)
 Type: post
 Text: 2
 Post type: forum
-=========================================== Content ===========================================
-Let $n$ be a natural number. An integer $a>2$ is called $n$-decomposable, if $a^n-2^n$ is
-divisible by all the numbers of the form $a^d+2^d$, where $d\neq n$ is a natural divisor of
-$n$. Find all composite $n\in \mathbb{N}$, for which there's an $n$-decomposable number.
-============================================ Item =============================================
+============================================= Content ==============================================
+Let $n$ be a natural number. An integer $a>2$ is called $n$-decomposable, if $a^n-2^n$ is divisible
+by all the numbers of the form $a^d+2^d$, where $d\neq n$ is a natural divisor of $n$. Find all
+composite $n\in \mathbb{N}$, for which there's an $n$-decomposable number.
+=============================================== Item ===============================================
 Index: 3 (https://artofproblemsolving.com/community/c6h2533920p21550832)
 Type: post
 Text: 3
 Post type: forum
-=========================================== Content ===========================================
-On a line $n+1$ segments are marked such that one of the points of the line is contained in all
-of them. Prove that one can find $2$ distinct segments $I, J$ which intersect at a segment of
-length at least $\frac{n-1}{n}d$, where $d$ is the length of the segment $I$.
-============================================ Item =============================================
+============================================= Content ==============================================
+On a line $n+1$ segments are marked such that one of the points of the line is contained in all of
+them. Prove that one can find $2$ distinct segments $I, J$ which intersect at a segment of length at
+least $\frac{n-1}{n}d$, where $d$ is the length of the segment $I$.
+=============================================== Item ===============================================
 Index: 4 (https://artofproblemsolving.com/community/c6h2533933p21550985)
 Type: post
 Text: 4
 Post type: forum
-=========================================== Content ===========================================
-Given an acute triangle $ABC$, point $D$ is chosen on the side $AB$ and a point $E$ is chosen
-on the extension of $BC$ beyond $C$. It became known that the line through $E$ parallel to $AB$
-is tangent to the circumcircle of $\triangle ADC$. Prove that one of the tangents from $E$ to
-the circumcircle of $\triangle BCD$ cuts the angle $\angle ABE$ in such a way that a triangle
-similar to $\triangle ABC$ is formed.
-============================================ Item =============================================
+============================================= Content ==============================================
+Given an acute triangle $ABC$, point $D$ is chosen on the side $AB$ and a point $E$ is chosen on the
+extension of $BC$ beyond $C$. It became known that the line through $E$ parallel to $AB$ is tangent
+to the circumcircle of $\triangle ADC$. Prove that one of the tangents from $E$ to the circumcircle
+of $\triangle BCD$ cuts the angle $\angle ABE$ in such a way that a triangle similar to $\triangle
+ABC$ is formed.
+=============================================== Item ===============================================
 Index: 5 (https://artofproblemsolving.com/community/c6h2535038p21568245)
 Type: post
 Text: 5
 Post type: forum
-=========================================== Content ===========================================
-The reals $b>0$ and $a$ are such that the quadratic $x^2+ax+b$ has two distinct real roots,
-exactly one of which lies in the interval $[-1;1]$. Prove that one of the roots lies in the
-interval $(-b;b)$.
-============================================ Item =============================================
+============================================= Content ==============================================
+The reals $b>0$ and $a$ are such that the quadratic $x^2+ax+b$ has two distinct real roots,  exactly
+one of which lies in the interval $[-1;1]$. Prove that one of the roots lies in the interval
+$(-b;b)$.
+=============================================== Item ===============================================
 Index: 6 (https://artofproblemsolving.com/community/c6h2535040p21568313)
 Type: post
 Text: 6
 Post type: forum
-=========================================== Content ===========================================
-Given is a non-isosceles triangle $ABC$ with $<ABC=60$, and in its interior, a point $T$ is
-selected such that $<ATC=<BTC=<BTA=120$. Let $M$  the intersection point of the medians in
-$ABC$. Let $TM$ intersect $(ATC)$ at $K$. Find $TM/MK$.
-============================================ Item =============================================
+============================================= Content ==============================================
+Given is a non-isosceles triangle $ABC$ with $<ABC=60$, and in its interior, a point $T$ is selected
+such that $<ATC=<BTC=<BTA=120$. Let $M$  the intersection point of the medians in $ABC$. Let $TM$
+intersect $(ATC)$ at $K$. Find $TM/MK$.
+=============================================== Item ===============================================
 Index: 7 (https://artofproblemsolving.com/community/c6h2535024p21568147)
 Type: post
 Text: 7
 Post type: forum
-=========================================== Content ===========================================
-Given are positive integers $n>20$ and $k>1$, such that $k^2$ divides $n$. Prove that there
-exist
+============================================= Content ==============================================
+Given are positive integers $n>20$ and $k>1$, such that $k^2$ divides $n$. Prove that there exist
 positive integers $a, b, c$, such that $n=ab+bc+ca$.
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 8 (https://artofproblemsolving.com/community/c6h2535054p21568585)
 Type: post
 Text: 8
 Post type: forum
-=========================================== Content ===========================================
-One hundred sages play the following game. They are waiting in some fixed order in front of a
-room. The sages enter the room one after another. When a sage enters the room, the following
-happens - the guard in the room chooses two arbitrary distinct numbers from the set {$1,2,3$},
-and announces them to the sage in the room. Then the sage chooses one of those numbers, tells
-it to the guard, and leaves the room, and the next enters, and so on. During the game, before a
-sage chooses a number, he can ask the guard what were the chosen numbers of the previous two
-sages. During the game, the sages cannot talk to each other. At the end, when everyone has
-finished, the game is considered as a failure if the sum of the 100 chosen numbers is exactly
-$200$; else it is successful. Prove that the sages can create a strategy, by which they can win
-the game.
-============================================ Item =============================================
+============================================= Content ==============================================
+One hundred sages play the following game. They are waiting in some fixed order in front of a room.
+The sages enter the room one after another. When a sage enters the room, the following happens - the
+guard in the room chooses two arbitrary distinct numbers from the set {$1,2,3$}, and announces them
+to the sage in the room. Then the sage chooses one of those numbers, tells it to the guard, and
+leaves the room, and the next enters, and so on. During the game, before a sage chooses a number, he
+can ask the guard what were the chosen numbers of the previous two sages. During the game, the sages
+cannot talk to each other. At the end, when everyone has finished, the game is considered as a
+failure if the sum of the 100 chosen numbers is exactly $200$; else it is successful. Prove that the
+sages can create a strategy, by which they can win the game.
+=============================================== Item ===============================================
 Type: post
 Post type: view_posts_text
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Grade 10
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 10 (https://artofproblemsolving.com/community/c6h2533944p21551204)
 Type: post
 Text: 1
 Post type: forum
-=========================================== Content ===========================================
-On the side $BC$ of the parallelogram $ABCD$, points $E$ and $F$ are given ($E$ lies between
-$B$ and $F$) and the diagonals $AC, BD$ meet at $O$. If it's known that $AE, DF$ are tangent to
-the circumcircle of $\triangle AOD$, prove that they're tangent to the circumcircle of
-$\triangle EOF$ as well.
-============================================ Item =============================================
+============================================= Content ==============================================
+On the side $BC$ of the parallelogram $ABCD$, points $E$ and $F$ are given ($E$ lies between $B$ and
+$F$) and the diagonals $AC, BD$ meet at $O$. If it's known that $AE, DF$ are tangent to the
+circumcircle of $\triangle AOD$, prove that they're tangent to the circumcircle of $\triangle EOF$
+as well.
+=============================================== Item ===============================================
 Index: 11 (https://artofproblemsolving.com/community/c6h2533949p21551325)
 Type: post
 Text: 2
 Post type: forum
-=========================================== Content ===========================================
-Find all sets of positive integers $\{x_1, x_2, \dots, x_{20}\}$ such that
-$$x_{i+2}^2=lcm(x_{i+1}, x_{i})+lcm(x_{i}, x_{i-1})$$ for $i=1, 2, \dots, 20$ where
-$x_0=x_{20}, x_{21}=x_1, x_{22}=x_2$.
-============================================ Item =============================================
+============================================= Content ==============================================
+Find all sets of positive integers $\{x_1, x_2, \dots, x_{20}\}$ such that $$x_{i+2}^2=lcm(x_{i+1},
+x_{i})+lcm(x_{i}, x_{i-1})$$ for $i=1, 2, \dots, 20$ where $x_0=x_{20}, x_{21}=x_1, x_{22}=x_2$.
+=============================================== Item ===============================================
 Index: 12 (https://artofproblemsolving.com/community/c6h2534039p21552938)
 Type: post
 Text: 3
 Post type: forum
-=========================================== Content ===========================================
-In the country there're $N$ cities and some pairs of cities are connected by two-way airlines
-(each pair with no more than one). Every airline belongs to one of $k$ companies. It turns out
-that it's possible to get to any city from any other, but it fails when we delete all airlines
-belonging to any one of the companies. What is the maximum possible number of airlines in the
-country ?
-============================================ Item =============================================
+============================================= Content ==============================================
+In the country there're $N$ cities and some pairs of cities are connected by two-way airlines (each
+pair with no more than one). Every airline belongs to one of $k$ companies. It turns out that it's
+possible to get to any city from any other, but it fails when we delete all airlines belonging to
+any one of the companies. What is the maximum possible number of airlines in the country ?
+=============================================== Item ===============================================
 Index: 13 (https://artofproblemsolving.com/community/c6h2534096p21554288)
 Type: post
 Text: 4
 Post type: forum
-=========================================== Content ===========================================
-Given a natural number $n>4$ and $2n+4$ cards numbered with $1, 2, \dots, 2n+4$. On the card
-with number $m$ a real number $a_m$ is written such that $\lfloor a_{m}\rfloor=m$. Prove that
-it's possible to choose $4$ cards in such a way that the sum of the numbers on the first two
-cards differs from the sum of the numbers on the two remaining cards by less than
+============================================= Content ==============================================
+Given a natural number $n>4$ and $2n+4$ cards numbered with $1, 2, \dots, 2n+4$. On the card with
+number $m$ a real number $a_m$ is written such that $\lfloor a_{m}\rfloor=m$. Prove that it's
+possible to choose $4$ cards in such a way that the sum of the numbers on the first two cards
+differs from the sum of the numbers on the two remaining cards by less than
 $$\frac{1}{n-\sqrt{\frac{n}{2}}}$$.
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 14 (https://artofproblemsolving.com/community/c6h2534986p21567788)
 Type: post
 Text: 5
 Post type: forum
-=========================================== Content ===========================================
-A teacher and her 30 students play a game on an infinite cell grid. The teacher starts first,
-then each of the 30 students makes a move, then the teacher and so on. On one move the person
-can color one unit segment on the grid. A segment cannot be colored twice. The teacher wins if,
-after the move of one of the 31 players, there is a $1\times 2$ or $2\times 1$ rectangle , such
-that each segment from it's border is colored, but the segment between the two adjacent squares
-isn't colored. Prove that the teacher can win.
-============================================ Item =============================================
+============================================= Content ==============================================
+A teacher and her 30 students play a game on an infinite cell grid. The teacher starts first, then
+each of the 30 students makes a move, then the teacher and so on. On one move the person can color
+one unit segment on the grid. A segment cannot be colored twice. The teacher wins if, after the move
+of one of the 31 players, there is a $1\times 2$ or $2\times 1$ rectangle , such that each segment
+from it's border is colored, but the segment between the two adjacent squares isn't colored. Prove
+that the teacher can win.
+=============================================== Item ===============================================
 Index: 15 (https://artofproblemsolving.com/community/c6h2535029p21568194)
 Type: post
 Text: 6
 Post type: forum
-=========================================== Content ===========================================
-Given is a polynomial $P(x)$ of degree $n>1$ with real coefficients. The equation
-$P(P(P(x)))=P(x)$ has $n^3$ distinct real roots. Prove that these roots could be split into two
-groups with equal arithmetic mean.
-============================================ Item =============================================
+============================================= Content ==============================================
+Given is a polynomial $P(x)$ of degree $n>1$ with real coefficients. The equation $P(P(P(x)))=P(x)$
+has $n^3$ distinct real roots. Prove that these roots could be split into two groups with equal
+arithmetic mean.
+=============================================== Item ===============================================
 Type: post
 Text: 7
 Post type: view_posts_text
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Same as 9.7
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 17 (https://artofproblemsolving.com/community/c6h2535017p21568076)
 Type: post
 Text: 8
 Post type: forum
-=========================================== Content ===========================================
-Given is a cyclic pentagon $ABCDE$, inscribed in a circle $k$. The line $CD$ intersects $AB$
-and $AE$ in $X$ and $Y$ respectively. Segments $EX$ and $BY$ intersect again at $P$, and they
-intersect $k$ in $Q$ and $R$, respectively. Point $A'$ is reflection of $A$ across $CD$. The
-circles $(PQR)$ and $(A'XY)$ intersect at $M$ and $N$. Prove that $CM$ and $DN$ intersect on
-$(PQR)$.
-============================================ Item =============================================
+============================================= Content ==============================================
+Given is a cyclic pentagon $ABCDE$, inscribed in a circle $k$. The line $CD$ intersects $AB$ and
+$AE$ in $X$ and $Y$ respectively. Segments $EX$ and $BY$ intersect again at $P$, and they intersect
+$k$ in $Q$ and $R$, respectively. Point $A'$ is reflection of $A$ across $CD$. The circles $(PQR)$
+and $(A'XY)$ intersect at $M$ and $N$. Prove that $CM$ and $DN$ intersect on $(PQR)$.
+=============================================== Item ===============================================
 Type: post
 Post type: view_posts_text
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Grade 11
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 19 (https://artofproblemsolving.com/community/c6h2534958p21567527)
 Type: post
 Text: 1
 Post type: forum
-=========================================== Content ===========================================
-For some positive integer $n>m$, it turns out that it is representable as sum of $2021$ non-
-negative integer powers of $m$, and that it is representable as sum of $2021$ non-negative
-integer powers of $m+1$. Find the maximal value of the positive integer $m$.
-============================================ Item =============================================
+============================================= Content ==============================================
+For some positive integer $n>m$, it turns out that it is representable as sum of $2021$ non-negative
+integer powers of $m$, and that it is representable as sum of $2021$ non-negative integer powers of
+$m+1$. Find the maximal value of the positive integer $m$.
+=============================================== Item ===============================================
 Index: 20 (https://artofproblemsolving.com/community/c6h2534968p21567633)
 Type: post
 Text: 2
 Post type: forum
-=========================================== Content ===========================================
-Let $P(x)$ be a nonzero polynomial of degree $n>1$ with nonnegative coefficients such that
-function $y=P(x)$ is odd. Is that possible thet for some pairwise distinct points $A_{1},
-A_{2}, \dots A_{n}$ on the graph $G: y = P(x)$ the following conditions hold: tangent to $G$ at
-$A_{1}$ passes through $A_{2}$, tangent to $G$ at $A_{2}$ passes through $A_{3}$, $\dots$,
-tangent to $G$ at $A_{n}$ passes through $A_{1}$?
-============================================ Item =============================================
+============================================= Content ==============================================
+Let $P(x)$ be a nonzero polynomial of degree $n>1$ with nonnegative coefficients such that function
+$y=P(x)$ is odd. Is that possible thet for some pairwise distinct points $A_{1}, A_{2}, \dots A_{n}$
+on the graph $G: y = P(x)$ the following conditions hold: tangent to $G$ at $A_{1}$ passes through
+$A_{2}$, tangent to $G$ at $A_{2}$ passes through $A_{3}$, $\dots$, tangent to $G$ at $A_{n}$ passes
+through $A_{1}$?
+=============================================== Item ===============================================
 Index: 21 (https://artofproblemsolving.com/community/c6h2534973p21567655)
 Type: post
 Text: 3
 Post type: forum
-=========================================== Content ===========================================
-Some language has only three letters - $A, B$ and $C$. A sequence of letters is called a word
-iff it contains exactly 100 letters such that exactly 40 of them are consonants and other 60
-letters are all $A$. What is the maximum numbers of words one can pick such that any two picked
-words have at least one position where they both have consonants, but different consonants?
-============================================ Item =============================================
+============================================= Content ==============================================
+Some language has only three letters - $A, B$ and $C$. A sequence of letters is called a word iff it
+contains exactly 100 letters such that exactly 40 of them are consonants and other 60 letters are
+all $A$. What is the maximum numbers of words one can pick such that any two picked words have at
+least one position where they both have consonants, but different consonants?
+=============================================== Item ===============================================
 Index: 22 (https://artofproblemsolving.com/community/c6h2534975p21567663)
 Type: post
 Text: 4
 Post type: forum
-=========================================== Content ===========================================
-In triangle $ABC$ angle bisectors $AA_{1}$ and $CC_{1}$ intersect at $I$. Line through $B$
-parallel to $AC$ intersects rays $AA_{1}$ and $CC_{1}$ at points $A_{2}$ and $C_{2}$
-respectively. Let $O_{a}$ and $O_{c}$ be the circumcenters of triangles $AC_{1}C_{2}$ and
-$CA_{1}A_{2}$ respectively. Prove that $\angle{O_{a}BO_{c}} = \angle{AIC} $
-============================================ Item =============================================
+============================================= Content ==============================================
+In triangle $ABC$ angle bisectors $AA_{1}$ and $CC_{1}$ intersect at $I$. Line through $B$ parallel
+to $AC$ intersects rays $AA_{1}$ and $CC_{1}$ at points $A_{2}$ and $C_{2}$ respectively. Let
+$O_{a}$ and $O_{c}$ be the circumcenters of triangles $AC_{1}C_{2}$ and $CA_{1}A_{2}$ respectively.
+Prove that $\angle{O_{a}BO_{c}} = \angle{AIC} $
+=============================================== Item ===============================================
 Type: post
 Text: 5
 Post type: view_posts_text
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Same as 10.5
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 24 (https://artofproblemsolving.com/community/c6h2534978p21567682)
 Type: post
 Text: 6
 Post type: forum
-=========================================== Content ===========================================
-In tetrahedron $ABCS$ no two edges have equal length. Point $A'$ in plane $BCS$ is symmetric to
-$S$ with respect to the perpendicular bisector of $BC$. Points $B'$ and $C'$ are defined
-analagously. Prove that planes $ABC, AB'C', A'BC'$ abd $A'B'C$ share a common point.
-============================================ Item =============================================
+============================================= Content ==============================================
+In tetrahedron $ABCS$ no two edges have equal length. Point $A'$ in plane $BCS$ is symmetric to $S$
+with respect to the perpendicular bisector of $BC$. Points $B'$ and $C'$ are defined analagously.
+Prove that planes $ABC, AB'C', A'BC'$ abd $A'B'C$ share a common point.
+=============================================== Item ===============================================
 Index: 25 (https://artofproblemsolving.com/community/c6h2534995p21567869)
 Type: post
 Text: 7
 Post type: forum
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Find all permutations $(a_1, a_2,...,a_{2021})$ of $(1,2,...,2021)$, such that for every two
-positive integers $m$ and $n$ with difference bigger than $20^{21}$, the following inequality
-holds:
+positive integers $m$ and $n$ with difference bigger than $20^{21}$, the following inequality holds:
 $GCD(m+1, n+a_1)+GCD(m+2, n+a_2)+...+GCD(m+2021, n+a_{2021})<2|m-n|$.
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 26 (https://artofproblemsolving.com/community/c6h2535009p21567977)
 Type: post
 Text: 8
 Post type: forum
-=========================================== Content ===========================================
-Each girl among $100$ girls has $100$ balls; there are in total $10000$ balls in $100$ colors,
-from each color there are $100$ balls. On a move, two girls can exchange a ball (the first
-gives the second one of her balls, and vice versa). The operations can be made in such a way,
-that in the end, each girl has $100$ balls, colored in the $100$ distinct colors. Prove that
-there is a sequence of operations, in which each ball is exchanged no more than 1 time, and at
-the end, each girl has $100$ balls, colored in the $100$ colors.
-===============================================================================================
-Elapsed time: 21.67 seconds
+============================================= Content ==============================================
+Each girl among $100$ girls has $100$ balls; there are in total $10000$ balls in $100$ colors, from
+each color there are $100$ balls. On a move, two girls can exchange a ball (the first gives the
+second one of her balls, and vice versa). The operations can be made in such a way, that in the end,
+each girl has $100$ balls, colored in the $100$ distinct colors. Prove that there is a sequence of
+operations, in which each ball is exchanged no more than 1 time, and at the end, each girl has $100$
+balls, colored in the $100$ colors.
+====================================================================================================
+Elapsed time: 23.80 seconds

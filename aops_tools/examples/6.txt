@@ -1,7 +1,7 @@
 :: This is a folder. Do you want to explore? [y/N] y
- Index  Text                                        Description
- --     --                                          --
- 0      IMO                                         International Math Olympiad
+ Index  Text                                                    Description
+ --     --                                                      --
+ 0      IMO                                                     International Math Olympiad
  1      IMO Shortlist
  2      IMO Longlists
  3      APMO
@@ -24,7 +24,7 @@
  20     International Olympiad of Metropolises
  21     International Zhautykov Olympiad
  22     JBMO ShortLists
- 23     Junior Balkan MO                            JBMO tests by year
+ 23     Junior Balkan MO                                        JBMO tests by year
  24     Lusophon Mathematical Olympiad
  25     Mediterranean Mathematics Olympiad
  26     Middle European Mathematical Olympiad
@@ -32,168 +32,166 @@
  28     Pan African
  29     Rioplatense Mathematical Olympiad, Level 3
  30     Romanian Masters of Mathematics Collection
- 31     Silk Road                                   Silk Road Math Competition
+ 31     Silk Road                                               Silk Road Math Competition
  32     Simon Marais Mathematical Competition
  33     Tournament Of Towns
  34     Tuymaada Olympiad
  35     IMC
- 36     Francophone Mathematical Olympiad           Math olympiad for the French Speaking,
-                                                    started in 2020
+ 36     Francophone Mathematical Olympiad                       Math olympiad for the French
+                                                                Speaking, started in 2020
  37     Czech-Polish-Slovak Junior Match
- 38     Mathematical Excellence Olympiad            International Mathematical Excellence
-                                                    Olympiad (IMEO)
+ 38     Mathematical Excellence Olympiad                        International Mathematical
+                                                                Excellence Olympiad (IMEO)
 :: Select item index [default: 0] 
 
 :: This is a folder. Do you want to explore? [y/N] y
- Index  Text               Description
- --     --                 --
+ Index  Text      Description
+ --     --        --
  0      2021-IMO Problems  IMO 2021
- 1      2020-IMO           IMO 2020
+ 1      2020-IMO  IMO 2020
  2      2019 IMO
- 3      2018 IMO           IMO 2018
- 4      2017 IMO           IMO 2017
- 5      2016 IMO           IMO 2016
- 6      2015 IMO           IMO 2015
- 7      2014 IMO           IMO 2014
- 8      2013 IMO           IMO 2013
- 9      2012 IMO           IMO 2012
- 10     2011 IMO           IMO 2011
- 11     2010 IMO           IMO 2010
- 12     2009 IMO           IMO 2009
- 13     2008 IMO           IMO 2008
- 14     2007 IMO           IMO 2007
- 15     2006 IMO           IMO 2006
- 16     2005 IMO           IMO 2005
- 17     2004 IMO           IMO 2004
- 18     2003 IMO           IMO 2003
- 19     2002 IMO           IMO 2002
- 20     2001 IMO           IMO 2001
- 21     2000 IMO           IMO 2000
- 22     1999 IMO           IMO 1999
- 23     1998 IMO           IMO 1998
- 24     1997 IMO           IMO 1997
- 25     1996 IMO           IMO 1996
- 26     1995 IMO           IMO 1995
- 27     1994 IMO           IMO 1994
- 28     1993 IMO           IMO 1993
- 29     1992 IMO           IMO 1992
- 30     1991 IMO           IMO 1991
- 31     1990 IMO           IMO 1990
- 32     1989 IMO           IMO 1989
- 33     1988 IMO           IMO 1988
- 34     1987 IMO           IMO 1987
- 35     1986 IMO           IMO 1986
- 36     1985 IMO           IMO 1985
- 37     1984 IMO           IMO 1984
- 38     1983 IMO           IMO 1983
- 39     1982 IMO           IMO 1982
- 40     1981 IMO           IMO 1981
- 41     1980 IMO           IMO 1980
- 42     1979 IMO           IMO 1979
- 43     1978 IMO           IMO 1978
- 44     1977 IMO           IMO 1977
- 45     1976 IMO           IMO 1976
- 46     1975 IMO           IMO 1975
- 47     1974 IMO           IMO 1974
- 48     1973 IMO           IMO 1973
- 49     1972 IMO           IMO 1972
- 50     1971 IMO           IMO 1971
- 51     1970 IMO           IMO 1970
- 52     1969 IMO           IMO 1969
- 53     1968 IMO           IMO 1968
- 54     1967 IMO           IMO 1967
- 55     1966 IMO           IMO 1966
- 56     1965 IMO           IMO 1965
- 57     1964 IMO           IMO 1964
- 58     1963 IMO           IMO 1963
- 59     1962 IMO           IMO 1962
- 60     1961 IMO           IMO 1961
- 61     1960 IMO           IMO 1960
- 62     1959 IMO           IMO 1959
+ 3      2018 IMO  IMO 2018
+ 4      2017 IMO  IMO 2017
+ 5      2016 IMO  IMO 2016
+ 6      2015 IMO  IMO 2015
+ 7      2014 IMO  IMO 2014
+ 8      2013 IMO  IMO 2013
+ 9      2012 IMO  IMO 2012
+ 10     2011 IMO  IMO 2011
+ 11     2010 IMO  IMO 2010
+ 12     2009 IMO  IMO 2009
+ 13     2008 IMO  IMO 2008
+ 14     2007 IMO  IMO 2007
+ 15     2006 IMO  IMO 2006
+ 16     2005 IMO  IMO 2005
+ 17     2004 IMO  IMO 2004
+ 18     2003 IMO  IMO 2003
+ 19     2002 IMO  IMO 2002
+ 20     2001 IMO  IMO 2001
+ 21     2000 IMO  IMO 2000
+ 22     1999 IMO  IMO 1999
+ 23     1998 IMO  IMO 1998
+ 24     1997 IMO  IMO 1997
+ 25     1996 IMO  IMO 1996
+ 26     1995 IMO  IMO 1995
+ 27     1994 IMO  IMO 1994
+ 28     1993 IMO  IMO 1993
+ 29     1992 IMO  IMO 1992
+ 30     1991 IMO  IMO 1991
+ 31     1990 IMO  IMO 1990
+ 32     1989 IMO  IMO 1989
+ 33     1988 IMO  IMO 1988
+ 34     1987 IMO  IMO 1987
+ 35     1986 IMO  IMO 1986
+ 36     1985 IMO  IMO 1985
+ 37     1984 IMO  IMO 1984
+ 38     1983 IMO  IMO 1983
+ 39     1982 IMO  IMO 1982
+ 40     1981 IMO  IMO 1981
+ 41     1980 IMO  IMO 1980
+ 42     1979 IMO  IMO 1979
+ 43     1978 IMO  IMO 1978
+ 44     1977 IMO  IMO 1977
+ 45     1976 IMO  IMO 1976
+ 46     1975 IMO  IMO 1975
+ 47     1974 IMO  IMO 1974
+ 48     1973 IMO  IMO 1973
+ 49     1972 IMO  IMO 1972
+ 50     1971 IMO  IMO 1971
+ 51     1970 IMO  IMO 1970
+ 52     1969 IMO  IMO 1969
+ 53     1968 IMO  IMO 1968
+ 54     1967 IMO  IMO 1967
+ 55     1966 IMO  IMO 1966
+ 56     1965 IMO  IMO 1965
+ 57     1964 IMO  IMO 1964
+ 58     1963 IMO  IMO 1963
+ 59     1962 IMO  IMO 1962
+ 60     1961 IMO  IMO 1961
+ 61     1960 IMO  IMO 1960
+ 62     1959 IMO  IMO 1959
 :: Select item index [default: 0] 
 
-========================================== Category ===========================================
+============================================= Category =============================================
 Link: https://artofproblemsolving.com/community/c2413807
 Name: 2021-IMO Problems
 Description: IMO 2021
-============================================ Item =============================================
+=============================================== Item ===============================================
 Type: post
 Text: Day 1
 Post type: view_posts_text
-=========================================== Content ===========================================
+============================================= Content ==============================================
 July 19, 2021
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 1 (https://artofproblemsolving.com/community/c6h2625909p22698392)
 Type: post
 Text: 1
 Post type: forum
-=========================================== Content ===========================================
-Let $n \geqslant 100$ be an integer. Ivan writes the numbers $n, n+1, \ldots, 2 n$ each on
-different cards. He then shuffles these $n+1$ cards, and divides them into two piles. Prove
-that at least one of the piles contains two cards such that the sum of their numbers is a
-perfect square.
-============================================ Item =============================================
+============================================= Content ==============================================
+Let $n \geqslant 100$ be an integer. Ivan writes the numbers $n, n+1, \ldots, 2 n$ each on different
+cards. He then shuffles these $n+1$ cards, and divides them into two piles. Prove that at least one
+of the piles contains two cards such that the sum of their numbers is a perfect square.
+=============================================== Item ===============================================
 Index: 2 (https://artofproblemsolving.com/community/c6h2625850p22697952)
 Type: post
 Text: 2
 Post type: forum
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Show that the inequality \[\sum_{i=1}^n \sum_{j=1}^n \sqrt{|x_i-x_j|}\leqslant \sum_{i=1}^n
 \sum_{j=1}^n \sqrt{|x_i+x_j|}\]holds for all real numbers $x_1,\ldots x_n.$
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 3 (https://artofproblemsolving.com/community/c6h2625862p22698068)
 Type: post
 Text: 3
 Post type: forum
-=========================================== Content ===========================================
-Let $D$ be an interior point of the acute triangle $ABC$ with $AB > AC$ so that $\angle DAB =
-\angle CAD.$ The point $E$ on the segment $AC$ satisfies $\angle ADE =\angle BCD,$ the point
-$F$ on the segment $AB$ satisfies $\angle FDA =\angle DBC,$ and the point $X$ on the line $AC$
-satisfies $CX = BX.$ Let $O_1$ and $O_2$ be the circumcenters of the triangles $ADC$ and $EXD,$
-respectively. Prove that the lines $BC, EF,$ and $O_1O_2$ are concurrent.
-============================================ Item =============================================
+============================================= Content ==============================================
+Let $D$ be an interior point of the acute triangle $ABC$ with $AB > AC$ so that $\angle DAB = \angle
+CAD.$ The point $E$ on the segment $AC$ satisfies $\angle ADE =\angle BCD,$ the point $F$ on the
+segment $AB$ satisfies $\angle FDA =\angle DBC,$ and the point $X$ on the line $AC$ satisfies $CX =
+BX.$ Let $O_1$ and $O_2$ be the circumcenters of the triangles $ADC$ and $EXD,$ respectively. Prove
+that the lines $BC, EF,$ and $O_1O_2$ are concurrent.
+=============================================== Item ===============================================
 Type: post
 Text: Day 2
 Post type: view_posts_text
-=========================================== Content ===========================================
+============================================= Content ==============================================
 July 20, 2021
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 5 (https://artofproblemsolving.com/community/c6h2625855p22698001)
 Type: post
 Text: 4
 Post type: forum
-=========================================== Content ===========================================
-Let $\Gamma$ be a circle with centre $I$, and $A B C D$ a convex quadrilateral such that each
-of the segments $A B, B C, C D$ and $D A$ is tangent to $\Gamma$. Let $\Omega$ be the
-circumcircle of the triangle $A I C$. The extension of $B A$ beyond $A$ meets $\Omega$ at $X$,
-and the extension of $B C$ beyond $C$ meets $\Omega$ at $Z$. The extensions of $A D$ and $C D$
-beyond $D$ meet $\Omega$ at $Y$ and $T$, respectively. Prove that \[A D+D T+T X+X A=C D+D Y+Y
-Z+Z C.\]
+============================================= Content ==============================================
+Let $\Gamma$ be a circle with centre $I$, and $A B C D$ a convex quadrilateral such that each of the
+segments $A B, B C, C D$ and $D A$ is tangent to $\Gamma$. Let $\Omega$ be the circumcircle of the
+triangle $A I C$. The extension of $B A$ beyond $A$ meets $\Omega$ at $X$, and the extension of $B
+C$ beyond $C$ meets $\Omega$ at $Z$. The extensions of $A D$ and $C D$ beyond $D$ meet $\Omega$ at
+$Y$ and $T$, respectively. Prove that \[A D+D T+T X+X A=C D+D Y+Y Z+Z C.\]
 
 [i]Proposed by Dominik Burek, Poland and Tomasz Ciesla, Poland[/i]
-============================================ Item =============================================
+=============================================== Item ===============================================
 Index: 6 (https://artofproblemsolving.com/community/c6h2625845p22697921)
 Type: post
 Text: 5
 Post type: forum
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Two squirrels, Bushy and Jumpy, have collected 2021 walnuts for the winter. Jumpy numbers the
-walnuts from 1 through 2021, and digs 2021 little holes in a circular pattern in the ground
-around their favourite tree. The next morning Jumpy notices that Bushy had placed one walnut
-into each hole, but had paid no attention to the numbering. Unhappy, Jumpy decides to reorder
-the walnuts by performing a sequence of 2021 moves. In the $k$-th move, Jumpy swaps the
-positions of the two walnuts adjacent to walnut $k$.
+walnuts from 1 through 2021, and digs 2021 little holes in a circular pattern in the ground around
+their favourite tree. The next morning Jumpy notices that Bushy had placed one walnut into each
+hole, but had paid no attention to the numbering. Unhappy, Jumpy decides to reorder the walnuts by
+performing a sequence of 2021 moves. In the $k$-th move, Jumpy swaps the positions of the two
+walnuts adjacent to walnut $k$.
 
-Prove that there exists a value of $k$ such that, on the $k$-th move, Jumpy swaps some walnuts
-$a$ and $b$ such that $a<k<b$.
-============================================ Item =============================================
+Prove that there exists a value of $k$ such that, on the $k$-th move, Jumpy swaps some walnuts $a$
+and $b$ such that $a<k<b$.
+=============================================== Item ===============================================
 Index: 7 (https://artofproblemsolving.com/community/c6h2625864p22698082)
 Type: post
 Text: 6
 Post type: forum
-=========================================== Content ===========================================
+============================================= Content ==============================================
 Let $m\ge 2$ be an integer, $A$ a finite set of integers (not necessarily positive) and
-$B_1,B_2,...,B_m$ subsets of $A$. Suppose that, for every $k=1,2,...,m$, the sum of the
-elements of $B_k$ is $m^k$. Prove that $A$ contains at least $\dfrac{m}{2}$ elements.
-===============================================================================================
-Elapsed time: 15.64 seconds
+$B_1,B_2,...,B_m$ subsets of $A$. Suppose that, for every $k=1,2,...,m$, the sum of the elements of
+$B_k$ is $m^k$. Prove that $A$ contains at least $\dfrac{m}{2}$ elements.
+====================================================================================================
+Elapsed time: 18.41 seconds

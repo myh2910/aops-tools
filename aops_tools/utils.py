@@ -3,12 +3,21 @@ import os
 import textwrap
 from datetime import datetime, timedelta
 from timeit import default_timer
+
 from bs4 import BeautifulSoup
 from colorama import Fore
 
-aops_url = "https://artofproblemsolving.com"
+from .config import CONFIG
 
-def print_centered(text, textwidth, delim, color):
+AOPS_URL = "https://artofproblemsolving.com"
+
+COLORS = [
+	(Fore.BLUE, Fore.LIGHTBLUE_EX),
+	(Fore.MAGENTA, Fore.LIGHTMAGENTA_EX)
+]
+
+def print_centered(text, color):
+	textwidth, delim = CONFIG["textwidth"], CONFIG["delim"]
 	if text:
 		diff = textwidth - len(text) - 2
 		print(
@@ -19,60 +28,22 @@ def print_centered(text, textwidth, delim, color):
 	else:
 		print(color + delim * textwidth + Fore.RESET)
 
-def print_wrapped(key, value, textwidth, color):
-	text = textwrap.fill(f"{key}: {value}", textwidth)
-	idx = len(key) + 1
+def print_wrapped(values, color):
+	text = textwrap.fill(f"{values[0]}: {values[1]}", CONFIG["textwidth"])
+	idx = len(values[0]) + 1
 	print(color + text[:idx] + Fore.RESET + text[idx:])
 
-def print_post(content, textwidth, delim):
-	print_centered("Content", textwidth, delim, Fore.GREEN)
+def print_post_content(content):
+	print_centered("Content", Fore.GREEN)
 	for line in content.split("\n"):
-		print(textwrap.fill(line, textwidth))
+		print(textwrap.fill(line, CONFIG["textwidth"]))
 
-def print_elapsed_time(begin_time, textwidth, delim):
-	print_centered(None, textwidth, delim, Fore.CYAN)
+def print_elapsed_time(begin_time):
+	print_centered(None, Fore.CYAN)
 	print_wrapped(
-		"Elapsed time",
-		f"{default_timer() - begin_time:.2f} seconds",
-		textwidth,
+		("Elapsed time", f"{default_timer() - begin_time:.2f} seconds"),
 		Fore.LIGHTCYAN_EX
 	)
-
-def print_dict_list(dict_lst, titles, keys, textwidth):
-	t0, t1, t2 = titles
-	k1, k2 = keys
-	l0, l1 = max(len(t0), len(str(len(dict_lst) - 1))), len(t1)
-	for dct in dict_lst:
-		l1 = max(l1, len(str(dct[k1])))
-	e1 = l0 + l1 + 5
-	e2 = textwidth - e1
-
-	print(f" {t0.ljust(l0)}  {t1.ljust(l1)}  {t2}")
-	print(f" {'--'.ljust(l0)}  {'--'.ljust(l1)}  --")
-
-	for idx, dct in enumerate(dict_lst):
-		if s2 := dct[k2]:
-			s1 = f" {str(idx).ljust(l0)}  {dct[k1].ljust(l1)}  "
-			if len(s2) > e2:
-				print(s1, end="")
-				for idx, p2 in enumerate(textwrap.fill(s2, e2).split("\n")):
-					if idx > 0:
-						print(" " * e1, end="")
-					print(p2)
-			else:
-				print(s1 + s2)
-		else:
-			print(f" {str(idx).ljust(l0)}  {dct[k1]}")
-
-def to_datetime(time, utc_offset, time_format):
-	if utc_offset == 0:
-		timezone = "UTC±00"
-	elif utc_offset < 0:
-		timezone = f"UTC-{-utc_offset:02}"
-	else:
-		timezone = f"UTC+{utc_offset:02}"
-	return (datetime.utcfromtimestamp(time) + timedelta(hours=utc_offset)
-		).strftime(time_format + f" ({timezone})")
 
 def hidden_thankers(num_hidden, all_hidden=False):
 	if all_hidden:
@@ -101,36 +72,36 @@ def stalk_success(stalk_users, username, thankers, num_thanks):
 		del visible[-1]
 	return stalk_users & set(visible)
 
-def write_json_file(
-	json_data, num_indent, outdir, stem, write_files,
-	write_json, write_html, category_id, topic_id=None
-):
-	if write_files:
-		write_json, write_html = True, True
+def to_datetime(time):
+	if (utc_offset := CONFIG["utc-offset"]) == 0:
+		timezone = "UTC±00"
+	elif utc_offset < 0:
+		timezone = f"UTC-{-utc_offset:02}"
+	else:
+		timezone = f"UTC+{utc_offset:02}"
+	return (
+		datetime.utcfromtimestamp(time) + timedelta(hours=utc_offset)
+	).strftime(CONFIG["time-format"] + f" ({timezone})")
 
-	path = None
-	if write_html or write_json:
-		path = os.path.join(outdir, f"c{category_id}")
-		if topic_id:
-			path = os.path.join(path, f"h{topic_id}")
-		if not os.path.exists(path):
-			os.makedirs(path)
+def create_path(category_id, topic_id=None):
+	path = os.path.join(CONFIG["outdir"], f"c{category_id}")
+	if topic_id:
+		path = os.path.join(path, f"h{topic_id}")
+	if not os.path.exists(path):
+		os.makedirs(path)
+	CONFIG["path"] = path
 
-	if write_json:
-		with open(
-			os.path.join(path, f"{stem}.json"), "w", encoding="utf8"
-		) as json_file:
-			json.dump(json_data, json_file, ensure_ascii=False, indent=num_indent)
+def write_json_file(data, name):
+	with open(os.path.join(CONFIG["path"], name), "w", encoding="utf8") as file:
+		json.dump(data, file, ensure_ascii=False, indent=CONFIG["num-indent"])
 
-	return write_html, path
-
-def write_html_file(html_data, html_title, path, stem):
-	tmp = BeautifulSoup(html_data, "html.parser")
+def write_html_file(data, title, name):
+	tmp = BeautifulSoup(data, "html.parser")
 	for img in tmp.find_all("img"):
 		if (src := img["scr"]).startswith("//"):
 			img["src"] = "https:" + src
 		elif src.startswith("/"):
-			img["src"] = aops_url + src
+			img["src"] = AOPS_URL + src
 
 	soup = BeautifulSoup(
 f"""<!DOCTYPE html>
@@ -138,7 +109,7 @@ f"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1">
-<title>{html_title}</title>
+<title>{title}</title>
 <link rel="stylesheet" href="../../../aops_tools/assets/aops.css">
 <link rel="icon" href="https://artofproblemsolving.com/online-favicon.ico">
 <script src="../../../aops_tools/assets/aops.js"></script>
@@ -148,7 +119,5 @@ f"""<!DOCTYPE html>
 </html>""", "lxml")
 	soup.find("body").append(tmp)
 
-	with open(
-		os.path.join(path, f"{stem}.html"), "w", encoding="utf8"
-	) as html_file:
-		html_file.write(str(soup))
+	with open(os.path.join(CONFIG["path"], name), "w", encoding="utf8") as file:
+		file.write(str(soup))

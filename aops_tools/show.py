@@ -1,239 +1,138 @@
-import colorama
-from .get import get_topic_data, get_category_data
-from .utils import *
+from . import utils
+from .config import CONFIG
+from .utils import AOPS_URL, COLORS
 
-def show_topic_data(
-	code,
-	stalk_users,
-	find_posts,
-	silent,
-	brave,
-	verbose,
-	write_files,
-	write_json,
-	write_html,
-	outdir,
-	num_indent,
-	textwidth,
-	delim,
-	utc_offset,
-	time_format
-):
-	data, begin_time = get_topic_data(code)
-	colorama.init()
 
-	print_centered("Topic", textwidth, delim, Fore.BLUE)
-	topic_info = {
-		"Link": data["topic_url"],
-		"Category": data["category_name"],
-		"Title": data["topic_title"].strip()
-	}
-	if brave and (tags := data["tags"]):
-		topic_info["Tags"] = ", ".join(tag["tag_text"] for tag in tags)
-	if source := data["source"].strip():
-		topic_info["Source"] = source
-	topic_info["Post count"] = data["num_posts"]
-	topic_info["View count"] = data["num_views"]
-	for item in topic_info.items():
-		print_wrapped(*item, textwidth, Fore.LIGHTBLUE_EX)
+def show_post_data(data, print_item, colors=COLORS[0]):
+	for idx, _data in enumerate(data):
+		post_time = utils.to_datetime(_data["post_time"])
 
-	write_html, topic_path = write_json_file(
-		data,
-		num_indent,
-		outdir,
-		"topic-data",
-		write_files,
-		write_json,
-		write_html,
-		data["category_id"],
-		data["topic_id"]
-	)
-
-	for idx, post_data in enumerate(data["posts_data"]):
-		post_number = post_data["post_number"]
-		thankers = post_data["thankers"]
-		thanks_received = post_data["thanks_received"]
-		username = post_data["username"]
-
-		post_datetime = to_datetime(
-			post_time := post_data["post_time"],
-			utc_offset,
-			time_format
-		)
-
-		if not silent and (
-			verbose
-			or idx == 0
-			or stalk_success(stalk_users, username, thankers, thanks_received)
-			or (find_posts and post_number in find_posts)
+		if print_item(
+			idx,
+			_data["username"],
+			_data["thankers"],
+			_data["thanks_received"],
+			_data["post_number"]
 		):
-			print_centered("Post", textwidth, delim, Fore.MAGENTA)
-			post_info = {
-				"Number": f"{post_number} ({post_data['post_url']})",
-				"Posted by": "{} ({}/community/user/{})".format(
-					username, aops_url, post_data['poster_id']
-				),
-				"Posted at": post_datetime
-			}
-			if thankers:
-				post_info["Like count"] = thanks_received
-				post_info["Liked by"] = thankers
-			for item in post_info.items():
-				print_wrapped(*item, textwidth, Fore.LIGHTMAGENTA_EX)
+			utils.print_centered("Post", colors[0])
+			info = [
+				("Number", f"{_data['post_number']} ({_data['post_url']})"),
+				("Posted by", f"{_data['username']} ({AOPS_URL}/community/user/{_data['poster_id']})"),
+				("Posted at", post_time)
+			]
+			if _data["thankers"]:
+				info.extend([
+					("Like count", _data["thanks_received"]),
+					("Liked by", _data["thankers"])
+				])
+			for prop in info:
+				utils.print_wrapped(prop, colors[1])
 
-			if post_canonical := post_data["post_canonical"].strip():
-				print_post(post_canonical, textwidth, delim)
+			if canonical := _data["post_canonical"].strip():
+				utils.print_post_content(canonical)
 
-		if write_html:
-			write_html_file(
-				f"Post #{post_number} by {username} at {post_datetime}",
-				post_data["post_rendered"],
-				topic_path,
-				post_number
+		if CONFIG["write-html"]:
+			utils.write_html_file(
+				_data["post_rendered"],
+				f"Post #{_data['post_number']} by {_data['username']} at {post_time}",
+				f"{_data['post_number']}.html"
 			)
 
-	print_elapsed_time(begin_time, textwidth, delim)
+def show_view_posts_data(data, print_item, colors=COLORS[1]):
+	for idx, _data in enumerate(data):
+		post_data = _data["post_data"]
 
-def show_category_data(
-	code,
-	search_method,
-	find_text,
-	silent,
-	brave,
-	verbose,
-	write_files,
-	write_json,
-	write_html,
-	outdir,
-	num_indent,
-	textwidth,
-	delim
-):
-	data, begin_time = get_category_data(code, textwidth, search_method)
-	colorama.init()
+		if print_item(
+			text := _data["item_text"].strip(),
+			canonical := post_data["post_canonical"].strip()
+		):
+			utils.print_centered("Item", colors[0])
+			info = []
+			if post_data["post_type"] == "forum":
+				info.append(("Index", f"{idx} ({post_data['post_url']})"))
+			info.append(("Type", _data["item_type"]))
+			if text:
+				info.append(("Text", text))
+			info.append(("Post type", post_data["post_type"]))
+			for prop in info:
+				utils.print_wrapped(prop, colors[1])
 
-	print_centered("Category", textwidth, delim, Fore.BLUE)
-	category_info = {
-		"Link": data["category_url"],
-		"Name": data["category_name"]
-	}
-	if short_description := data["short_description"].strip():
-		category_info["Description"] = short_description
-	for item in category_info.items():
-		print_wrapped(*item, textwidth, Fore.LIGHTBLUE_EX)
+			if canonical and (
+				CONFIG["brave"]
+				or _data["item_type"] != "post_hidden"
+			):
+				utils.print_post_content(canonical)
 
-	write_html, path = write_json_file(
-		data,
-		num_indent,
-		outdir,
-		"category-data",
-		write_files,
-		write_json,
-		write_html,
-		data["category_id"]
-	)
+		if CONFIG["write-html"]:
+			title = f"Post #{idx}"
+			if text:
+				title += ": " + text
+			utils.write_html_file(post_data["post_rendered"], title, f"{idx}.html")
 
-	if (category_type := data["category_type"]) == "view_posts":
-		for idx, item_data in enumerate(data["items"]):
-			item_text, item_type, post_data = item_data.values()
-			post_canonical = post_data["post_canonical"].strip()
-			post_type = post_data["post_type"]
+def show_folder_data(data, print_item, colors=COLORS[0]):
+	for idx, _data in enumerate(data):
+		if print_item(
+			text := _data["item_text"].strip(),
+			subtitle := _data["item_subtitle"].strip()
+		):
+			utils.print_centered("Item", colors[0])
+			info = [
+				("Index", f"{idx} ({_data['item_url']})"),
+				("Type", _data["item_type"])
+			]
+			if text:
+				info.append(("Text", text))
+			if subtitle:
+				info.append(("Subtitle", subtitle))
+			for prop in info:
+				utils.print_wrapped(prop, colors[1])
 
-			if not silent and (verbose or (find_text and (
-				find_text in item_text or find_text in post_canonical
-			))):
-				print_centered("Item", textwidth, delim, Fore.MAGENTA)
-				post_info = dict()
-				if post_type == "forum":
-					post_info["Index"] = f"{idx} ({post_data['post_url']})"
-				post_info["Type"] = item_type
-				if item_text := item_text.strip():
-					post_info["Text"] = item_text
-				post_info["Post type"] = post_type
-				for item in post_info.items():
-					print_wrapped(*item, textwidth, Fore.LIGHTMAGENTA_EX)
+def show_topic_data(data, stalk_users, find_posts, colors=COLORS[1]):
+	utils.print_centered("Topic", colors[0])
+	info = [
+		("Link", data["topic_url"]),
+		("Category", data["category_name"]),
+		("Title", data["topic_title"].strip())
+	]
+	if CONFIG["brave"] and (tags := data["tags"]):
+		info.append(("Tags", ", ".join(tag["tag_text"] for tag in tags)))
+	if source := data["source"].strip():
+		info.append(("Source", source))
+	info.extend([
+		("Post count", data["num_posts"]),
+		("View count", data["num_views"])
+	])
+	for prop in info:
+		utils.print_wrapped(prop, colors[1])
 
-				if (brave or item_type != "post_hidden") and post_canonical:
-					print_post(post_canonical, textwidth, delim)
+	print_item = lambda idx, username, thankers, thanks_received, num_post : (
+		not CONFIG["silent"] and (
+			CONFIG["verbose"]
+			or idx == 0
+			or utils.stalk_success(stalk_users, username, thankers, thanks_received)
+			or (find_posts and num_post in find_posts)
+	))
 
-			if write_html:
-				html_title = f"Post #{idx}"
-				if item_text:
-					html_title += ": " + item_text
-				write_html_file(title, post_data["post_rendered"], path, idx)
+	show_post_data(data["posts_data"], print_item)
 
-	elif category_type == "folder":
-		for idx, item_data in enumerate(data["items"]):
-			item_subtitle = item_data["item_subtitle"].strip()
-			item_text = item_data["item_text"].strip()
+def show_category_data(data, find_text, colors=COLORS[1]):
+	utils.print_centered("Category", colors[0])
+	info = [
+		("Link", data["category_url"]),
+		("Name", data["category_name"])
+	]
+	if description := data["short_description"].strip():
+		info.append(("Description", description))
+	for prop in info:
+		utils.print_wrapped(prop, colors[1])
 
-			if not silent and (verbose or (find_text and (
-				find_text in item_text or find_text in item_subtitle
-			))):
-				print_centered("Item info", textwidth, delim, Fore.MAGENTA)
-				item_info = {
-					"Index": f"{idx} ({item_data['item_url']})",
-					"Type": item_data["item_type"]
-				}
-				if item_text:
-					item_info["Text"] = item_text
-				if item_subtitle:
-					item_info["Subtitle"] = item_subtitle
-				for item in item_info.items():
-					print_wrapped(*item, textwidth, Fore.LIGHTMAGENTA_EX)
+	print_item = lambda str1, str2 : not CONFIG["silent"] and (
+		CONFIG["verbose"] or (find_text and (
+			find_text in str1 or find_text in str2
+	)))
 
-	print_elapsed_time(begin_time, textwidth, delim)
+	if data["category_type"] == "view_posts":
+		show_view_posts_data(data["items"], print_item)
 
-def show_aops_data(
-	code,
-	stalk_users=None,
-	find_posts=None,
-	search_method=None,
-	find_text=None,
-	silent=False,
-	brave=False,
-	verbose=False,
-	write_files=False,
-	write_json=False,
-	write_html=False,
-	outdir="community",
-	num_indent=2,
-	textwidth=95,
-	delim="=",
-	utc_offset=-5,
-	time_format="%b %-d, %Y, %-I:%M %p"
-):
-	if "h" in code:
-		show_topic_data(
-			code,
-			stalk_users,
-			find_posts,
-			silent,
-			brave,
-			verbose,
-			write_files,
-			write_json,
-			write_html,
-			outdir,
-			num_indent,
-			textwidth,
-			delim,
-			utc_offset,
-			time_format
-		)
-	else:
-		show_category_data(
-			code,
-			search_method,
-			find_text,
-			silent,
-			brave,
-			verbose,
-			write_files,
-			write_json,
-			write_html,
-			outdir,
-			num_indent,
-			textwidth,
-			delim
-		)
+	elif data["category_type"] == "folder":
+		show_folder_data(data["items"], print_item)

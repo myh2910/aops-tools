@@ -6,6 +6,11 @@ Selenium](https://pypi.org/project/selenium/), which can be exported to JSON
 or HTML format. It first executes a JavaScript script and then displays the
 result in the terminal.
 
+The configuration file is located at [config.py](aops_tools/config.py), which
+can be manually edited. Alternatively, the `CONFIG` dictionary can be called by
+adding `from aops_tools import CONFIG` to the file, which makes it possible to
+change some options like `CONFIG["verbose"] = True`.
+
 ## Requirements
 
 * Python with version >= 3.8
@@ -14,56 +19,4 @@ result in the terminal.
 
 ## Examples
 
-Their outputs are located in the [examples](aops_tools/examples/) folder.
-
-### Example 1: `stalk_users`
-
-```python
-from aops_tools import *
-
-show_aops_data("c6h1671291", stalk_users={"mijail"})
-```
-
-### Example 2: `verbose`
-
-```python
-from aops_tools import *
-
-show_aops_data("c6h2484456", verbose=True)
-```
-
-### Example 3: `find_text`
-
-```python
-from aops_tools import *
-
-show_aops_data("c3838", find_text="windmill")
-```
-
-### Example 4: `search_method`
-
-```python
-from aops_tools import *
-
-show_aops_data(
-	"c13",
-	search_method=["National Olympiads", "All-Russian", "2021"],
-	verbose=True
-)
-```
-
-### Example 5: `brave`
-
-```python
-from aops_tools import *
-
-show_aops_data("c3831", brave=True, verbose=True)
-```
-
-### Example 6: `verbose`
-
-```python
-from aops_tools import *
-
-show_aops_data("c14", verbose=True)
-```
+The examples are located in the [examples](aops_tools/examples/) folder.
