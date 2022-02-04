@@ -1,6 +1,6 @@
 # aops-tools
 
-It extracts data from the [Art of Problem
+Extract data from the [Art of Problem
 Solving](https://artofproblemsolving.com/community/) website with [Python
 Selenium](https://pypi.org/project/selenium/), which can be exported to JSON
 or HTML format. It first executes a JavaScript code and then displays the result

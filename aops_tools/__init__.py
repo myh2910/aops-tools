@@ -42,8 +42,8 @@ def show_aops_data(
 
 	Notes
 	-----
-	It is recommended to only extract an AoPS topic with 10000 or less posts,
-	because of the time limit of the selenium script execution.
+	It is recommended to only extract an AoPS topic with 1000 or less posts,
+	because of the time limit of the Selenium script execution.
 	"""
 	for arg, value in kwargs.items():
 		CONFIG[arg] = value

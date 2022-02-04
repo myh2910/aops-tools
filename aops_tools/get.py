@@ -53,31 +53,25 @@ def print_data_as_table(
 
 def get_webdriver():
 	"""
-	Selenium webdriver.
+	Selenium WebDriver.
+
+	We use `selenium-stealth` to prevent possible detections.
 
 	Returns
 	-------
 	driver : WebDriver
-		The selenium WebDriver object.
+		The Selenium WebDriver object.
 	"""
 	options = webdriver.ChromeOptions()
 	options.add_argument("start-maximized")
 	options.add_argument("headless")
-	options.add_experimental_option('excludeSwitches', ['enable-automation'])
-	options.add_experimental_option('useAutomationExtension', False)
+	options.add_experimental_option("excludeSwitches", ["enable-automation"])
+	options.add_experimental_option("useAutomationExtension", False)
 
 	driver = webdriver.Chrome(options=options)
 	driver.set_script_timeout(CONFIG['loading_time'])
 
-	stealth(
-		driver,
-		languages=["en-US", "en"],
-		vendor="Google Inc.",
-		platform="Win32",
-		webgl_vendor="Intel Inc.",
-		renderer="Intel Iris OpenGL Engine",
-		fix_hairline=True
-	)
+	stealth(driver, platform="Win32", fix_hairline=True)
 	return driver
 
 def get_topic_data(code):

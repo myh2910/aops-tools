@@ -1,9 +1,10 @@
 """
-The configuration used throughout the aops_tools module.
+The configuration used throughout the `aops_tools` module.
 
 Notes
 -----
-In Windows, the `time_format` value should be "%b %#d, %Y, %#I:%M %p" instead.
+On Windows, some time format specifiers are different than on Linux, so be
+aware of this. (e.g. `%-d` to `%#d`, `%-I` to `%#I`, etc.)
 
 """
 CONFIG = {
@@ -14,7 +15,7 @@ CONFIG = {
 	'delim': "=",
 	'category_script': "aops_tools/assets/category-script.js",
 	'topic_script': "aops_tools/assets/topic-script.js",
-	'loading_time': 1800,
+	'loading_time': 1200,
 	'outdir': "community",
 	'write_html': False,
 	'write_json': False,
