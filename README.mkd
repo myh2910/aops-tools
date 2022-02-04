@@ -11,11 +11,12 @@ can be manually edited.
 
 ## Requirements
 
-* Python with version >= 3.8
-* Python packages `bs4`, `colorama`, `selenium`, `selenium_stealth`
-* ChromeDriver
+* Python with version >= 3.8.
+* Install the packages below with pip.  
+`pip install bs4 colorama selenium selenium-stealth`
+* Install [ChromeDriver](https://chromedriver.chromium.org/downloads).
 
-## Examples
+## Usage
 
 Their outputs are located in the [examples](aops_tools/examples/) folder.
 
