@@ -60,13 +60,14 @@ def get_webdriver():
 	driver : WebDriver
 		The selenium WebDriver object.
 	"""
-	# https://stackoverflow.com/questions/68289474/
 	options = webdriver.ChromeOptions()
 	options.add_argument("start-maximized")
 	options.add_argument("headless")
 	options.add_experimental_option('excludeSwitches', ['enable-automation'])
 	options.add_experimental_option('useAutomationExtension', False)
+
 	driver = webdriver.Chrome(options=options)
+	driver.set_script_timeout(CONFIG['loading_time'])
 
 	stealth(
 		driver,
@@ -77,7 +78,6 @@ def get_webdriver():
 		renderer="Intel Iris OpenGL Engine",
 		fix_hairline=True
 	)
-
 	return driver
 
 def get_topic_data(code):
@@ -102,7 +102,6 @@ def get_topic_data(code):
 
 	driver = get_webdriver()
 	driver.get(aops_community(code))
-
 	data = driver.execute_script(script)
 	driver.quit()
 

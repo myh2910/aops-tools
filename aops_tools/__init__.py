@@ -4,10 +4,6 @@ aops-tools
 
 Extract and display data from AoPS.
 
-functions
----------
-show_aops_data
-
 """
 import colorama
 
@@ -15,7 +11,7 @@ from . import get, show, utils
 from .config import CONFIG
 
 __author__ = "Yohan Min"
-__version__ = "3.1.0"
+__version__ = "3.1.1"
 
 def show_aops_data(
 	code,

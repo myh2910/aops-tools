@@ -14,6 +14,7 @@ CONFIG = {
 	'delim': "=",
 	'category_script': "aops_tools/assets/category-script.js",
 	'topic_script': "aops_tools/assets/topic-script.js",
+	'loading_time': 1800,
 	'outdir': "community",
 	'write_html': False,
 	'write_json': False,
