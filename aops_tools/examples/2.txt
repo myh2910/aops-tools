@@ -1,3 +1,4 @@
+:: Extracting topic data...
 ============================================== Topic ===============================================
 Link: https://artofproblemsolving.com/community/c6h2484456
 Category: High School Olympiads
@@ -99,4 +100,4 @@ and since $FI=FC$ and triangles $XIF$ and $XCF$ share a side, we conclude that $
 Therefore, $I$ lies on $(CMQ)$ and now $FI^2=FC^2=FM\cdot FQ$ gives us that in fact $AI$ is tangent
 to $(IMC)$.
 ====================================================================================================
-Elapsed time: 6.29 seconds
+Elapsed time: 5.50 seconds

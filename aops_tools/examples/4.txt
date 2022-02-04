@@ -1,3 +1,4 @@
+:: Extracting category data...
 ============================================= Category =============================================
 Link: https://artofproblemsolving.com/community/c1988301
 Name: 2021 All-Russian Olympiad
@@ -250,4 +251,4 @@ each girl has $100$ balls, colored in the $100$ distinct colors. Prove that ther
 operations, in which each ball is exchanged no more than 1 time, and at the end, each girl has $100$
 balls, colored in the $100$ colors.
 ====================================================================================================
-Elapsed time: 23.80 seconds
+Elapsed time: 20.88 seconds

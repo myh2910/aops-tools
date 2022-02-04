@@ -1,3 +1,4 @@
+:: Extracting category data...
 :: This is a folder. Do you want to explore? [y/N] y
  Index  Text                                        Description
  --     --                                          --
@@ -43,7 +44,6 @@
  38     Mathematical Excellence Olympiad            International Mathematical Excellence Olympiad
                                                     (IMEO)
 :: Select item index [default: 0] 
-
 :: This is a folder. Do you want to explore? [y/N] y
  Index  Text               Description
  --     --                 --
@@ -111,7 +111,6 @@
  61     1960 IMO           IMO 1960
  62     1959 IMO           IMO 1959
 :: Select item index [default: 0] 
-
 ============================================= Category =============================================
 Link: https://artofproblemsolving.com/community/c2413807
 Name: 2021-IMO Problems
@@ -194,4 +193,4 @@ Let $m\ge 2$ be an integer, $A$ a finite set of integers (not necessarily positi
 $B_1,B_2,...,B_m$ subsets of $A$. Suppose that, for every $k=1,2,...,m$, the sum of the elements of
 $B_k$ is $m^k$. Prove that $A$ contains at least $\dfrac{m}{2}$ elements.
 ====================================================================================================
-Elapsed time: 16.06 seconds
+Elapsed time: 14.50 seconds

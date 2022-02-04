@@ -1,84 +1,134 @@
+"""
+Functions that display data on the terminal.
+
+"""
 from . import utils
 from .config import CONFIG
-from .utils import AOPS_URL, COLORS
+from .utils import COLORS
 
 
-def show_post_data(data, print_item, colors=COLORS[0]):
-	for idx, _data in enumerate(data):
-		post_time = utils.to_datetime(_data["post_time"])
+def show_post_data(posts_data, print_item, colors=COLORS[0]):
+	"""
+	Show AoPS post data on the terminal.
+
+	Parameters
+	----------
+	posts_data : list of dict
+		Data of the posts to display.
+	print_item : function
+		Determines if the data of a post will be displayed.
+	colors : tuple of str and None, optional
+		Title and post property name colors.
+	"""
+	if (utc_offset := CONFIG['utc_offset']) == 0:
+		timezone = "UTC±00"
+	elif utc_offset < 0:
+		timezone = f"UTC-{-utc_offset:02}"
+	else:
+		timezone = f"UTC+{utc_offset:02}"
+
+	for idx, data in enumerate(posts_data):
+		post_time = f"{utils.to_datetime(data['post_time'])} ({timezone})"
 
 		if print_item(
 			idx,
-			_data["username"],
-			_data["thankers"],
-			_data["thanks_received"],
-			_data["post_number"]
+			data['username'],
+			data['thankers'],
+			data['thanks_received'],
+			data['post_number']
 		):
 			utils.print_centered("Post", colors[0])
 			info = [
-				("Number", f"{_data['post_number']} ({_data['post_url']})"),
-				("Posted by", f"{_data['username']} ({AOPS_URL}/community/user/{_data['poster_id']})"),
+				("Number", f"{data['post_number']} ({data['post_url']})"),
+				(
+					"Posted by",
+					f"{data['username']} ({utils.user_profile(data['poster_id'])})"
+				),
 				("Posted at", post_time)
 			]
-			if _data["thankers"]:
+			if data['thankers']:
 				info.extend([
-					("Like count", _data["thanks_received"]),
-					("Liked by", _data["thankers"])
+					("Like count", data['thanks_received']),
+					("Liked by", data['thankers'])
 				])
 			for prop in info:
 				utils.print_wrapped(prop, colors[1])
 
-			if canonical := _data["post_canonical"].strip():
-				utils.print_post_content(canonical)
+			if canonical := data['post_canonical'].strip():
+				utils.print_text(canonical)
 
-		if CONFIG["write-html"]:
+		if CONFIG['write_html']:
 			utils.write_html_file(
-				_data["post_rendered"],
-				f"Post #{_data['post_number']} by {_data['username']} at {post_time}",
-				f"{_data['post_number']}.html"
+				data['post_rendered'],
+				f"Post #{data['post_number']} by {data['username']} at {post_time}",
+				f"{data['post_number']}.html"
 			)
 
-def show_view_posts_data(data, print_item, colors=COLORS[1]):
-	for idx, _data in enumerate(data):
-		post_data = _data["post_data"]
+def show_view_posts_data(items_data, print_item, colors=COLORS[1]):
+	"""
+	Show AoPS category (of type `view_posts`) data on the terminal.
+
+	Parameters
+	----------
+	items_data : list of dict
+		Data of the items to display.
+	print_item : function
+		Determines if the data of an item will be displayed.
+	colors : tuple of str and None, optional
+		Title and property name colors.
+	"""
+	for idx, data in enumerate(items_data):
+		post_data = data['post_data']
 
 		if print_item(
-			text := _data["item_text"].strip(),
-			canonical := post_data["post_canonical"].strip()
+			text := data['item_text'].strip(),
+			canonical := post_data['post_canonical'].strip()
 		):
 			utils.print_centered("Item", colors[0])
 			info = []
-			if post_data["post_type"] == "forum":
+			if post_data['post_type'] == "forum":
 				info.append(("Index", f"{idx} ({post_data['post_url']})"))
-			info.append(("Type", _data["item_type"]))
+			info.append(("Type", data['item_type']))
 			if text:
 				info.append(("Text", text))
-			info.append(("Post type", post_data["post_type"]))
+			info.append(("Post type", post_data['post_type']))
 			for prop in info:
 				utils.print_wrapped(prop, colors[1])
 
 			if canonical and (
-				CONFIG["brave"]
-				or _data["item_type"] != "post_hidden"
+				CONFIG['brave']
+				or data['item_type'] != "post_hidden"
 			):
-				utils.print_post_content(canonical)
+				utils.print_text(canonical)
 
-		if CONFIG["write-html"]:
+		if CONFIG['write_html']:
 			title = f"Post #{idx}"
 			if text:
 				title += ": " + text
-			utils.write_html_file(post_data["post_rendered"], title, f"{idx}.html")
+			utils.write_html_file(post_data['post_rendered'], title, f"{idx}.html")
 
-def show_folder_data(data, print_item, colors=COLORS[0]):
-	for idx, _data in enumerate(data):
+def show_folder_data(items_data, print_item, colors=COLORS[0]):
+	"""
+	Show AoPS category (of type `folder`) data on the terminal.
+
+	Parameters
+	----------
+	items_data : list of dict
+		Data of the items to display.
+	print_item : function
+		Determines if the data of an item will be displayed.
+	colors : tuple of str and None, optional
+		Title and property name colors.
+	"""
+	for idx, data in enumerate(items_data):
 		if print_item(
-			text := _data["item_text"].strip(),
-			subtitle := _data["item_subtitle"].strip()
+			text := data['item_text'].strip(),
+			subtitle := data['item_subtitle'].strip()
 		):
 			utils.print_centered("Item", colors[0])
 			info = [
-				("Index", f"{idx} ({_data['item_url']})"),
-				("Type", _data["item_type"])
+				("Index", f"{idx} ({data['item_url']})"),
+				("Type", data['item_type'])
 			]
 			if text:
 				info.append(("Text", text))
@@ -88,51 +138,78 @@ def show_folder_data(data, print_item, colors=COLORS[0]):
 				utils.print_wrapped(prop, colors[1])
 
 def show_topic_data(data, stalk_users, find_posts, colors=COLORS[1]):
-	utils.print_centered("Topic", colors[0])
+	"""
+	Show AoPS topic data on the terminal.
+
+	Parameters
+	----------
+	data : dict
+		Topic data.
+	stalk_users : set of str
+		Users to stalk in this topic.
+	find_posts : list of int
+		Post numbers to find in this topic.
+	colors : tuple of str and None, optional
+		Title and property name colors.
+	"""
+	utils.print_centered('Topic', colors[0])
 	info = [
-		("Link", data["topic_url"]),
-		("Category", data["category_name"]),
-		("Title", data["topic_title"].strip())
+		("Link", data['topic_url']),
+		("Category", data['category_name']),
+		("Title", data['topic_title'].strip())
 	]
-	if CONFIG["brave"] and (tags := data["tags"]):
-		info.append(("Tags", ", ".join(tag["tag_text"] for tag in tags)))
-	if source := data["source"].strip():
+	if CONFIG['brave'] and (tags := data['tags']):
+		info.append(("Tags", ", ".join(tag['tag_text'] for tag in tags)))
+	if source := data['source'].strip():
 		info.append(("Source", source))
 	info.extend([
-		("Post count", data["num_posts"]),
-		("View count", data["num_views"])
+		("Post count", data['num_posts']),
+		("View count", data['num_views'])
 	])
 	for prop in info:
 		utils.print_wrapped(prop, colors[1])
 
 	print_item = lambda idx, username, thankers, thanks_received, num_post : (
-		not CONFIG["silent"] and (
-			CONFIG["verbose"]
+		not CONFIG['silent'] and (
+			CONFIG['verbose']
 			or idx == 0
 			or utils.stalk_success(stalk_users, username, thankers, thanks_received)
 			or (find_posts and num_post in find_posts)
 	))
 
-	show_post_data(data["posts_data"], print_item)
+	show_post_data(data['posts_data'], print_item)
 
 def show_category_data(data, find_text, colors=COLORS[1]):
+	"""
+	Show AoPS category data on the terminal. An AoPS category consists of several
+	types, where only the `view_posts` and `folder` types will be displayed.
+
+	Parameters
+	----------
+	data : dict
+		Category data.
+	find_text : str
+		Text to find in this category.
+	colors : tuple of str and None, optional
+		Title and property name colors.
+	"""
 	utils.print_centered("Category", colors[0])
 	info = [
-		("Link", data["category_url"]),
-		("Name", data["category_name"])
+		("Link", data['category_url']),
+		("Name", data['category_name'])
 	]
-	if description := data["short_description"].strip():
+	if description := data['short_description'].strip():
 		info.append(("Description", description))
 	for prop in info:
 		utils.print_wrapped(prop, colors[1])
 
-	print_item = lambda str1, str2 : not CONFIG["silent"] and (
-		CONFIG["verbose"] or (find_text and (
+	print_item = lambda str1, str2 : not CONFIG['silent'] and (
+		CONFIG['verbose'] or (find_text and (
 			find_text in str1 or find_text in str2
 	)))
 
-	if data["category_type"] == "view_posts":
-		show_view_posts_data(data["items"], print_item)
+	if data['category_type'] == "view_posts":
+		show_view_posts_data(data['items'], print_item)
 
-	elif data["category_type"] == "folder":
-		show_folder_data(data["items"], print_item)
+	elif data['category_type'] == "folder":
+		show_folder_data(data['items'], print_item)

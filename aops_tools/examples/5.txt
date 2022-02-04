@@ -1,3 +1,4 @@
+:: Extracting category data...
 ============================================= Category =============================================
 Link: https://artofproblemsolving.com/community/c3831
 Name: 2004 IMO
@@ -263,4 +264,4 @@ clear.
 
 Peter
 ====================================================================================================
-Elapsed time: 5.95 seconds
+Elapsed time: 5.13 seconds
