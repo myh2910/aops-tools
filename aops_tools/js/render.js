@@ -1,6 +1,5 @@
-const AoPSUrl = 'https://artofproblemsolving.com';
-
 // Change image source links
+const AoPSUrl = 'https://artofproblemsolving.com';
 $('img').each(function() {
 	let src = $(this).attr('src');
 	if (src.startsWith('//')) {
@@ -11,20 +10,18 @@ $('img').each(function() {
 	}
 });
 
-const cssUrl = `${AoPSUrl}/assets/dist/v2160/css/`;
-const cssFiles = [
-	`${cssUrl}main-head.css`,
-	`${cssUrl}sharedsite.css`,
-	`${AoPSUrl}/assets/pythonbook/_static/codemirrorEdited.css`,
-	`${cssUrl}community_common.css`
-];
-
 // Load AoPS CSS files
+const cssUrl = `${AoPSUrl}/assets/dist/v2160/css`;
+const cssFiles = [
+	`${cssUrl}/main-head.css`,
+	`${cssUrl}/sharedsite.css`,
+	`${AoPSUrl}/assets/pythonbook/_static/codemirrorEdited.css`,
+	`${cssUrl}/community_common.css`
+];
 cssFiles.forEach(file => $('head').append(`<link rel="stylesheet" href="${file}">`));
 
 // From community_utils.js
 const AoPS = {Community: {}};
-
 AoPS.Community.Utils = {
 	mouseOverTip: function(head) {
 		const shape = head.next();

@@ -1,47 +1,44 @@
-// Keys
+// Get category data from AoPS
+const focusCategory = await scrollDown();
+const categoryUrl = 'https://artofproblemsolving.com/community/c';
+let categoryData = {category_url: `${categoryUrl}${focusCategory.category_id}`};
+
 const categoryKeys = [
 	'category_id',
 	'category_name',
 	'category_type',
 	'short_description'
 ];
-const folderKeys = [
-	'item_id',
-	'item_subtitle',
-	'item_text',
-	'item_type',
-];
-const viewPostsKeys = [
-	'category_id',
-	'category_name',
-	'post_canonical',
-	'post_format',
-	'post_id',
-	'post_number',
-	'post_rendered',
-	'post_type',
-	'poster_id',
-	'topic_id',
-	'username'
-];
-
-// Get category data from AoPS
-const focusCategory = await scrollDown();
-const categoryLink = 'https://artofproblemsolving.com/community/c';
-
-// Write and return category data
-let categoryData = {category_url: `${categoryLink}${focusCategory.category_id}`};
 categoryKeys.forEach(key => categoryData[key] = focusCategory[key]);
 
 switch (focusCategory.category_type) {
 	case 'folder':
+		const folderKeys = [
+			'item_id',
+			'item_subtitle',
+			'item_text',
+			'item_type',
+		];
 		categoryData.items = focusCategory.items.map(data => {
-			let itemData = {item_url: `${categoryLink}${data.item_id}`};
+			let itemData = {item_url: `${categoryUrl}${data.item_id}`};
 			folderKeys.forEach(key => itemData[key] = data[key]);
 			return itemData;
 		});
 		break;
 	case 'view_posts':
+		const viewPostsKeys = [
+			'category_id',
+			'category_name',
+			'post_canonical',
+			'post_format',
+			'post_id',
+			'post_number',
+			'post_rendered',
+			'post_type',
+			'poster_id',
+			'topic_id',
+			'username'
+		];
 		categoryData.items = focusCategory.items.map(data => {
 			let postData = data.post_data;
 			let itemData = {
@@ -51,13 +48,12 @@ switch (focusCategory.category_type) {
 			};
 			viewPostsKeys.forEach(key => itemData.post_data[key] = postData[key]);
 			if (postData.post_type === 'forum') {
-				itemData.post_data.post_url = `${categoryLink}${postData.category_id}h${postData.topic_id}p${postData.post_id}`;
+				itemData.post_data.post_url = `${categoryUrl}${postData.category_id}h${postData.topic_id}p${postData.post_id}`;
 			}
 			return itemData;
 		});
 		break;
 }
-
 return categoryData;
 
 // Functions

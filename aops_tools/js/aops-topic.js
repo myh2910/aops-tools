@@ -1,17 +1,7 @@
-// Keys
-const topicKeys = [
-	'announce_type',
-	'category_id',
-	'category_name',
-	'locked',
-	'num_deleted',
-	'num_posts',
-	'num_views',
-	'source',
-	'tags',
-	'topic_id',
-	'topic_title'
-];
+// Get topic data from AoPS
+const focusTopic = await scrollDown();
+const topicUrl = `https://artofproblemsolving.com/community/c${focusTopic.category_id}h${focusTopic.topic_id}`;
+
 const postKeys = [
 	'last_edit_reason',
 	'last_edit_time',
@@ -28,20 +18,28 @@ const postKeys = [
 	'thanks_received',
 	'username'
 ];
-
-// Get topic data from AoPS
-const focusTopic = await scrollDown();
-const topicLink = `https://artofproblemsolving.com/community/c${focusTopic.category_id}h${focusTopic.topic_id}`;
-
-// Write and return topic data
 let topicData = {
 	posts_data: focusTopic.posts.models.map(model => {
-		let postData = {post_url: `${topicLink}p${model.attributes.post_id}`};
+		let postData = {post_url: `${topicUrl}p${model.attributes.post_id}`};
 		postKeys.forEach(key => postData[key] = model.attributes[key]);
 		return postData;
 	}),
-	topic_url: topicLink
+	topic_url: topicUrl
 };
+
+const topicKeys = [
+	'announce_type',
+	'category_id',
+	'category_name',
+	'locked',
+	'num_deleted',
+	'num_posts',
+	'num_views',
+	'source',
+	'tags',
+	'topic_id',
+	'topic_title'
+];
 topicKeys.forEach(key => topicData[key] = focusTopic[key]);
 return topicData;
 
