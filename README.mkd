@@ -16,7 +16,7 @@ can be manually edited.
 `pip install colorama selenium selenium-stealth`
 * Install [ChromeDriver](https://chromedriver.chromium.org/downloads).
 
-## Usages
+## Usage
 
 ```python
 from aops_tools import show_aops_data
