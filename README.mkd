@@ -16,54 +16,17 @@ can be manually edited.
 `pip install colorama selenium selenium-stealth`
 * Install [ChromeDriver](https://chromedriver.chromium.org/downloads).
 
-## Usage
-
-Their outputs are located in the [assets](aops_tools/assets/) folder.
-
-### Example 1: `stalk_users`
+## Usages
 
 ```python
 from aops_tools import show_aops_data
 
 show_aops_data("c6h1671291", stalk_users={"mijail"})
-```
-
-### Example 2: `verbose`
-
-```python
-from aops_tools import show_aops_data
-
 show_aops_data("c6h2484456", verbose=True)
-```
-
-### Example 3: `find_text`
-
-```python
-from aops_tools import show_aops_data
-
 show_aops_data("c3838", find_text="windmill")
-```
-
-### Example 4: `search_method`
-
-```python
-from aops_tools import show_aops_data
-
 show_aops_data("c13", search_method=["National Olympiads", "All-Russian", "2021"], verbose=True)
-```
-
-### Example 5: `brave`
-
-```python
-from aops_tools import show_aops_data
-
 show_aops_data("c3831", brave=True, verbose=True)
-```
-
-### Example 6: `verbose`
-
-```python
-from aops_tools import show_aops_data
-
 show_aops_data("c14", verbose=True)
 ```
+
+Their outputs are located in the [assets](aops_tools/assets/) folder.
