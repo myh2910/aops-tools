@@ -1,7 +1,9 @@
 // Keys
 const topicKeys = [
+	'announce_type',
 	'category_id',
 	'category_name',
+	'locked',
 	'num_deleted',
 	'num_posts',
 	'num_views',

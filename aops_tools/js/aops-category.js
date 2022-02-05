@@ -5,13 +5,13 @@ const categoryKeys = [
 	'category_type',
 	'short_description'
 ];
-const itemKeys = [
+const folderKeys = [
 	'item_id',
 	'item_subtitle',
 	'item_text',
 	'item_type',
 ];
-const postKeys = [
+const viewPostsKeys = [
 	'category_id',
 	'category_name',
 	'post_canonical',
@@ -33,26 +33,29 @@ const categoryLink = 'https://artofproblemsolving.com/community/c';
 let categoryData = {category_url: `${categoryLink}${focusCategory.category_id}`};
 categoryKeys.forEach(key => categoryData[key] = focusCategory[key]);
 
-if (!focusCategory.is_forum) {
-	categoryData.items = focusCategory.items.map(data => {
-		if (data.item_type.startsWith('post')) {
+switch (focusCategory.category_type) {
+	case 'folder':
+		categoryData.items = focusCategory.items.map(data => {
+			let itemData = {item_url: `${categoryLink}${data.item_id}`};
+			folderKeys.forEach(key => itemData[key] = data[key]);
+			return itemData;
+		});
+		break;
+	case 'view_posts':
+		categoryData.items = focusCategory.items.map(data => {
 			let postData = data.post_data;
 			let itemData = {
 				item_text: data.item_text,
 				item_type: data.item_type,
 				post_data: {}
 			};
-			postKeys.forEach(key => itemData.post_data[key] = postData[key]);
+			viewPostsKeys.forEach(key => itemData.post_data[key] = postData[key]);
 			if (postData.post_type === 'forum') {
 				itemData.post_data.post_url = `${categoryLink}${postData.category_id}h${postData.topic_id}p${postData.post_id}`;
 			}
 			return itemData;
-		} else {
-			let itemData = {item_url: `${categoryLink}${data.item_id}`};
-			itemKeys.forEach(key => itemData[key] = data[key]);
-			return itemData;
-		}
-	});
+		});
+		break;
 }
 
 return categoryData;

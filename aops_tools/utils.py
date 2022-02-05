@@ -8,7 +8,6 @@ import textwrap
 from datetime import datetime, timedelta
 from timeit import default_timer
 
-from bs4 import BeautifulSoup
 from colorama import Fore
 
 from .config import CONFIG
@@ -258,29 +257,22 @@ def write_html_file(data, title, filename):
 	filename : str
 		HTML file name.
 	"""
-	tmp = BeautifulSoup(data, "html.parser")
-	for img in tmp.find_all("img"):
-		if (src := img['src']).startswith("//"):
-			img['src'] = "https:" + src
-		elif src.startswith("/"):
-			img['src'] = AOPS_URL + src
 
-	soup = BeautifulSoup(
+	path = os.path.join(CONFIG['path'], filename)
+	with open(path, "w", encoding="utf8") as file:
+		file.write(
 f"""<!DOCTYPE html>
 <html lang="en-US">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1">
+<meta name="viewport" content="width=device-width">
 <title>{title}</title>
-<link rel="stylesheet" href="../../../aops_tools/assets/aops.css">
 <link rel="icon" href="https://artofproblemsolving.com/online-favicon.ico">
-<script src="../../../aops_tools/assets/aops.js"></script>
 <script src="https://assets.artofproblemsolving.com/js/jquery.min.js"></script>
 </head>
-<body></body>
-</html>""", "lxml")
-	soup.find("body").append(tmp)
-
-	path = os.path.join(CONFIG['path'], filename)
-	with open(path, "w", encoding="utf8") as file:
-		file.write(str(soup))
+<body style="padding: 10px; background: #fff;">
+<div class="cmty-post-body">{data}</div>
+<script src="../../../aops_tools/js/render.js"></script>
+</body>
+</html>"""
+		)

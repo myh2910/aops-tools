@@ -13,12 +13,12 @@ can be manually edited.
 
 * Python with version >= 3.8.
 * Install the packages below with pip.  
-`pip install bs4 colorama selenium selenium-stealth`
+`pip install colorama selenium selenium-stealth`
 * Install [ChromeDriver](https://chromedriver.chromium.org/downloads).
 
 ## Usage
 
-Their outputs are located in the [examples](aops_tools/examples/) folder.
+Their outputs are located in the [assets](aops_tools/assets/) folder.
 
 ### Example 1: `stalk_users`
 
