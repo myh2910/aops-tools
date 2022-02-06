@@ -22,6 +22,7 @@ can be manually edited.
 from aops_tools import show_aops_data
 
 show_aops_data("c6h1671291", stalk_users={"mijail"})
+show_aops_data("c6184h1061455", write_files=True)
 show_aops_data("c6h2484456", verbose=True)
 show_aops_data("c3838", find_text="windmill")
 show_aops_data("c13", search_method=["National Olympiads", "All-Russian", "2021"], verbose=True)

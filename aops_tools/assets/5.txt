@@ -1,267 +1,254 @@
 :: Extracting category data...
 ============================================= Category =============================================
-Link: https://artofproblemsolving.com/community/c3831
-Name: 2004 IMO
-Description: IMO 2004
+Link: https://artofproblemsolving.com/community/c1988301
+Name: 2021 All-Russian Olympiad
+Description: All-Russian Olympiad 2021
 =============================================== Item ===============================================
 Type: post
-Text: Day 1
 Post type: view_posts_text
 ============================================= Content ==============================================
-July 12th
+Grade 9
 =============================================== Item ===============================================
-Index: 1 (https://artofproblemsolving.com/community/c6h14020p99445)
+Index: 1 (https://artofproblemsolving.com/community/c6h2533904p21550640)
 Type: post
 Text: 1
 Post type: forum
 ============================================= Content ==============================================
-1. Let $ABC$ be an acute-angled triangle with $AB\neq AC$. The circle with diameter $BC$ intersects
-the sides $AB$ and $AC$ at $M$ and $N$ respectively. Denote by $O$ the midpoint of the side $BC$.
-The bisectors of the angles $\angle BAC$ and $\angle MON$ intersect at $R$. Prove that the
-circumcircles of the triangles $BMR$ and $CNR$ have a common point lying on the side $BC$.
+On a circle there're $1000$ marked points, each colored in one of $k$ colors. It's known that among
+any $5$ pairwise intersecting segments, endpoints of which are $10$ distinct marked points, there're
+at least $3$ segments, each of which has its endpoints colored in different colors. Determine the
+smallest possible value of $k$ for which it's possible.
 =============================================== Item ===============================================
-Index: 2 (https://artofproblemsolving.com/community/c6h14020p99466)
-Type: post_hidden
-Text: Click for solution
-Post type: forum
-============================================= Content ==============================================
-I needed 10 minutes to sort the trash out of the configuration. After that everything was trivial.
-
-If T is the point of intersection of the circumcircles of triangles BMR and CNR, then we must show
-that T lies on BC, i. e. that we have < BTR + < CTR = $180^{\circ}$. Since BMRT is a cyclic
-quadrilateral, we have < BTR = $180^{\circ}$ - < BMR, so < BTR = < AMR. Similarly < CTR = < ANR. So
-we have to show that < AMR + < ANR = $180^{\circ}$, or, in other words, we must prove that the
-quadrilateral AMRN is cyclic.
-
-Well, the points M and N lie on the circle with diameter BC, and the center of this circle is
-obviously the midpoint O of BC. Thus, MO = NO, so that the triangle MON is isosceles, and hence the
-line OR, being the angle bisector of the angle MON, coincides with the perpendicular bisector of the
-segment MN. Hence, the point R lies on the perpendicular bisector of the segment MN. In other words,
-the point R is the point of intersection of the perpendicular bisector of the segment MN with the
-angle bisector of the angle MAN. But a well-known fact states that the perpendicular bisector of a
-side of a triangle meets the angle bisector of the opposite angle at a point on the circumcircle of
-the triangle. Hence, the point R lies on the circumcircle of triangle MAN, and therefore, the
-quadrilateral AMRN is cyclic.
-
-  Darij
-=============================================== Item ===============================================
-Index: 3 (https://artofproblemsolving.com/community/c6h14021p99448)
+Index: 2 (https://artofproblemsolving.com/community/c6h2533910p21550732)
 Type: post
 Text: 2
 Post type: forum
 ============================================= Content ==============================================
-Find all polynomials $f$ with real coefficients such that for all reals $a,b,c$ such that $ab+bc+ca
-= 0$ we have the following relations
-
-\[ f(a-b) + f(b-c) + f(c-a) = 2f(a+b+c). \]
+Let $n$ be a natural number. An integer $a>2$ is called $n$-decomposable, if $a^n-2^n$ is divisible
+by all the numbers of the form $a^d+2^d$, where $d\neq n$ is a natural divisor of $n$. Find all
+composite $n\in \mathbb{N}$, for which there's an $n$-decomposable number.
 =============================================== Item ===============================================
-Index: 4 (https://artofproblemsolving.com/community/c6h14021p99530)
-Type: post_hidden
-Text: Click for solution
-Post type: forum
-============================================= Content ==============================================
-A reasonably clean solution:
-
-We want to find all polynomials f such that $f(a-b)+f(b-c)+f(c-a)=2f(a+b+c)$ whenever $ab+bc+ca=0$.
-Equivalently, $ab+bc+ca$ divides $f(a-b)+f(b-c)+f(c-a)-2f(a+b+c)$.
-Let $f(x)=r_nx^n+r_{n-1}x^{n-1}+...+r_0$ and $a'=ta,b'=tb,c'=tc$
-Then $a'b'+b'c'+c'a'=0$ if $ab+bc+ca=0$ so
-$t^nr_n((a-b)^n+(b-c)^n+(c-a)^n-2(a+b+c)^n)+...+r_0(1+1+1-2)=0$
-The functions of t $t^n,t^{n-1},...,1$ are linearly independent, so each coefficient
-$r_k((a-b)^k+(b-c)^k+(c-a)^k-2(a+b+c)^k)$ must be zero.
-This means that either $r_k=0$ or $ab+bc+ca$ divides $(a-b)^k+(b-c)^k+(c-a)^k-2(a+b+c)^k$
-For $k=2$, $(a-b)^2+(b-c)^2+(c-a)^2-2(a+b+c)^2=-4(ab+bc+ca)$
-For $k=4$, $(a-b)^4+(b-c)^4+(c-a)^4-2(a+b+c)^4=
--6(ab+bc+ca)(2a^2+2b^2+2c^2+ab+bc+ca)$
-
-Consider the case $a=2,b=2,c=-1$. Then $(-3)^k+(-3)^k=2*3^k$
-This forces k to be even. Now take $a=6,b=3,c=-2$. This gives
-$3^k+5^k+(-8)^k=2*7^k$.
-Since $8^6>2*7^6$,
-$3^k+5^k+(-8)^k>2*7^k$ for all even $k>4$.
-By previous arguments, we must have $f(x)=dx^4+ex^2$
-=============================================== Item ===============================================
-Index: 5 (https://artofproblemsolving.com/community/c6h14023p99450)
+Index: 3 (https://artofproblemsolving.com/community/c6h2533920p21550832)
 Type: post
 Text: 3
 Post type: forum
 ============================================= Content ==============================================
-Define a "hook" to be a figure made up of six unit squares as shown below in the picture, or any of
-the figures obtained by applying rotations and reflections to this figure.
-
-[asy]
-unitsize(0.5 cm);
-
-draw((0,0)--(1,0));
-draw((0,1)--(1,1));
-draw((2,1)--(3,1));
-draw((0,2)--(3,2));
-draw((0,3)--(3,3));
-draw((0,0)--(0,3));
-draw((1,0)--(1,3));
-draw((2,1)--(2,3));
-draw((3,1)--(3,3));
-[/asy]
-Determine all $ m\times n$ rectangles that can  be covered without gaps and without overlaps with
-hooks such that
-
-- the rectangle is covered without gaps and without overlaps
-- no part of a hook covers area outside the rectangle.
+On a line $n+1$ segments are marked such that one of the points of the line is contained in all of
+them. Prove that one can find $2$ distinct segments $I, J$ which intersect at a segment of length at
+least $\frac{n-1}{n}d$, where $d$ is the length of the segment $I$.
 =============================================== Item ===============================================
-Index: 6 (https://artofproblemsolving.com/community/c6h14023p99471)
-Type: post_hidden
-Text: Click for solution
-Post type: forum
-============================================= Content ==============================================
-solution from Christian Sattler(Germany): first we define an involution on the hooks: send every
-hook to the one which includes the square where the hook goes around. it is clear that this is an
-involution, so the number of hooks is even. it immediately follows that 12 | mn. there are three
-cases(wlog 3 divides m): 3 divides m and 4 divides n(trivial since we can do 3x4-rectangles), 12
-divides m, then n can be arbritarily, but not equal to 1,2 or 5(it is clear that n is not 1,2, and 5
-is easy to exclude. in all other cases we may write n as linear combination of 3 and 4 with positive
-coefficients and we can use 3x4-rectangles again taking rows of 3x4-rectangles or 4x3-rectangles).
-so we are left with the case 6 | m  and 2 | n. so look again at our involution: it shows that our
-hooks appear in pairs of the possible forms: either 3x4-rectangles or something similar to an S:
-.===
-.===
-===.
-===.
-now mark every second row. it is easy to see that there are always 6 out of the 12 squares of the S
-are marked, the same for horizontal 3x4-rectangles, but vertical 3x4-rectangles have either 4 or 8
-squares marked, that shows that there's an even number of them. doing the same with columns, we get
-that the total number of 3x4-rectangles is even. now, look at the coloring of
-.==.
-=..=
-.==.
-=..=
-and periodic. it is easy to see that 6 out of 12 squares are marked at 3x4-rectangles, the S
-upright, the S turned by 90 degree and even distance to the left boundary of the rectangle, but 4 or
-8 for an S turned by 90 degree with odd distance to the left boundary. this shows that there's an
-even number of them and by translating the coloring by 1 to the right and turning it all around, we
-get that the number of S is even as well. this shows that 24 is a divisor of mn, so we get one of
-the two other cases.
-
-i only found all solutions but couldn't prove that it are all.
-
-Peter
-=============================================== Item ===============================================
-Type: post
-Text: Day 2
-Post type: view_posts_text
-============================================= Content ==============================================
-July 13th
-=============================================== Item ===============================================
-Index: 8 (https://artofproblemsolving.com/community/c6h14091p99756)
+Index: 4 (https://artofproblemsolving.com/community/c6h2533933p21550985)
 Type: post
 Text: 4
 Post type: forum
 ============================================= Content ==============================================
-Let $n \geq 3$ be an integer. Let $t_1$, $t_2$, ..., $t_n$ be positive real numbers such that \[n^2
-+ 1 > \left( t_1 + t_2 + \cdots + t_n \right) \left( \frac{1}{t_1} + \frac{1}{t_2} + \cdots +
-\frac{1}{t_n} \right).\] Show that $t_i$, $t_j$, $t_k$ are side lengths of a triangle for all $i$,
-$j$, $k$ with $1 \leq i < j < k \leq n$.
+Given an acute triangle $ABC$, point $D$ is chosen on the side $AB$ and a point $E$ is chosen on the
+extension of $BC$ beyond $C$. It became known that the line through $E$ parallel to $AB$ is tangent
+to the circumcircle of $\triangle ADC$. Prove that one of the tangents from $E$ to the circumcircle
+of $\triangle BCD$ cuts the angle $\angle ABE$ in such a way that a triangle similar to $\triangle
+ABC$ is formed.
 =============================================== Item ===============================================
-Index: 9 (https://artofproblemsolving.com/community/c6h14091p99763)
-Type: post_hidden
-Text: Click for solution
-Post type: forum
-============================================= Content ==============================================
-solution by induction: the hardest part is to show that it works for n=3. so assume $t_1\geq t_2\geq
-t_3$. it is easy to see that the right is strictly increasing in $t_3$. so if we show that the
-reverse inequality holds for $t_1=t_2+t_3$, we are done. a quick calculation is enough to show
-that(it is too boring to post). but if we know is true for n-1, then let's do the following
-computation:
-$((t_1+...+t_{n-1})+t_n)(\frac{1}{t_1}+...+\frac{1}{t_{n-1}}+\frac{1}{t_n})\geq
-(t_1+...+t_{n-1})(\frac{1}{t_1}+...+\frac{1}{t_{n-1}})+2n-1$,
-by AM-GM and AM-HM. so we get the inequality reduces to that one for n-1 variables.
-
-Peter
-=============================================== Item ===============================================
-Index: 10 (https://artofproblemsolving.com/community/c6h14092p99759)
+Index: 5 (https://artofproblemsolving.com/community/c6h2535038p21568245)
 Type: post
 Text: 5
 Post type: forum
 ============================================= Content ==============================================
-In a convex quadrilateral $ABCD$, the diagonal $BD$ bisects neither the angle $ABC$ nor the angle
-$CDA$. The point $P$ lies inside $ABCD$ and satisfies \[\angle PBC=\angle DBA\quad\text{and}\quad
-\angle PDC=\angle BDA.\] Prove that $ABCD$ is a cyclic quadrilateral if and only if $AP=CP$.
+The reals $b>0$ and $a$ are such that the quadratic $x^2+ax+b$ has two distinct real roots,  exactly
+one of which lies in the interval $[-1;1]$. Prove that one of the roots lies in the interval
+$(-b;b)$.
 =============================================== Item ===============================================
-Index: 11 (https://artofproblemsolving.com/community/c6h14092p99770)
-Type: post_hidden
-Text: Click for solution
-Post type: forum
-============================================= Content ==============================================
-I needed over two hours for the solution, even though it is not so hard. Let $P_1$, $P_2$, $P_3$,
-$P_4$ be the orthogonal projections of the point P on the lines AB, BC, CD, DA, and let $Q_1$,
-$Q_2$, $Q_3$, $Q_4$ be the reflections of P in these lines, or, equivalently, the reflections of P
-in the points $P_1$, $P_2$, $P_3$, $P_4$. From < PBC = < DBA, you see that the line BD is the
-reflection of the line BP in the angle bisector of the angle ABC. Now you use the following (quite
-easy) lemma:
-
-[i]If X is a point in the plane of an angle VUW, and V' and W' are the reflections of X in the lines
-UV and UW, then the perpendicular bisector of the line V'W' is the reflection of the line UX in the
-angle bisector of the angle VUW.[/i]
-
-Now, apply this lemma to the angle ABC and the point P, whose reflections in the lines BA and BC are
-$Q_1$ and $Q_2$, respectively, and you see that the perpendicular bisector of the line $Q_1 Q_2$ is
-the line BD. Hence, the points $Q_1$ and $Q_2$ are symmetric to each other with respect to the line
-BD. Similarly, the points $Q_4$ and $Q_3$ are symmetric to each other with respect to the line BD,
-too. Hence, since symmetry is a congruence transformation  :D , we have $Q_1 Q_4 = Q_2 Q_3$. Now,
-since $Q_1$ and $Q_4$ are the reflections of P in $P_1$ and $P_4$, the points $P_1$ and $P_4$ are
-the midpoints of the segments $PQ_1$ and $PQ_4$, and thus $P_1 P_4 = \frac12 Q_1 Q_4$. Similarly
-$P_2 P_3 = \frac12 Q_2 Q_3$. Now, from $Q_1 Q_4 = Q_2 Q_3$, it follows that $P_1 P_4 = P_2 P_3$.
-
-Since $\measuredangle AP_4 P = 90^{\circ}$ and $\measuredangle AP_1 P = 90^{\circ}$, the points
-$P_4$ and $P_1$ lie on the circle with diameter AP. In other words, the circumcircle of triangle
-$AP_4 P_1$ has the segment AP as diameter. Therefore, by the Extended Law of Sines, we have
-
-  $P_1 P_4 = AP \cdot \sin \measuredangle P_1 A P_4 = AP \cdot \sin A$,
-
-where A = < DAB and C = < BCD are two opposite angles of our quadrilateral. Similarly, $P_2 P_3 = CP
-\cdot \sin C$. Since $P_1 P_4 = P_2 P_3$, we conclude that AP = CP holds if and only if sin A = sin
-C. Now, sin A = sin C means either A = C, or A + C = $180^{\circ}$. In the case of A + C =
-$180^{\circ}$, the quadrilateral ABCD is cyclic, and we are happy. Remains to show that the case A =
-C cannot occur. In fact, a simple angle chase shows that in this case, we have < BPD =
-$180^{\circ}$, so that the point P (if it exists) lies on the diagonal BD, and from < PBC = < DBA we
-conclude that the diagonal BD bisects the angle ABC. This contradicts the assumption of the problem.
-Hence, AP = CP holds if and only if the quadrilateral ABCD is cyclic.
-
-Peter has another solution, applying the sine law one thousand times (later he admitted it were just
-four times or something like this  :D ).
-
-  Darij
-=============================================== Item ===============================================
-Index: 12 (https://artofproblemsolving.com/community/c6h14093p99760)
+Index: 6 (https://artofproblemsolving.com/community/c6h2535040p21568313)
 Type: post
 Text: 6
 Post type: forum
 ============================================= Content ==============================================
-We call a positive integer [i]alternating[/i] if every two consecutive digits in its decimal
-representation are of different parity.
-
-Find all positive integers $n$ such that $n$ has a multiple which is alternating.
+Given is a non-isosceles triangle $ABC$ with $<ABC=60$, and in its interior, a point $T$ is selected
+such that $<ATC=<BTC=<BTA=120$. Let $M$  the intersection point of the medians in $ABC$. Let $TM$
+intersect $(ATC)$ at $K$. Find $TM/MK$.
 =============================================== Item ===============================================
-Index: 13 (https://artofproblemsolving.com/community/c6h14093p99767)
-Type: post_hidden
-Text: Click for solution
+Index: 7 (https://artofproblemsolving.com/community/c6h2535024p21568147)
+Type: post
+Text: 7
 Post type: forum
 ============================================= Content ==============================================
-not really nice, but anyway not too hard, if one doesn't forget something at the end.
-ok, it are all numbers not divisible by 20. actually, it is clear that there is no alternating
-multiple of them since the last two digits are always even. so, let's first do powers of 2 and 5. in
-both cases start with the number 25252525...2525 for 5 with "enough" digits(or 101010...1010 for 2).
-in the k-th step, change the k-th digit such that the new number is divisible by
-$2^{k+1}$(respectively $5^{k+1}$) if the number is not divisible by that term before(where even
-digits stay even and odd digits stay odd). if inductively follows that this is actually possible, so
-we get a alternating number which is divisible by $2^n$(respectively $5^n$) and has an odd digit at
-the end. now, take a power of 2 times an odd number not divisible by 5. take the alternating number
-divisible by the power of 2 several times to get by fermat a number divisible by the number we want
-to. now, take (10 times a) power of 5 times an odd number not divisible by 5. take the number
-divisible by to the power of 5 several times to get a number divisible by the power of 5 times the
-odd number not divisible by 5. add a 0 at the end if the number is divisible by 10. so, we have
-everything since numbers divisible by 20 have no alternating multiple. i hope the main argument gets
-clear.
-
-Peter
+Given are positive integers $n>20$ and $k>1$, such that $k^2$ divides $n$. Prove that there exist
+positive integers $a, b, c$, such that $n=ab+bc+ca$.
+=============================================== Item ===============================================
+Index: 8 (https://artofproblemsolving.com/community/c6h2535054p21568585)
+Type: post
+Text: 8
+Post type: forum
+============================================= Content ==============================================
+One hundred sages play the following game. They are waiting in some fixed order in front of a room.
+The sages enter the room one after another. When a sage enters the room, the following happens - the
+guard in the room chooses two arbitrary distinct numbers from the set {$1,2,3$}, and announces them
+to the sage in the room. Then the sage chooses one of those numbers, tells it to the guard, and
+leaves the room, and the next enters, and so on. During the game, before a sage chooses a number, he
+can ask the guard what were the chosen numbers of the previous two sages. During the game, the sages
+cannot talk to each other. At the end, when everyone has finished, the game is considered as a
+failure if the sum of the 100 chosen numbers is exactly $200$; else it is successful. Prove that the
+sages can create a strategy, by which they can win the game.
+=============================================== Item ===============================================
+Type: post
+Post type: view_posts_text
+============================================= Content ==============================================
+Grade 10
+=============================================== Item ===============================================
+Index: 10 (https://artofproblemsolving.com/community/c6h2533944p21551204)
+Type: post
+Text: 1
+Post type: forum
+============================================= Content ==============================================
+On the side $BC$ of the parallelogram $ABCD$, points $E$ and $F$ are given ($E$ lies between $B$ and
+$F$) and the diagonals $AC, BD$ meet at $O$. If it's known that $AE, DF$ are tangent to the
+circumcircle of $\triangle AOD$, prove that they're tangent to the circumcircle of $\triangle EOF$
+as well.
+=============================================== Item ===============================================
+Index: 11 (https://artofproblemsolving.com/community/c6h2533949p21551325)
+Type: post
+Text: 2
+Post type: forum
+============================================= Content ==============================================
+Find all sets of positive integers $\{x_1, x_2, \dots, x_{20}\}$ such that $$x_{i+2}^2=lcm(x_{i+1},
+x_{i})+lcm(x_{i}, x_{i-1})$$ for $i=1, 2, \dots, 20$ where $x_0=x_{20}, x_{21}=x_1, x_{22}=x_2$.
+=============================================== Item ===============================================
+Index: 12 (https://artofproblemsolving.com/community/c6h2534039p21552938)
+Type: post
+Text: 3
+Post type: forum
+============================================= Content ==============================================
+In the country there're $N$ cities and some pairs of cities are connected by two-way airlines (each
+pair with no more than one). Every airline belongs to one of $k$ companies. It turns out that it's
+possible to get to any city from any other, but it fails when we delete all airlines belonging to
+any one of the companies. What is the maximum possible number of airlines in the country ?
+=============================================== Item ===============================================
+Index: 13 (https://artofproblemsolving.com/community/c6h2534096p21554288)
+Type: post
+Text: 4
+Post type: forum
+============================================= Content ==============================================
+Given a natural number $n>4$ and $2n+4$ cards numbered with $1, 2, \dots, 2n+4$. On the card with
+number $m$ a real number $a_m$ is written such that $\lfloor a_{m}\rfloor=m$. Prove that it's
+possible to choose $4$ cards in such a way that the sum of the numbers on the first two cards
+differs from the sum of the numbers on the two remaining cards by less than
+$$\frac{1}{n-\sqrt{\frac{n}{2}}}$$.
+=============================================== Item ===============================================
+Index: 14 (https://artofproblemsolving.com/community/c6h2534986p21567788)
+Type: post
+Text: 5
+Post type: forum
+============================================= Content ==============================================
+A teacher and her 30 students play a game on an infinite cell grid. The teacher starts first, then
+each of the 30 students makes a move, then the teacher and so on. On one move the person can color
+one unit segment on the grid. A segment cannot be colored twice. The teacher wins if, after the move
+of one of the 31 players, there is a $1\times 2$ or $2\times 1$ rectangle , such that each segment
+from it's border is colored, but the segment between the two adjacent squares isn't colored. Prove
+that the teacher can win.
+=============================================== Item ===============================================
+Index: 15 (https://artofproblemsolving.com/community/c6h2535029p21568194)
+Type: post
+Text: 6
+Post type: forum
+============================================= Content ==============================================
+Given is a polynomial $P(x)$ of degree $n>1$ with real coefficients. The equation $P(P(P(x)))=P(x)$
+has $n^3$ distinct real roots. Prove that these roots could be split into two groups with equal
+arithmetic mean.
+=============================================== Item ===============================================
+Type: post
+Text: 7
+Post type: view_posts_text
+============================================= Content ==============================================
+Same as 9.7
+=============================================== Item ===============================================
+Index: 17 (https://artofproblemsolving.com/community/c6h2535017p21568076)
+Type: post
+Text: 8
+Post type: forum
+============================================= Content ==============================================
+Given is a cyclic pentagon $ABCDE$, inscribed in a circle $k$. The line $CD$ intersects $AB$ and
+$AE$ in $X$ and $Y$ respectively. Segments $EX$ and $BY$ intersect again at $P$, and they intersect
+$k$ in $Q$ and $R$, respectively. Point $A'$ is reflection of $A$ across $CD$. The circles $(PQR)$
+and $(A'XY)$ intersect at $M$ and $N$. Prove that $CM$ and $DN$ intersect on $(PQR)$.
+=============================================== Item ===============================================
+Type: post
+Post type: view_posts_text
+============================================= Content ==============================================
+Grade 11
+=============================================== Item ===============================================
+Index: 19 (https://artofproblemsolving.com/community/c6h2534958p21567527)
+Type: post
+Text: 1
+Post type: forum
+============================================= Content ==============================================
+For some positive integer $n>m$, it turns out that it is representable as sum of $2021$ non-negative
+integer powers of $m$, and that it is representable as sum of $2021$ non-negative integer powers of
+$m+1$. Find the maximal value of the positive integer $m$.
+=============================================== Item ===============================================
+Index: 20 (https://artofproblemsolving.com/community/c6h2534968p21567633)
+Type: post
+Text: 2
+Post type: forum
+============================================= Content ==============================================
+Let $P(x)$ be a nonzero polynomial of degree $n>1$ with nonnegative coefficients such that function
+$y=P(x)$ is odd. Is that possible thet for some pairwise distinct points $A_{1}, A_{2}, \dots A_{n}$
+on the graph $G: y = P(x)$ the following conditions hold: tangent to $G$ at $A_{1}$ passes through
+$A_{2}$, tangent to $G$ at $A_{2}$ passes through $A_{3}$, $\dots$, tangent to $G$ at $A_{n}$ passes
+through $A_{1}$?
+=============================================== Item ===============================================
+Index: 21 (https://artofproblemsolving.com/community/c6h2534973p21567655)
+Type: post
+Text: 3
+Post type: forum
+============================================= Content ==============================================
+Some language has only three letters - $A, B$ and $C$. A sequence of letters is called a word iff it
+contains exactly 100 letters such that exactly 40 of them are consonants and other 60 letters are
+all $A$. What is the maximum numbers of words one can pick such that any two picked words have at
+least one position where they both have consonants, but different consonants?
+=============================================== Item ===============================================
+Index: 22 (https://artofproblemsolving.com/community/c6h2534975p21567663)
+Type: post
+Text: 4
+Post type: forum
+============================================= Content ==============================================
+In triangle $ABC$ angle bisectors $AA_{1}$ and $CC_{1}$ intersect at $I$. Line through $B$ parallel
+to $AC$ intersects rays $AA_{1}$ and $CC_{1}$ at points $A_{2}$ and $C_{2}$ respectively. Let
+$O_{a}$ and $O_{c}$ be the circumcenters of triangles $AC_{1}C_{2}$ and $CA_{1}A_{2}$ respectively.
+Prove that $\angle{O_{a}BO_{c}} = \angle{AIC} $
+=============================================== Item ===============================================
+Type: post
+Text: 5
+Post type: view_posts_text
+============================================= Content ==============================================
+Same as 10.5
+=============================================== Item ===============================================
+Index: 24 (https://artofproblemsolving.com/community/c6h2534978p21567682)
+Type: post
+Text: 6
+Post type: forum
+============================================= Content ==============================================
+In tetrahedron $ABCS$ no two edges have equal length. Point $A'$ in plane $BCS$ is symmetric to $S$
+with respect to the perpendicular bisector of $BC$. Points $B'$ and $C'$ are defined analagously.
+Prove that planes $ABC, AB'C', A'BC'$ abd $A'B'C$ share a common point.
+=============================================== Item ===============================================
+Index: 25 (https://artofproblemsolving.com/community/c6h2534995p21567869)
+Type: post
+Text: 7
+Post type: forum
+============================================= Content ==============================================
+Find all permutations $(a_1, a_2,...,a_{2021})$ of $(1,2,...,2021)$, such that for every two
+positive integers $m$ and $n$ with difference bigger than $20^{21}$, the following inequality holds:
+$GCD(m+1, n+a_1)+GCD(m+2, n+a_2)+...+GCD(m+2021, n+a_{2021})<2|m-n|$.
+=============================================== Item ===============================================
+Index: 26 (https://artofproblemsolving.com/community/c6h2535009p21567977)
+Type: post
+Text: 8
+Post type: forum
+============================================= Content ==============================================
+Each girl among $100$ girls has $100$ balls; there are in total $10000$ balls in $100$ colors, from
+each color there are $100$ balls. On a move, two girls can exchange a ball (the first gives the
+second one of her balls, and vice versa). The operations can be made in such a way, that in the end,
+each girl has $100$ balls, colored in the $100$ distinct colors. Prove that there is a sequence of
+operations, in which each ball is exchanged no more than 1 time, and at the end, each girl has $100$
+balls, colored in the $100$ colors.
 ====================================================================================================
-Elapsed time: 5.13 seconds
+Elapsed time: 20.88 seconds

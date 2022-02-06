@@ -7,6 +7,7 @@ const postKeys = [
 	'last_edit_time',
 	'last_editor_username',
 	'num_edits',
+	'num_posts',
 	'post_canonical',
 	'post_format',
 	'post_id',

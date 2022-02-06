@@ -1,0 +1,9 @@
+@import url("https://artofproblemsolving.com/assets/dist/v2161/css/main-head.css");
+@import url("https://artofproblemsolving.com/assets/dist/v2161/css/sharedsite.css");
+@import url("https://artofproblemsolving.com/assets/pythonbook/_static/codemirrorEdited.css");
+@import url("https://artofproblemsolving.com/assets/dist/v2161/css/community_common.css");
+@import url("https://artofproblemsolving.com/assets/dist/v2161/css/community.css");
+
+.cmty-post-wrapper {
+	width: 993px;
+}

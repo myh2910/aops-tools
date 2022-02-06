@@ -52,6 +52,22 @@ def user_profile(user_id):
 	"""
 	return f"{AOPS_URL}/community/user/{user_id}"
 
+def user_avatar(user_id):
+	"""
+	AoPS user avatar.
+
+	Parameters
+	----------
+	user_id : int
+		The user ID.
+
+	Returns
+	-------
+	str
+		The link of AoPS user avatar in png.
+	"""
+	return f"https://avatar.artofproblemsolving.com/avatar_{user_id}.png"
+
 def print_centered(title, color=None):
 	"""
 	Print centered and colored text.
@@ -244,7 +260,119 @@ def write_json_file(data, filename):
 	with open(path, "w", encoding="utf8") as file:
 		json.dump(data, file, ensure_ascii=False, indent=CONFIG['num_indent'])
 
-def write_html_file(data, title, filename):
+def topic_html(data, post_time):
+	"""
+	Export topic post to HTML.
+
+	Parameters
+	----------
+	data : dict
+		Data to be exported.
+	post_time : str
+		Posted time.
+
+	Returns
+	-------
+	content : str
+		HTML content of the post.
+	"""
+	if (num_posts := data['num_posts']) == 1:
+		num_posts = "1 post"
+	else:
+		num_posts = f"{num_posts} posts"
+
+	content = f"""<div class="cmty-post-wrapper">
+<div class="cmty-post-tr">
+<div class="cmty-post-left">
+<a title="{data['username']}
+Click to view user profile." href="{user_profile(data['poster_id'])}">
+<img class="cmty-avatar no-print" src="{user_avatar(data['poster_id'])}"
+	width="80" height="80">
+</a>
+<div class="cmty-post-username">
+<a title="{data['username']}
+Click to view user profile." href="{user_profile(data['poster_id'])}">
+{data['username']}
+</a>
+</div>
+<div class="cmty-post-num-posts">{num_posts}</div>
+</div>
+<div class="cmty-post-middle">
+<div class="cmty-post-top-inline cmty-post-top-data">
+<div class="cmty-post-top">
+<a title="Get Post URL" class="cmty-post-number clickable"
+	href="{data['post_url']}">#{data['post_number']}</a>
+<span class="cmty-pm-from-post"><span><span
+	class="aops-font">V</span>PM</span></span>
+<span class="cmty-post-date">{post_time}</span>"""
+	if data['thanks_received']:
+		content += f"""
+<span class="cmty-post-thank-count"> • {data['thanks_received']} <span
+	class="aops-font">Y</span></span>"""
+	content += f"""
+</div>
+</div>
+<div class="cmty-post-body">{data['post_rendered']}</div>
+</div>
+<div class="cmty-post-right no-print">
+<span title="Report post" class="cmty-post-report aops-font">Z</span>
+<span title="Quote this post in a reply"
+	class="cmty-post-quote aops-font">K</span>
+<span class="cmty-post-thank aops-font" title="Give thumbs up">Y</span>
+</div>
+</div>
+</div>"""
+	return content
+
+def category_html(data):
+	"""
+	Export category item to HTML.
+
+	Parameters
+	----------
+	data : dict
+		Data to be exported.
+
+	Returns
+	-------
+	content : str
+		HTML content of the category item.
+	"""
+	post_data = data['post_data']
+	content = "<div id=\"main-content\">"
+	if data['item_type'] == "post":
+		if post_data['post_type'] == "forum":
+			content += f"""<div
+	class="cmty-view-posts-item cmty-view-post-item-w-label cmty-vp-both">
+<div class="cmty-view-post-item-label">{data['item_text']}</div>
+<div class="cmty-view-post-item-text">{post_data['post_rendered']}</div>"""
+		else:
+			content += f"""<div
+	class="cmty-view-posts-item cmty-view-post-item-w-label cmty-vp-left">
+<div class="cmty-view-post-item-label">{data['item_text']}</div>
+<div class="cmty-view-post-item-text">{post_data['post_rendered']}</div>"""
+	else:
+		content += f"""<div class="cmty-view-posts-item cmty-vp-both">
+<div class="cmty-view-post-item-label"></div>
+<div class="cmty-view-post-item-text">
+<div class="cmty-post-item-hidden-bar">{data['item_text']}</div>
+<div class="cmty-post-item-hidden-content">{post_data['post_rendered']}</div>
+</div>"""
+	if post_data['post_type'] == "forum":
+		content += f"""
+<div class="cmty-view-post-poster">
+<div class="cmty-view-post-poster-avatar">
+<img class="cmty-avatar" src="{user_avatar(post_data['poster_id'])}"
+	width="30" height="30">
+</div>
+<div class="cmty-view-post-poster-username">{post_data['username']}</div>
+<div class="cmty-view-post-topic-link">
+<a href="{post_data['post_url']}">view topic</a>
+</div>"""
+	content += "\n</div>\n</div>"
+	return content
+
+def write_html_file(data, title, data_type, post_time=None, idx=None):
 	"""
 	Export data to HTML file.
 
@@ -254,11 +382,20 @@ def write_html_file(data, title, filename):
 		Data to be exported.
 	title : str
 		HTML document title.
-	filename : str
-		HTML file name.
+	date_type : str
+		Type of the data.
+	post_time : str or None, optional
+	idx : int or None, optional
 	"""
+	if data_type == "category":
+		path = os.path.join(CONFIG['path'], f"{idx}.html")
+		master = "../.."
+		content = category_html(data)
+	else:
+		path = os.path.join(CONFIG['path'], f"{data['post_number']}.html")
+		master = "../../.."
+		content = topic_html(data, post_time)
 
-	path = os.path.join(CONFIG['path'], filename)
 	with open(path, "w", encoding="utf8") as file:
 		file.write(
 f"""<!DOCTYPE html>
@@ -268,11 +405,12 @@ f"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
 <title>{title}</title>
 <link rel="icon" href="https://artofproblemsolving.com/online-favicon.ico">
-<script src="https://assets.artofproblemsolving.com/js/jquery.min.js"></script>
+<link rel="stylesheet" href="{master}/aops_tools/css/aops-style.css">
 </head>
-<body style="padding: 10px; background: #fff;">
-<div class="cmty-post-body">{data}</div>
-<script src="../../../aops_tools/js/render.js"></script>
+<body>
+{content}
+<script src="{master}/aops_tools/js/jquery.min.js"></script>
+<script src="{master}/aops_tools/js/aops-utils.js"></script>
 </body>
 </html>"""
 		)

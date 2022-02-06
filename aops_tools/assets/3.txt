@@ -1,23 +1,103 @@
-:: Extracting category data...
-============================================= Category =============================================
-Link: https://artofproblemsolving.com/community/c3838
-Name: 2011 IMO
-Description: IMO 2011
-=============================================== Item ===============================================
-Index: 2 (https://artofproblemsolving.com/community/c6h418796p2363537)
-Type: post
-Text: 2
-Post type: forum
+:: Extracting topic data...
+============================================== Topic ===============================================
+Link: https://artofproblemsolving.com/community/c6h2484456
+Category: High School Olympiads
+Title: IMC circle
+Source: Peru EGMO TST 2020 #3
+Post count: 5
+View count: 622
+=============================================== Post ===============================================
+Number: 1 (https://artofproblemsolving.com/community/c6h2484456p20879067)
+Posted by: mathisreal (https://artofproblemsolving.com/community/user/363632)
+Posted at: Mar 11, 2021, 3:33 PM (UTC-05)
+Like count: 1
+Liked by: Leqso
 ============================================= Content ==============================================
-Let $\mathcal{S}$ be a finite set of at least two points in the plane. Assume that no three points
-of $\mathcal S$ are collinear. A [i]windmill[/i] is a process that starts with a line $\ell$ going
-through a single point $P \in \mathcal S$. The line rotates clockwise about the [i]pivot[/i] $P$
-until the first time that the line meets some other point belonging to $\mathcal S$. This point,
-$Q$, takes over as the new pivot, and the line now rotates clockwise about $Q$, until it next meets
-a point of $\mathcal S$. This process continues indefinitely.
-Show that we can choose a point $P$ in $\mathcal S$ and a line $\ell$ going through $P$ such that
-the resulting windmill uses each point of $\mathcal S$ as a pivot infinitely many times.
+Let $ABC$ be a triangle with $AB<AC$ and $I$ be your incenter. Let $M$ and $N$ be the midpoints of
+the sides $BC$ and $AC$, respectively. If the lines $AI$ and $IN$ are perpendicular, prove that the
+line $AI$ is tangent to the circumcircle of $\triangle IMC$.
+=============================================== Post ===============================================
+Number: 2 (https://artofproblemsolving.com/community/c6h2484456p20888123)
+Posted by: myh2910 (https://artofproblemsolving.com/community/user/406693)
+Posted at: Mar 11, 2021, 10:47 PM (UTC-05)
+Like count: 3
+Liked by: Ya_pank, Leqso, Aimingformygoal
+============================================= Content ==============================================
+[asy]
+size(6cm); pointpen=black;
+pair O=origin, A=dir(126.65), B=dir(-155.75), C=dir(-24.25), I=incenter(A, B, C), M=midpoint(B--C),
+N=midpoint(A--C), MA=midpoint(arc(O, C, B)), MB=midpoint(arc(O, A, C)), OA=midpoint(MB--N),
+W=midpoint(arc(OA, MB, N));
 
-[i]Proposed by Geoffrey Smith, United Kingdom[/i]
+D(A--B--C--cycle, red);
+D(MA--MB, dotted);
+D(A--I--N, orange);
+D(unitcircle, deepblue);
+D(arc(OA, N, MB)--arc(OA, MB, N)--cycle, cyan+blue);
+
+markscalefactor=0.01;
+D(rightanglemark(N, I, A), black);
+
+D("A", A, A);
+D("B", B, B);
+D("C", C, C);
+D("I", I, dir(-60));
+D("M", M, S);
+D("N", N, dir(60));
+D("M_A", MA, MA);
+D("M_B", MB, MB);
+label("$\omega_A$", W, 2*W);
+[/asy]
+Let $\omega_A$ be the $A$-mixtilinear incircle of $\triangle ABC$, $T_A$ its tangency point with
+$\odot(ABC)$ and $M_A$ the midpoint of the arc $\overarc{BAC}$.
+
+It's well-known that $T_A, I, M_A$ are collinear. Then, $$\begin{aligned}AI\perp IN&\iff N\text{ is
+the tangency point of }\omega_A\text{ with }AC\\&\iff T_A=M_B\\&\iff M_A, I, M_B\text{ are
+collinear.}\end{aligned}$$ Therefore, $$\begin{aligned}AI\perp IN&\iff BI\perp IM\\&\iff\angle
+CMI=\angle CIA\\&\iff AI\text{ is tangent to }\odot(IMC)\text{. }\blacksquare\end{aligned}$$
+=============================================== Post ===============================================
+Number: 3 (https://artofproblemsolving.com/community/c6h2484456p20889737)
+Posted by: A.L.E.X (https://artofproblemsolving.com/community/user/528252)
+Posted at: Mar 12, 2021, 4:36 AM (UTC-05)
+Like count: 2
+Liked by: myh2910, Leqso
+============================================= Content ==============================================
+Useful one:[url]https://artofproblemsolving.com/community/q1h410953p2306676[/url]
+=============================================== Post ===============================================
+Number: 4 (https://artofproblemsolving.com/community/c6h2484456p20999966)
+Posted by: gnoka (https://artofproblemsolving.com/community/user/474617)
+Posted at: Mar 18, 2021, 2:30 AM (UTC-05)
+============================================= Content ==============================================
+Here is a video in Chinese
+[url=https://www.bilibili.com/video/BV1Ey4y1E7S2]video[/url]
+=============================================== Post ===============================================
+Number: 6 (https://artofproblemsolving.com/community/c6h2484456p21002799)
+Posted by: rafaello (https://artofproblemsolving.com/community/user/576256)
+Posted at: Mar 18, 2021, 9:53 AM (UTC-05)
+============================================= Content ==============================================
+Let $X= IN\cap QC$. Let $F =(ABC)\cap AI$. Let $Q$ be the reflection of $F$ over $O$, the centre of
+$(ABC)$.
+
+ We have
+\begin{align*}
+\measuredangle INM&= \measuredangle INC- \measuredangle MNC\\
+&= \measuredangle QAC- \measuredangle BAC \\
+&=  \measuredangle QBC- \measuredangle BQC\\
+&=  \measuredangle QCB\\
+&=  \measuredangle XCM\implies MNXC\text{ is cyclic}.
+\end{align*}
+
+Also, \begin{align*}
+\measuredangle CMX&= \measuredangle CNX\\
+&= \measuredangle CAQ \\
+&=  \measuredangle CBQ\\
+&=  \measuredangle QCB\\
+&=  \measuredangle XCM\implies MX=CX \implies X\text{ is the centre of } (CMQ).
+\end{align*}
+
+Now, since $$\measuredangle FIX=\measuredangle AIX=90^\circ=\measuredangle QCF=\measuredangle XCF$$
+and since $FI=FC$ and triangles $XIF$ and $XCF$ share a side, we conclude that $XI=XC$.
+Therefore, $I$ lies on $(CMQ)$ and now $FI^2=FC^2=FM\cdot FQ$ gives us that in fact $AI$ is tangent
+to $(IMC)$.
 ====================================================================================================
-Elapsed time: 6.48 seconds
+Elapsed time: 5.50 seconds

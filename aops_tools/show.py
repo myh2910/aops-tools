@@ -7,7 +7,7 @@ from .config import CONFIG
 from .utils import COLORS
 
 
-def show_post_data(posts_data, print_item, colors=COLORS[0]):
+def show_post_data(posts_data, topic_title, print_item, colors=COLORS[0]):
 	"""
 	Show AoPS post data on the terminal.
 
@@ -15,6 +15,8 @@ def show_post_data(posts_data, print_item, colors=COLORS[0]):
 	----------
 	posts_data : list of dict
 		Data of the posts to display.
+	topic_title : str
+		Topic title.
 	print_item : function
 		Determines if the data of a post will be displayed.
 	colors : tuple of str and None, optional
@@ -58,13 +60,9 @@ def show_post_data(posts_data, print_item, colors=COLORS[0]):
 				utils.print_text(canonical)
 
 		if CONFIG['write_html']:
-			utils.write_html_file(
-				data['post_rendered'],
-				f"Post #{data['post_number']} by {data['username']} at {post_time}",
-				f"{data['post_number']}.html"
-			)
+			utils.write_html_file(data, topic_title, "topic", post_time=post_time)
 
-def show_view_posts_data(items_data, print_item, colors=COLORS[1]):
+def show_view_posts_data(items_data, category_name, print_item, colors=COLORS[1]):
 	"""
 	Show AoPS category (of type `view_posts`) data on the terminal.
 
@@ -72,6 +70,8 @@ def show_view_posts_data(items_data, print_item, colors=COLORS[1]):
 	----------
 	items_data : list of dict
 		Data of the items to display.
+	category_name : str
+		Category name.
 	print_item : function
 		Determines if the data of an item will be displayed.
 	colors : tuple of str and None, optional
@@ -102,10 +102,7 @@ def show_view_posts_data(items_data, print_item, colors=COLORS[1]):
 				utils.print_text(canonical)
 
 		if CONFIG['write_html']:
-			title = f"Post #{idx}"
-			if text:
-				title += ": " + text
-			utils.write_html_file(post_data['post_rendered'], title, f"{idx}.html")
+			utils.write_html_file(data, category_name, "category", idx=idx)
 
 def show_folder_data(items_data, print_item, colors=COLORS[0]):
 	"""
@@ -156,7 +153,7 @@ def show_topic_data(data, stalk_users, find_posts, colors=COLORS[1]):
 	info = [
 		("Link", data['topic_url']),
 		("Category", data['category_name']),
-		("Title", data['topic_title'].strip())
+		("Title", data['topic_title'])
 	]
 	if CONFIG['brave'] and (tags := data['tags']):
 		info.append(("Tags", ", ".join(tag['tag_text'] for tag in tags)))
@@ -177,7 +174,7 @@ def show_topic_data(data, stalk_users, find_posts, colors=COLORS[1]):
 			or (find_posts and num_post in find_posts)
 	))
 
-	show_post_data(data['posts_data'], print_item)
+	show_post_data(data['posts_data'], data['topic_title'], print_item)
 
 def show_category_data(data, find_text, colors=COLORS[1]):
 	"""
@@ -209,7 +206,7 @@ def show_category_data(data, find_text, colors=COLORS[1]):
 	)))
 
 	if data['category_type'] == "view_posts":
-		show_view_posts_data(data['items'], print_item)
+		show_view_posts_data(data['items'], data['category_name'], print_item)
 
 	elif data['category_type'] == "folder":
 		show_folder_data(data['items'], print_item)
