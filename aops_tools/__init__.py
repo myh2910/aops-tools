@@ -11,7 +11,7 @@ from . import get, show, utils
 from .config import CONFIG
 
 __author__ = "Yohan Min"
-__version__ = "3.3.0"
+__version__ = "3.4.0"
 
 def show_aops_data(
 	code,
@@ -42,8 +42,8 @@ def show_aops_data(
 
 	Notes
 	-----
-	It is recommended to only extract an AoPS topic with 1000 or less posts,
-	because of the time limit of the Selenium script execution.
+	It is recommended to only extract an AoPS topic with 1000 or less posts, due
+	to the time limit of the Selenium script execution.
 	"""
 	for arg, value in kwargs.items():
 		CONFIG[arg] = value

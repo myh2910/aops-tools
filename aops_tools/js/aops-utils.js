@@ -57,16 +57,6 @@ AoPS.Community.Views = {
 	}
 };
 
-// Change image source links
-$('img').each(function() {
-	let src = $(this).attr('src');
-	if (src.startsWith('//')) {
-		$(this).attr('src', `https:${src}`);
-	} else if (src.startsWith('/')) {
-		$(this).attr('src', `https://artofproblemsolving.com${src}`);
-	}
-});
-
 // Change document width properties
 $('.cmty-tip-header').each(function() {
 	AoPS.Community.Utils.mouseOverTip($(this));

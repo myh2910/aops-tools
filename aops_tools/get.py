@@ -2,6 +2,7 @@
 Functions that extract or print data from AoPS.
 
 """
+import platform
 import textwrap
 from timeit import default_timer
 
@@ -67,6 +68,9 @@ def get_webdriver():
 	options.add_argument("headless")
 	options.add_experimental_option("excludeSwitches", ["enable-automation"])
 	options.add_experimental_option("useAutomationExtension", False)
+
+	if platform.system() == "Windows":
+		options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
 	driver = webdriver.Chrome(options=options)
 	driver.set_script_timeout(CONFIG['loading_time'])

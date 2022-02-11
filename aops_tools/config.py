@@ -1,10 +1,5 @@
 """
-The configuration used throughout the `aops_tools` module.
-
-Notes
------
-On Windows, some time format specifiers are different than on Linux, so be
-aware of this. (e.g. `%-d` to `%#d`, `%-I` to `%#I`, etc.)
+The configuration file for the `aops_tools` module.
 
 """
 CONFIG = {
@@ -21,5 +16,8 @@ CONFIG = {
 	'write_json': False,
 	'num_indent': 2,
 	'utc_offset': -5,
-	'time_format': "%b %-d, %Y, %-I:%M %p"
+	'time_format': {
+		'Windows': "%b %#d, %Y, %#I:%M %p",
+		'Linux': "%b %-d, %Y, %-I:%M %p"
+	}
 }

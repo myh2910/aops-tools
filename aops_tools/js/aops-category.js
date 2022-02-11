@@ -35,6 +35,7 @@ switch (focusCategory.category_type) {
 			'post_number',
 			'post_rendered',
 			'post_type',
+			'poster_avatar',
 			'poster_id',
 			'topic_id',
 			'username'

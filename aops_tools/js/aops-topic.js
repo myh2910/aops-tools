@@ -3,6 +3,7 @@ const focusTopic = await scrollDown();
 const topicUrl = `https://artofproblemsolving.com/community/c${focusTopic.category_id}h${focusTopic.topic_id}`;
 
 const postKeys = [
+	'avatar',
 	'last_edit_reason',
 	'last_edit_time',
 	'last_editor_username',

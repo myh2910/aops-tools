@@ -12,8 +12,8 @@ can be manually edited.
 ## Requirements
 
 * Python with version >= 3.8.
-* Install the packages below with pip.  
-`pip install colorama selenium selenium-stealth`
+* Install the following packages with pip.  
+	`pip install bs4 colorama selenium selenium-stealth`
 * Install [ChromeDriver](https://chromedriver.chromium.org/downloads).
 
 ## Usage
