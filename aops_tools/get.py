@@ -64,13 +64,13 @@ def get_webdriver():
 		The Selenium WebDriver object.
 	"""
 	options = webdriver.ChromeOptions()
-	options.add_argument("start-maximized")
-	options.add_argument("headless")
-	options.add_experimental_option("excludeSwitches", ["enable-automation"])
+	options.add_argument('start-maximized')
+	options.add_argument('headless')
+	options.add_experimental_option("excludeSwitches", ['enable-automation'])
 	options.add_experimental_option("useAutomationExtension", False)
 
 	if platform.system() == "Windows":
-		options.add_experimental_option('excludeSwitches', ['enable-logging'])
+		options.add_experimental_option("excludeSwitches", ['enable-logging'])
 
 	driver = webdriver.Chrome(options=options)
 	driver.set_script_timeout(CONFIG['loading_time'])

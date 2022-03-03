@@ -61,7 +61,7 @@ AoPS.Community.Views = {
 $('.cmty-tip-header').each(function() {
 	AoPS.Community.Utils.mouseOverTip($(this));
 });
-let maxHeight = $(document).height();
+const maxHeight = $(document).height();
 
 $('.cmty-tip-header').each(function() {
 	AoPS.Community.Utils.mouseOutTip($(this));
