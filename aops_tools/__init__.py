@@ -11,7 +11,7 @@ from . import get, show, utils
 from .config import CONFIG
 
 __author__ = "Yohan Min"
-__version__ = "3.4.0"
+__version__ = "3.4.1"
 
 def show_aops_data(
 	code,

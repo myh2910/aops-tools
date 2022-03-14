@@ -184,7 +184,7 @@ def stalk_success(stalk_users, username, thankers, num_thanks):
 	if not thankers:
 		return False
 
-	hidden = (visible := thankers.split(","))[-1]
+	hidden = (visible := thankers.split(", "))[-1]
 	if (num_visible := len(visible)) == 1:
 		if hidden == hidden_thankers(num_thanks, True):
 			return False
