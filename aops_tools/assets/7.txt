@@ -14,183 +14,210 @@
  9      Caucasus Mathematical Olympiad
  10     CentroAmerican
  11     Cono Sur Olympiad
- 12     Czech-Polish-Slovak Match
- 13     Danube Competition in Mathematics
- 14     EGMO
- 15     European Mathematical Cup
- 16     Gulf Math Olympiad
- 17     Hungary-Israel Binational
- 18     IberoAmerican
- 19     Iranian Geometry Olympiad
- 20     International Olympiad of Metropolises
- 21     International Zhautykov Olympiad
- 22     JBMO ShortLists
- 23     Junior Balkan MO                            JBMO tests by year
- 24     Lusophon Mathematical Olympiad
- 25     Mediterranean Mathematics Olympiad
- 26     Middle European Mathematical Olympiad
- 27     Nordic
- 28     Pan African
- 29     Rioplatense Mathematical Olympiad, Level 3
- 30     Romanian Masters of Mathematics Collection
- 31     Silk Road                                   Silk Road Math Competition
- 32     Simon Marais Mathematical Competition
- 33     Tournament Of Towns
- 34     Tuymaada Olympiad
- 35     IMC
- 36     Francophone Mathematical Olympiad           Math olympiad for the French Speaking, started
-                                                    in 2020
- 37     Czech-Polish-Slovak Junior Match
- 38     Mathematical Excellence Olympiad            International Mathematical Excellence Olympiad
-                                                    (IMEO)
-:: Select item index [default: 0] 
+ 12     Czech-Polish-Slovak Junior Match
+ 13     Czech-Polish-Slovak Match
+ 14     Danube Competition in Mathematics
+ 15     EGMO
+ 16     European Mathematical Cup
+ 17     Francophone Mathematical Olympiad           Math olympiad for the French
+                                                    Speaking, started in 2020
+ 18     Gulf Math Olympiad
+ 19     Hungary-Israel Binational
+ 20     IberoAmerican
+ 21     IMC
+ 22     International Olympiad of Metropolises
+ 23     International Mathematical Olympic Revenge  IMOR
+ 24     International Zhautykov Olympiad
+ 25     Iranian Geometry Olympiad
+ 26     JBMO ShortLists
+ 27     Junior Balkan MO                            JBMO tests by year
+ 28     KoMaL A Problems                            Problems from the K&ouml;MaL
+                                                    Magazine
+ 29     Lusophon Mathematical Olympiad
+ 30     Mathematical Excellence Olympiad            International Mathematical
+                                                    Excellence Olympiad (IMEO)
+ 31     May Olympiad                                an international math
+                                                    olympiad for juniors in
+                                                    Latin America, also named as
+                                                    Mayo, aka IberoAmerican
+                                                    Juniors
+ 32     Mediterranean Mathematics Olympiad
+ 33     Middle European Mathematical Olympiad
+ 34     Nordic
+ 35     Pan African
+ 36     PAGMO                                       Pan-American Girls&rsquo;
+                                                    Mathematical Olympiad
+ 37     Rioplatense Mathematical Olympiad, Level 3
+ 38     Romanian Masters of Mathematics Collection
+ 39     Silk Road                                   Silk Road Math Competition
+ 40     Simon Marais Mathematical Competition
+ 41     Tournament Of Towns
+ 42     Tuymaada Olympiad
+:: Select item index [default: 0] 0
 :: This is a folder. Do you want to explore? [y/N] y
  Index  Text               Description
  --     --                 --
- 0      2021-IMO Problems  IMO 2021
- 1      2020-IMO           IMO 2020
- 2      2019 IMO
- 3      2018 IMO           IMO 2018
- 4      2017 IMO           IMO 2017
- 5      2016 IMO           IMO 2016
- 6      2015 IMO           IMO 2015
- 7      2014 IMO           IMO 2014
- 8      2013 IMO           IMO 2013
- 9      2012 IMO           IMO 2012
- 10     2011 IMO           IMO 2011
- 11     2010 IMO           IMO 2010
- 12     2009 IMO           IMO 2009
- 13     2008 IMO           IMO 2008
- 14     2007 IMO           IMO 2007
- 15     2006 IMO           IMO 2006
- 16     2005 IMO           IMO 2005
- 17     2004 IMO           IMO 2004
- 18     2003 IMO           IMO 2003
- 19     2002 IMO           IMO 2002
- 20     2001 IMO           IMO 2001
- 21     2000 IMO           IMO 2000
- 22     1999 IMO           IMO 1999
- 23     1998 IMO           IMO 1998
- 24     1997 IMO           IMO 1997
- 25     1996 IMO           IMO 1996
- 26     1995 IMO           IMO 1995
- 27     1994 IMO           IMO 1994
- 28     1993 IMO           IMO 1993
- 29     1992 IMO           IMO 1992
- 30     1991 IMO           IMO 1991
- 31     1990 IMO           IMO 1990
- 32     1989 IMO           IMO 1989
- 33     1988 IMO           IMO 1988
- 34     1987 IMO           IMO 1987
- 35     1986 IMO           IMO 1986
- 36     1985 IMO           IMO 1985
- 37     1984 IMO           IMO 1984
- 38     1983 IMO           IMO 1983
- 39     1982 IMO           IMO 1982
- 40     1981 IMO           IMO 1981
- 41     1980 IMO           IMO 1980
- 42     1979 IMO           IMO 1979
- 43     1978 IMO           IMO 1978
- 44     1977 IMO           IMO 1977
- 45     1976 IMO           IMO 1976
- 46     1975 IMO           IMO 1975
- 47     1974 IMO           IMO 1974
- 48     1973 IMO           IMO 1973
- 49     1972 IMO           IMO 1972
- 50     1971 IMO           IMO 1971
- 51     1970 IMO           IMO 1970
- 52     1969 IMO           IMO 1969
- 53     1968 IMO           IMO 1968
- 54     1967 IMO           IMO 1967
- 55     1966 IMO           IMO 1966
- 56     1965 IMO           IMO 1965
- 57     1964 IMO           IMO 1964
- 58     1963 IMO           IMO 1963
- 59     1962 IMO           IMO 1962
- 60     1961 IMO           IMO 1961
- 61     1960 IMO           IMO 1960
- 62     1959 IMO           IMO 1959
-:: Select item index [default: 0] 
-============================================= Category =============================================
-Link: https://artofproblemsolving.com/community/c2413807
-Name: 2021-IMO Problems
-Description: IMO 2021
-=============================================== Item ===============================================
+ 0      2022-IMO Problems  IMO 2022
+ 1      2021-IMO Problems  IMO 2021
+ 2      2020-IMO           IMO 2020
+ 3      2019 IMO
+ 4      2018 IMO           IMO 2018
+ 5      2017 IMO           IMO 2017
+ 6      2016 IMO           IMO 2016
+ 7      2015 IMO           IMO 2015
+ 8      2014 IMO           IMO 2014
+ 9      2013 IMO           IMO 2013
+ 10     2012 IMO           IMO 2012
+ 11     2011 IMO           IMO 2011
+ 12     2010 IMO           IMO 2010
+ 13     2009 IMO           IMO 2009
+ 14     2008 IMO           IMO 2008
+ 15     2007 IMO           IMO 2007
+ 16     2006 IMO           IMO 2006
+ 17     2005 IMO           IMO 2005
+ 18     2004 IMO           IMO 2004
+ 19     2003 IMO           IMO 2003
+ 20     2002 IMO           IMO 2002
+ 21     2001 IMO           IMO 2001
+ 22     2000 IMO           IMO 2000
+ 23     1999 IMO           IMO 1999
+ 24     1998 IMO           IMO 1998
+ 25     1997 IMO           IMO 1997
+ 26     1996 IMO           IMO 1996
+ 27     1995 IMO           IMO 1995
+ 28     1994 IMO           IMO 1994
+ 29     1993 IMO           IMO 1993
+ 30     1992 IMO           IMO 1992
+ 31     1991 IMO           IMO 1991
+ 32     1990 IMO           IMO 1990
+ 33     1989 IMO           IMO 1989
+ 34     1988 IMO           IMO 1988
+ 35     1987 IMO           IMO 1987
+ 36     1986 IMO           IMO 1986
+ 37     1985 IMO           IMO 1985
+ 38     1984 IMO           IMO 1984
+ 39     1983 IMO           IMO 1983
+ 40     1982 IMO           IMO 1982
+ 41     1981 IMO           IMO 1981
+ 42     1980 IMO           IMO 1980
+ 43     1979 IMO           IMO 1979
+ 44     1978 IMO           IMO 1978
+ 45     1977 IMO           IMO 1977
+ 46     1976 IMO           IMO 1976
+ 47     1975 IMO           IMO 1975
+ 48     1974 IMO           IMO 1974
+ 49     1973 IMO           IMO 1973
+ 50     1972 IMO           IMO 1972
+ 51     1971 IMO           IMO 1971
+ 52     1970 IMO           IMO 1970
+ 53     1969 IMO           IMO 1969
+ 54     1968 IMO           IMO 1968
+ 55     1967 IMO           IMO 1967
+ 56     1966 IMO           IMO 1966
+ 57     1965 IMO           IMO 1965
+ 58     1964 IMO           IMO 1964
+ 59     1963 IMO           IMO 1963
+ 60     1962 IMO           IMO 1962
+ 61     1961 IMO           IMO 1961
+ 62     1960 IMO           IMO 1960
+ 63     1959 IMO           IMO 1959
+:: Select item index [default: 0] 0
+=================================== Category ===================================
+Link: https://artofproblemsolving.com/community/c3081085
+Name: 2022-IMO Problems
+Description: IMO 2022
+===================================== Item =====================================
 Type: post
 Text: Day 1
 Post type: view_posts_text
-============================================= Content ==============================================
-July 19, 2021
-=============================================== Item ===============================================
-Index: 1 (https://artofproblemsolving.com/community/c6h2625909p22698392)
+=================================== Content ====================================
+July 11, 2022
+===================================== Item =====================================
+Index: 1 (https://artofproblemsolving.com/community/c6h2883211p25635135)
 Type: post
 Text: 1
 Post type: forum
-============================================= Content ==============================================
-Let $n \geqslant 100$ be an integer. Ivan writes the numbers $n, n+1, \ldots, 2 n$ each on different
-cards. He then shuffles these $n+1$ cards, and divides them into two piles. Prove that at least one
-of the piles contains two cards such that the sum of their numbers is a perfect square.
-=============================================== Item ===============================================
-Index: 2 (https://artofproblemsolving.com/community/c6h2625850p22697952)
+=================================== Content ====================================
+The Bank of Oslo issues two types of coin: aluminum (denoted A) and bronze
+(denoted B). Marianne has $n$ aluminum coins and $n$ bronze coins arranged in a
+row in some arbitrary initial order. A chain is any subsequence of consecutive
+coins of the same type. Given a fixed positive integer $k \leq 2n$, Gilberty
+repeatedly performs the following operation: he identifies the longest chain
+containing  the $k^{th}$ coin from the left and moves all coins in that chain to
+the left end of the row. For example, if $n=4$ and $k=4$, the process starting
+from the ordering $AABBBABA$ would be $AABBBABA \to BBBAAABA \to AAABBBBA \to
+BBBBAAAA \to ...$
+
+Find all pairs $(n,k)$ with $1 \leq k \leq 2n$ such that for every initial
+ordering, at some moment during the process, the leftmost $n$ coins will all be
+of the same type.
+===================================== Item =====================================
+Index: 2 (https://artofproblemsolving.com/community/c6h2883212p25635138)
 Type: post
 Text: 2
 Post type: forum
-============================================= Content ==============================================
-Show that the inequality \[\sum_{i=1}^n \sum_{j=1}^n \sqrt{|x_i-x_j|}\leqslant \sum_{i=1}^n
-\sum_{j=1}^n \sqrt{|x_i+x_j|}\]holds for all real numbers $x_1,\ldots x_n.$
-=============================================== Item ===============================================
-Index: 3 (https://artofproblemsolving.com/community/c6h2625862p22698068)
+=================================== Content ====================================
+Let $\mathbb{R}^+$ denote the set of positive real numbers. Find all functions
+$f: \mathbb{R}^+ \to \mathbb{R}^+$ such that for each $x \in \mathbb{R}^+$,
+there is exactly one $y \in \mathbb{R}^+$ satisfying $$xf(y)+yf(x) \leq 2$$
+===================================== Item =====================================
+Index: 3 (https://artofproblemsolving.com/community/c6h2883213p25635143)
 Type: post
 Text: 3
 Post type: forum
-============================================= Content ==============================================
-Let $D$ be an interior point of the acute triangle $ABC$ with $AB > AC$ so that $\angle DAB = \angle
-CAD.$ The point $E$ on the segment $AC$ satisfies $\angle ADE =\angle BCD,$ the point $F$ on the
-segment $AB$ satisfies $\angle FDA =\angle DBC,$ and the point $X$ on the line $AC$ satisfies $CX =
-BX.$ Let $O_1$ and $O_2$ be the circumcenters of the triangles $ADC$ and $EXD,$ respectively. Prove
-that the lines $BC, EF,$ and $O_1O_2$ are concurrent.
-=============================================== Item ===============================================
+=================================== Content ====================================
+Let $k$ be a positive integer and let $S$ be a finite set of odd prime numbers.
+Prove that there is at most one way (up to rotation and reflection) to place the
+elements of $S$ around the circle such that the product of any two neighbors is
+of the form $x^2+x+k$ for some positive integer $x$.
+===================================== Item =====================================
 Type: post
 Text: Day 2
 Post type: view_posts_text
-============================================= Content ==============================================
-July 20, 2021
-=============================================== Item ===============================================
-Index: 5 (https://artofproblemsolving.com/community/c6h2625855p22698001)
+=================================== Content ====================================
+July 12, 2022
+===================================== Item =====================================
+Index: 5 (https://artofproblemsolving.com/community/c6h2883216p25635154)
 Type: post
 Text: 4
 Post type: forum
-============================================= Content ==============================================
-Let $\Gamma$ be a circle with centre $I$, and $A B C D$ a convex quadrilateral such that each of the
-segments $A B, B C, C D$ and $D A$ is tangent to $\Gamma$. Let $\Omega$ be the circumcircle of the
-triangle $A I C$. The extension of $B A$ beyond $A$ meets $\Omega$ at $X$, and the extension of $B
-C$ beyond $C$ meets $\Omega$ at $Z$. The extensions of $A D$ and $C D$ beyond $D$ meet $\Omega$ at
-$Y$ and $T$, respectively. Prove that \[A D+D T+T X+X A=C D+D Y+Y Z+Z C.\]
-
-[i]Proposed by Dominik Burek, Poland and Tomasz Ciesla, Poland[/i]
-=============================================== Item ===============================================
-Index: 6 (https://artofproblemsolving.com/community/c6h2625845p22697921)
+=================================== Content ====================================
+Let $ABCDE$ be a convex pentagon such that $BC=DE$. Assume that there is a point
+$T$ inside $ABCDE$ with $TB=TD,TC=TE$ and $\angle ABT = \angle TEA$. Let line
+$AB$ intersect lines $CD$ and $CT$ at points $P$ and $Q$, respectively. Assume
+that the points $P,B,A,Q$ occur on their line in that order. Let line $AE$
+intersect $CD$ and $DT$ at points $R$ and $S$, respectively. Assume that the
+points $R,E,A,S$ occur on their line in that order. Prove that the points
+$P,S,Q,R$ lie on a circle.
+===================================== Item =====================================
+Index: 6 (https://artofproblemsolving.com/community/c6h2883217p25635158)
 Type: post
 Text: 5
 Post type: forum
-============================================= Content ==============================================
-Two squirrels, Bushy and Jumpy, have collected 2021 walnuts for the winter. Jumpy numbers the
-walnuts from 1 through 2021, and digs 2021 little holes in a circular pattern in the ground around
-their favourite tree. The next morning Jumpy notices that Bushy had placed one walnut into each
-hole, but had paid no attention to the numbering. Unhappy, Jumpy decides to reorder the walnuts by
-performing a sequence of 2021 moves. In the $k$-th move, Jumpy swaps the positions of the two
-walnuts adjacent to walnut $k$.
-
-Prove that there exists a value of $k$ such that, on the $k$-th move, Jumpy swaps some walnuts $a$
-and $b$ such that $a<k<b$.
-=============================================== Item ===============================================
-Index: 7 (https://artofproblemsolving.com/community/c6h2625864p22698082)
+=================================== Content ====================================
+Find all triples $(a,b,p)$ of positive integers with $p$ prime and $$a^p=b!+p$$
+===================================== Item =====================================
+Index: 7 (https://artofproblemsolving.com/community/c6h2883218p25635163)
 Type: post
 Text: 6
 Post type: forum
-============================================= Content ==============================================
-Let $m\ge 2$ be an integer, $A$ a finite set of integers (not necessarily positive) and
-$B_1,B_2,...,B_m$ subsets of $A$. Suppose that, for every $k=1,2,...,m$, the sum of the elements of
-$B_k$ is $m^k$. Prove that $A$ contains at least $\dfrac{m}{2}$ elements.
-====================================================================================================
-Elapsed time: 14.50 seconds
+=================================== Content ====================================
+Let $n$ be a positive integer. A [i]Nordic[/i] square is an $n \times n$ board
+containing all the integers from $1$ to $n^2$ so that each cell contains exactly
+one number. Two different cells are considered adjacent if they share a common
+side. Every cell that is adjacent only to cells containing larger numbers is
+called a [i]valley[/i]. An [i]uphill path[/i] is a sequence of one or more cells
+such that:
+
+(i) the first cell in the sequence is a valley,
+
+(ii) each subsequent cell in the sequence is adjacent to the previous cell, and
+
+(iii) the numbers written in the cells in the sequence are in increasing order.
+
+Find, as a function of $n$, the smallest possible total number of uphill paths
+in a Nordic square.
+
+Author: Nikola Petrović
+================================================================================
+Elapsed time: 11.61 seconds

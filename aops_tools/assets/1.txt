@@ -1,51 +1,55 @@
 :: Extracting topic data...
-============================================== Topic ===============================================
+==================================== Topic =====================================
 Link: https://artofproblemsolving.com/community/c6h1671291
 Category: High School Olympiads
 Title: IMO 2018 Problem 5
 Source: IMO 2018
-Post count: 42
-View count: 15392
-=============================================== Post ===============================================
+Post count: 57
+View count: 18398
+===================================== Post =====================================
 Number: 1 (https://artofproblemsolving.com/community/c6h1671291p10632353)
 Posted by: orthocentre (https://artofproblemsolving.com/community/user/343248)
 Posted at: Jul 10, 2018, 6:19 AM (UTC-05)
-Like count: 17
-Liked by: Durjoy1729, Moaaz, me9hanics, MazeaLarius, Amir Hossein, Davi-8191, naw.ngs, Medjl,
-adityaguharoy, anantmudgal09, pavel kozlov, khan.academy, centslordm, megarnie, Sprites, jasperE3,
-myh2910
-============================================= Content ==============================================
-Let $a_1$, $a_2$, $\ldots$ be an infinite sequence of positive integers. Suppose that there is an
-integer $N > 1$ such that, for each $n \geq N$, the number
-$$\frac{a_1}{a_2} + \frac{a_2}{a_3} + \cdots + \frac{a_{n-1}}{a_n} + \frac{a_n}{a_1}$$
-is an integer. Prove that there is a positive integer $M$ such that $a_m = a_{m+1}$ for all $m \geq
-M$.
+Like count: 18
+Liked by: Durjoy1729, Moaaz, me9hanics, MazeaLarius, Amir Hossein, Davi-8191,
+naw.ngs, Medjl, adityaguharoy, anantmudgal09, pavel kozlov, khan.academy,
+centslordm, megarnie, Sprites, jasperE3, myh2910, mathmax12
+=================================== Content ====================================
+Let $a_1$, $a_2$, $\ldots$ be an infinite sequence of positive integers. Suppose
+that there is an integer $N > 1$ such that, for each $n \geq N$, the number
+$$\frac{a_1}{a_2} + \frac{a_2}{a_3} + \cdots + \frac{a_{n-1}}{a_n} +
+\frac{a_n}{a_1}$$
+is an integer. Prove that there is a positive integer $M$ such that $a_m =
+a_{m+1}$ for all $m \geq M$.
 
 [i]Proposed by Bayarmagnai Gombodorj, Mongolia[/i]
-=============================================== Post ===============================================
+===================================== Post =====================================
 Number: 50 (https://artofproblemsolving.com/community/c6h1671291p24227866)
 Posted by: mijail (https://artofproblemsolving.com/community/user/338783)
 Posted at: Jan 26, 2022, 11:32 AM (UTC-05)
-============================================= Content ==============================================
+=================================== Content ====================================
 Nice NT problem  :D
 
 My solution is based on proving the following claim:
-[color=#00f][b]Key claim:[/b][/color] For any $n \ge N$ we have that: $\mathrm{lcm}(a_{n+1},a_1)
-\mid \mathrm{lcm}(a_n,a_1)$
-[color=#00f]Proof:[/color] The difference $\frac{a_{n+1}}{a_1} - \frac{a_n}{a_1} +
-\frac{a_n}{a_{n+1}}-1=(a_{n+1}-a_n)(\frac{a_{n+1}-a_1}{a_{n+1}a_1})$ is a integer so we can find
-positive integers $d,x,y,z,a,b,c$ such that:
+[color=#00f][b]Key claim:[/b][/color] For any $n \ge N$ we have that:
+$\mathrm{lcm}(a_{n+1},a_1) \mid \mathrm{lcm}(a_n,a_1)$
+[color=#00f]Proof:[/color] The difference $\frac{a_{n+1}}{a_1} - \frac{a_n}{a_1}
++ \frac{a_n}{a_{n+1}}-1=(a_{n+1}-a_n)(\frac{a_{n+1}-a_1}{a_{n+1}a_1})$ is a
+integer so we can find positive integers $d,x,y,z,a,b,c$ such that:
 $$a_{n+1}=dxya, a_n=dxzb, a_1=dyzc$$
-With $(a_{n+1},a_n)=dx, (a_{n},a_1)=dz, (a_{n+1},a_1)=dy$ and also $(a_{n+1},a_n,a_1)=d$ so we have
-that the next number is a integer: $$\frac{(dxya-dxzb)(dxya-dyzc)}{d^2y^2xazc}=\frac{(ya-zb)(xa-
-zc)}{yazc}$$ $$\implies a\mid z^2bc  $$ $$\implies z\mid a^2xy  $$
-But $(a,zbc)=1$ and $(z,axy)=1$ so $a=z=1$ but then $\mathrm{lcm}(a_{n+1},a_1)=dyzxac=dyxc$ and
+With $(a_{n+1},a_n)=dx, (a_{n},a_1)=dz, (a_{n+1},a_1)=dy$ and also
+$(a_{n+1},a_n,a_1)=d$ so we have that the next number is a integer:
+$$\frac{(dxya-dxzb)(dxya-dyzc)}{d^2y^2xazc}=\frac{(ya-zb)(xa-zc)}{yazc}$$
+$$\implies a\mid z^2bc  $$ $$\implies z\mid a^2xy  $$
+But $(a,zbc)=1$ and $(z,axy)=1$ so $a=z=1$ but then
+$\mathrm{lcm}(a_{n+1},a_1)=dyzxac=dyxc$ and
 $\mathrm{lcm}(a_{n},a_1)=dzxybc=dxybc$ this implies the claim. $\square$
 --------------------------------------------------------
-[b][color=#f00]Corollary:[/color][/b] $\{a_n\}$ is bounded and $\{\mathrm{lcm}(a_n,a_1)\}$ is
-eventually constant.
-The collary implies that eventually in the claim we have $b=1$ for any $n \ge  N'$ so $a_{n+1}=dxy$
-and $a_n=dx \implies a_{n+1} \ge a_n$ this implies that $\{a_n\}$ is eventually non-decresing but
-also is bounded so its eventually constant. $\blacksquare$
-====================================================================================================
-Elapsed time: 5.35 seconds
+[b][color=#f00]Corollary:[/color][/b] $\{a_n\}$ is bounded and
+$\{\mathrm{lcm}(a_n,a_1)\}$ is eventually constant.
+The collary implies that eventually in the claim we have $b=1$ for any $n \ge
+N'$ so $a_{n+1}=dxy$ and $a_n=dx \implies a_{n+1} \ge a_n$ this implies that
+$\{a_n\}$ is eventually non-decresing but also is bounded so its eventually
+constant. $\blacksquare$
+================================================================================
+Elapsed time: 5.81 seconds

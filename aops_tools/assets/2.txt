@@ -1,19 +1,22 @@
 :: Extracting topic data...
-============================================== Topic ===============================================
+==================================== Topic =====================================
 Link: https://artofproblemsolving.com/community/c6184h1061455
 Category: Frivolous Forum
 Title: Post CTRL-v in here
-Post count: 1460
-View count: 10498
-=============================================== Post ===============================================
+Post count: 1782
+View count: 13471
+===================================== Post =====================================
 Number: 1 (https://artofproblemsolving.com/community/c6184h1061455p4596448)
 Posted by: Kwow (https://artofproblemsolving.com/community/user/122265)
 Posted at: Mar 9, 2015, 3:33 PM (UTC-05)
-Like count: 16
-Liked by: greenpepper9999, oceanair, alchemis80, sagecanyon, nihao4112, fifty51, pifinity, Aldwyn22,
-haha0201, GeneralCobra19, asterix_1, rf20008, OronSH, nicarmt, hdrcure, BunnyAoPS
-============================================= Content ==============================================
+Like count: 23
+Liked by: greenpepper9999, oceanair, alchemis80, sagecanyon, nihao4112, fifty51,
+pifinity, Aldwyn22, haha0201, GeneralCobra19, asterix_1, rf20008, OronSH,
+nicarmt, hdrcure, BunnyAoPS, AlienGirl05, MathLion11, Cygnet, challengeitmath,
+MetalTigerMath, EJCTZ13, mathmax12
+=================================== Content ====================================
 Post CTRL-v in here :P [url=http://www.freesmileys.org/free-big-
-smiley.php][img]http://www.freesmileys.org/smileys/big/big-smiley-face.gif[/img][/url]
-====================================================================================================
-Elapsed time: 53.40 seconds
+smiley.php][img]http://www.freesmileys.org/smileys/big/big-smiley-
+face.gif[/img][/url]
+================================================================================
+Elapsed time: 48.22 seconds
