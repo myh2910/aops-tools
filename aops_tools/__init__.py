@@ -40,23 +40,21 @@ def show_aops_data(
 
     colorama.init()
 
-    json_file = None
-
     if "h" in code:
+        json_file = "topic-data.json"
         data, begin_time = get.get_topic_data(code)
 
         if CONFIG["write_html"] or CONFIG["write_json"]:
             utils.create_path(data["category_id"], data["topic_id"])
-            json_file = "topic-data.json"
 
         show.show_topic_data(data, stalk_users, find_posts)
 
     else:
+        json_file = "category-data.json"
         data, begin_time = get.get_category_data(code, search_method)
 
         if CONFIG["write_html"] or CONFIG["write_json"]:
             utils.create_path(data["category_id"])
-            json_file = "category-data.json"
 
         show.show_category_data(data, find_text)
 
