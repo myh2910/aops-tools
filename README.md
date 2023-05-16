@@ -11,9 +11,7 @@ can be manually edited.
 
 ## Requirements
 
-- Python with version >= 3.8.
-- Install the required packages with pip.  
-  `pip install -r requirements.txt`
+- `pip install -r requirements.txt`
 - Install [ChromeDriver](https://chromedriver.chromium.org/downloads) and add it
   to PATH.
 
